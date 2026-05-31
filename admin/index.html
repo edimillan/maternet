@@ -12,6 +12,13 @@
     // Registrar fuentes y Tailwind CSS para que la vista previa dentro del editor del CMS se vea estilizada
     CMS.registerPreviewStyle("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
     CMS.registerPreviewStyle("https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css");
+
+    // Escuchador de diagnóstico para depurar la recepción del token
+    window.addEventListener('message', (event) => {
+      console.log('%c[DEBUG CMS] Mensaje recibido en ventana principal:', 'color: #00bcd4; font-weight: bold;', event);
+      console.log('Origen del evento:', event.origin);
+      console.log('Datos del evento:', event.data);
+    }, false);
   </script>
 </body>
 </html>
