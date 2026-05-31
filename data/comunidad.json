@@ -1,5 +1,19 @@
 {
-  "noticias": [],
+  "noticias": [
+    {
+      "resumen": "adasdsadasasdas",
+      "imagen": "images/banner1.png",
+      "galeria": [
+        "images/ib_proyecto_comunitario.jpg"
+      ],
+      "contenido": "asdsadaasdaasdadasasda",
+      "titulo": "adasd",
+      "id": "DIA-MADRE",
+      "mes": "adsda",
+      "dia": "asdas",
+      "fecha": "12123"
+    }
+  ],
   "actividades": [
     {
       "id": "taller-padres-junio",
