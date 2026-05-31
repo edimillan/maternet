@@ -1,5 +1,19 @@
 {
-  "noticias": [],
+  "noticias": [
+    {
+      "resumen": "adasdaksdklnsdjnskjsdnckjsdnbksdjbfksdfbksdjnsbkjsdnhgs",
+      "imagen": "images/danza.jpg",
+      "galeria": [
+        "images/escuela_padres_charla.jpg"
+      ],
+      "contenido": "asadadadasdadasdsadasdasdasdaadadadasdsadasdsadasdasaasdasdsadasdasasdsadasdsadas",
+      "titulo": "dia del padre",
+      "id": "dia padre 2027",
+      "mes": "jun",
+      "dia": "26",
+      "fecha": "26 junio 2027"
+    }
+  ],
   "actividades": [
     {
       "id": "taller-padres-junio",
