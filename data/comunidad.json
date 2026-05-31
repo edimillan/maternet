@@ -1,26 +1,44 @@
 {
   "noticias": [
     {
-      "id": "dia-madre-2027",
+      "resumen": "Agradecemos a todas las familias que nos acompañaron en la hermosa liturgia y actuación de nuestras alumnas.",
+      "imagen": "images/banner1.webp",
+      "galeria": [
+        "images/banner1.webp",
+        "images/banner2.webp",
+        "images/banner3.webp",
+        "images/banner4.webp"
+      ],
+      "contenido": "El Colegio Mater Admirabilis celebró el Día de la Madre con una emotiva liturgia y actuaciones especiales preparadas por nuestras estudiantes de Inicial, Primaria y Secundaria. Las madres de familia disfrutaron de bailes, canciones y poemas en un ambiente lleno de amor y gratitud. La rectoría agradece la masiva participación y el apoyo incondicional de los comités de aula.",
       "titulo": "Día de la Madre en Mater Admirabilis",
-      "fecha": "25 Mayo 2027",
+      "id": "dia-madre-2027",
       "mes": "MAY",
       "dia": "25",
-      "imagen": "images/banner1.webp",
-      "resumen": "Agradecemos a todas las familias que nos acompañaron en la hermosa liturgia y actuación de nuestras alumnas.",
-      "contenido": "El Colegio Mater Admirabilis celebró el Día de la Madre con una emotiva liturgia y actuaciones especiales preparadas por nuestras estudiantes de Inicial, Primaria y Secundaria. Las madres de familia disfrutaron de bailes, canciones y poemas en un ambiente lleno de amor y gratitud. La rectoría agradece la masiva participación y el apoyo incondicional de los comités de aula.",
-      "galeria": ["images/banner1.webp", "images/banner2.webp", "images/banner3.webp", "images/banner4.webp"]
+      "fecha": "25 Mayo 2027"
     },
     {
-      "id": "circular-012-sie",
+      "resumen": "Se recuerda a los padres de familia actualizar sus credenciales para la revisión de libretas del 1er Bimestre.",
+      "imagen": "images/banner2.webp",
+      "galeria": [],
+      "contenido": "Estimados padres de familia, se les recuerda que a partir de esta semana se encuentra disponible el reporte de calificaciones del Primer Bimestre en la plataforma virtual SIE. Solicitamos actualizar sus credenciales de acceso para asegurar la revisión oportuna de las libretas de notas. Si presenta problemas con su cuenta, contactar con soporte técnico escribiendo al correo soporte@maternet.edu.pe.",
       "titulo": "Circular 012: Uso de Plataforma SIE",
-      "fecha": "18 Mayo 2027",
+      "id": "circular-012-sie",
       "mes": "MAY",
       "dia": "18",
-      "imagen": "images/banner2.webp",
-      "resumen": "Se recuerda a los padres de familia actualizar sus credenciales para la revisión de libretas del 1er Bimestre.",
-      "contenido": "Estimados padres de familia, se les recuerda que a partir de esta semana se encuentra disponible el reporte de calificaciones del Primer Bimestre en la plataforma virtual SIE. Solicitamos actualizar sus credenciales de acceso para asegurar la revisión oportuna de las libretas de notas. Si presenta problemas con su cuenta, contactar con soporte técnico escribiendo al correo soporte@maternet.edu.pe.",
-      "galeria": []
+      "fecha": "18 Mayo 2027"
+    },
+    {
+      "resumen": "asdasdadasdadassa",
+      "imagen": "images/BOTON-ADMISION-2018.png",
+      "galeria": [
+        "images/ib_servicio_accion_danza.jpg"
+      ],
+      "contenido": "asdadadasdasd",
+      "titulo": "asd",
+      "id": "sda",
+      "mes": "asd",
+      "dia": "ad",
+      "fecha": "asda"
     }
   ],
   "actividades": [
