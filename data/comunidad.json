@@ -1,46 +1,4 @@
 {
-  "noticias": [
-    {
-      "resumen": "ADSAFSFAFAS",
-      "imagen": "images/ib_servicio_accion_stands.jpg",
-      "galeria": [
-        "images/inicial_juego.jpg"
-      ],
-      "contenido": "SDFSAFSFSAFSDFSFSDSF\n\nSDAFDSAF\n\nSAF\n\nSDF\n\nSDF\n\nDSF\n\nS\n\nFSD",
-      "titulo": "FERIA DE SERVICIO",
-      "id": "Feria-Personal",
-      "mes": "MAY",
-      "dia": "25",
-      "fecha": "25 MAYO 2027"
-    }
-  ],
-  "actividades": [
-    {
-      "id": "taller-padres-junio",
-      "titulo": "Taller Escuela para Padres",
-      "fecha_display": "Jueves 04 Junio, 18:00 hrs",
-      "tipo": "Presencial",
-      "modalidad": "Virtual",
-      "resumen": "Charlas de formación activa y soporte continuo para potenciar la crianza positiva en los hogares.",
-      "contenido": "Invitamos a todos los padres de familia a participar en nuestro primer taller del ciclo 'Escuela para Padres' del presente año escolar. Abordaremos el tema de la crianza positiva en tiempos modernos, control del estrés familiar y el acompañamiento socioemocional de nuestras estudiantes."
-    },
-    {
-      "id": "juegos-deportivos-junio",
-      "titulo": "Inauguración Juegos Deportivos",
-      "fecha_display": "Sábado 13 Junio, 09:00 hrs",
-      "tipo": "Presencial",
-      "modalidad": "Presencial",
-      "resumen": "Inicio de las actividades recreativas y deportivas por olimpiadas escolares en las losas deportivas del campus.",
-      "contenido": "Se dará inicio a las olimpiadas escolares de este año. Contaremos con el desfile de las delegaciones por secciones, el encendido de la antorcha olímpica y encuentros deportivos amistosos en disciplinas como vóley, futsal y atletismo. Invitamos a toda la comunidad educativa a alentar a nuestras estudiantes."
-    },
-    {
-      "id": "simulacro-nacional-sismo",
-      "titulo": "Simulacro Nacional de Sismo",
-      "fecha_display": "Viernes 26 Junio, 10:00 hrs",
-      "tipo": "Colegio",
-      "modalidad": "Colegio",
-      "resumen": "Participación activa en el ejercicio nacional de prevención y evacuación coordinado por INDECI.",
-      "contenido": "Nuestra comunidad educativa participará en el ejercicio nacional preventivo. Este simulacro busca evaluar y afianzar las rutas de evacuación rápida de nuestras estudiantes y el accionar de nuestras brigadas de emergencia de acuerdo a los protocolos de seguridad civil de INDECI."
-    }
-  ]
+  "noticias": [],
+  "actividades": []
 }
