@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Imágenes del Proyecto</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <h1 class="text-3xl font-bold text-center mb-8">Galería de Imágenes de Maternet</h1>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="gallery">
+        <!-- Las imágenes se inyectarán aquí -->
+    </div>
+
+    <script>
+        const images = [
+            "302175790_375190578135653_2851504916479526864_n.jpg",
+            "468866326_18031774295593058_6572262632332947861_n.jpg",
+            "468957031_18031773395593058_6632217492994985681_n.jpg",
+            "468976966_18031774097593058_8780481751128795737_n.jpg",
+            "469015718_18031770872593058_2206925824133773165_n.jpg",
+            "469157513_18031867832593058_2699582555764874271_n.jpg",
+            "469181749_18031768391593058_4493256756777797906_n.jpg",
+            "469187566_18031773041593058_8452756539363717262_n.jpg",
+            "469216184_18031773023593058_5534133264986568964_n.jpg",
+            "469232781_18031868168593058_5354996795159525781_n.jpg",
+            "469307016_18031773467593058_6131317151152877689_n.jpg",
+            "480851813_953683593619679_5561253863300328021_n.jpg",
+            "482056774_968518645469507_3312735664512073735_n.jpg",
+            "484129073_968518668802838_56667119615504439_n.jpg",
+            "485306886_973812471606791_6800173823449429709_n.jpg",
+            "485391393_975099194811452_6366624808553812820_n.jpg",
+            "485594174_975099128144792_6517110139237637880_n.jpg",
+            "485799240_975099541478084_497766693848052869_n.jpg",
+            "557641339_1125889153065788_7632968684975279739_n.jpg",
+            "565708145_1142933631361340_5203103243611951568_n.jpg",
+            "581724324_18071263553593058_9099179290874922037_n.jpg",
+            "684242338_1293809282940440_2731927169120651653_n.jpg",
+            "688443120_18092160752593058_2353623299322070539_n.jpg",
+            "CEQ_logo_Ranged_RGB.jpg",
+            "ib-world-school-logo-2-colour.png",
+            "myp-programme-logo-es.png",
+            "banner1.png",
+            "banner2.jpg",
+            "banner3.jpg",
+            "banner4.jpg",
+            "banner5.jpg",
+            "banner6.jpg",
+            "inicial1.jpg",
+            "primaria1.jpg",
+            "secundaria1.jpg"
+        ];
+
+        const container = document.getElementById('gallery');
+        images.forEach(img => {
+            const card = document.createElement('div');
+            card.className = "bg-white p-4 rounded-xl shadow-md flex flex-col items-center";
+            card.innerHTML = `
+                <img src="images/${img}" class="w-full h-48 object-cover rounded-lg mb-4" alt="${img}" onerror="this.src='https://via.placeholder.com/300x200?text=Error'">
+                <p class="text-sm font-semibold truncate w-full text-center text-gray-700" title="${img}">${img}</p>
+            `;
+            container.appendChild(card);
+        });
+    </script>
+</body>
+</html>

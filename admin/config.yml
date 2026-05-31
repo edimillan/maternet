@@ -1,0 +1,43 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "images"
+
+collections:
+  - name: "comunidad_data"
+    label: "Comunidad y Eventos"
+    files:
+      - file: "data/comunidad.json"
+        label: "Noticias y Actividades"
+        name: "comunidad"
+        fields:
+          - label: "Noticias y Boletines"
+            name: "noticias"
+            widget: "list"
+            summary: "{{fields.titulo}}"
+            fields:
+              - { label: "ID único (ej: dia-madre-2027)", name: "id", widget: "string" }
+              - { label: "Título de la Noticia", name: "titulo", widget: "string" }
+              - { label: "Fecha Completa (ej: 25 Mayo 2027)", name: "fecha", widget: "string" }
+              - { label: "Mes Abreviado (ej: MAY)", name: "mes", widget: "string" }
+              - { label: "Día Número (ej: 25)", name: "dia", widget: "string" }
+              - { label: "Imagen Destacada", name: "imagen", widget: "image" }
+              - { label: "Resumen Breve (para el listado)", name: "resumen", widget: "text" }
+              - { label: "Contenido Completo (para la vista de detalle)", name: "contenido", widget: "markdown" }
+              - label: "Galería de Fotos del Evento"
+                name: "galeria"
+                widget: "list"
+                field: { label: "Imagen", name: "image_path", widget: "image" }
+          - label: "Próximas Actividades"
+            name: "actividades"
+            widget: "list"
+            summary: "{{fields.titulo}}"
+            fields:
+              - { label: "ID único (ej: taller-padres)", name: "id", widget: "string" }
+              - { label: "Título de la Actividad", name: "titulo", widget: "string" }
+              - { label: "Fecha y Hora Display (ej: Jueves 04 Junio, 18:00 hrs)", name: "fecha_display", widget: "string" }
+              - { label: "Tipo / Modalidad", name: "tipo", widget: "select", options: ["Virtual", "Presencial", "Colegio"] }
+              - { label: "Resumen Corto", name: "resumen", widget: "text" }
+              - { label: "Contenido / Detalles de la Actividad", name: "contenido", widget: "markdown" }

@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mater Admirabilis | Educación Integral Católica</title>
+    <meta name="description" content="Colegio Mater Admirabilis. Ofrecemos educación de excelencia en los niveles de Inicial, Primaria y Secundaria.">
+    
+    <!-- Fuentes e Íconos -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- dFlip CSS (Global for SPA) -->
+    <link href="https://cdn.jsdelivr.net/npm/@dearhive/dearflip-jquery-flipbook@1.7.3/dflip/css/dflip.min.css" rel="stylesheet">
+    <!-- jQuery and dFlip JS (Global for SPA) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@dearhive/dearflip-jquery-flipbook@1.7.3/dflip/js/dflip.min.js"></script>
+    <!-- Anime.js for micro-interactions -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuración de Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        principal: '#005931',
+                        oro: '#EBB300',
+                        texto: '#1A252C',
+                        fondo: '#f8f9fa'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Estilos personalizados para Dropdowns y Animaciones de Blobs -->
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .dropdown:hover .dropdown-menu {
+                display: block;
+            }
+            .sub-dropdown:hover .sub-dropdown-menu {
+                display: block;
+            }
+            
+            /* Animaciones para Blobs del Fondo */
+            @keyframes float-blob-1 {
+                0% { transform: translate(0px, 0px) scale(1); }
+                33% { transform: translate(40px, -60px) scale(1.15); }
+                66% { transform: translate(-30px, 30px) scale(0.9); }
+                100% { transform: translate(0px, 0px) scale(1); }
+            }
+            @keyframes float-blob-2 {
+                0% { transform: translate(0px, 0px) scale(1.1); }
+                50% { transform: translate(-50px, 50px) scale(0.85); }
+                100% { transform: translate(0px, 0px) scale(1.1); }
+            }
+            .animate-blob-1 {
+                animation: float-blob-1 22s infinite alternate ease-in-out;
+            }
+            .animate-blob-2 {
+                animation: float-blob-2 26s infinite alternate ease-in-out;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans text-texto bg-fondo antialiased">
+    
+    <!-- Top Bar: Accesos Rápidos -->
+    <div class="bg-principal border-b border-white/10 text-white/90 text-sm py-2 relative z-50">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="hidden md:flex space-x-4">
+                <span class="flex items-center"><i class="fas fa-phone-alt mr-2 text-oro text-xs"></i>(01) 123-4567</span>
+                <span class="flex items-center"><i class="fas fa-envelope mr-2 text-oro text-xs"></i>informes@maternet.edu.pe</span>
+            </div>
+            <div class="flex space-x-5 ml-auto font-medium">
+                <a href="#" class="hover:text-oro transition-colors flex items-center"><i class="fas fa-laptop mr-1"></i> Intranet</a>
+                <a href="#" class="hover:text-oro transition-colors flex items-center"><i class="fas fa-envelope-open mr-1"></i> Correo</a>
+                <a href="#" class="hover:text-oro transition-colors flex items-center"><i class="fab fa-microsoft mr-1"></i> Teams</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation (Navbar) -->
+    <nav class="bg-principal shadow-md sticky top-0 z-40 transition-all duration-300">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <a href="inicio.html" class="spa-link flex items-center gap-1.5 group">
+                    <img src="images/logovertical1.png" alt="Logo Mater Admirabilis" class="h-20 md:h-24 w-auto object-contain transition-transform duration-300 group-hover:scale-105" onerror="this.src='https://via.placeholder.com/80'">
+                    <div class="flex flex-col items-center">
+                        <span class="text-white font-extrabold text-2xl md:text-3xl tracking-wider group-hover:text-oro transition-colors leading-none">Mater Admirabilis</span>
+                        <span class="text-white/80 font-medium text-[10px] md:text-xs uppercase tracking-widest mt-0.5 group-hover:text-white transition-colors">Colegio Inglés de Mujeres</span>
+                    </div>
+                </a>
+
+                <!-- Botón Menú Móvil -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-white hover:text-oro focus:outline-none transition-colors">
+                        <i class="fas fa-bars text-3xl"></i>
+                    </button>
+                </div>
+
+                <!-- Menú Desktop -->
+                <div class="hidden md:flex space-x-8 items-center font-medium text-white">
+                    <a href="inicio.html" class="spa-link text-oro border-b-2 border-oro pb-1">Inicio</a>
+                    
+                    <!-- Institucional Dropdown -->
+                    <div class="relative group dropdown">
+                        <a href="inicio.html#institucional-block" class="spa-link hover:text-oro py-2 flex items-center transition-colors">
+                            Institucional <i class="fas fa-chevron-down ml-2 text-[10px]"></i>
+                        </a>
+                        <div class="absolute left-0 mt-0 w-56 bg-white text-texto border-t-4 border-oro shadow-xl rounded-b-lg hidden dropdown-menu z-50">
+                            <a href="institucional/presentacion.html" class="spa-link block px-5 py-3 text-sm hover:bg-principal hover:text-white transition-colors border-b border-gray-100">Presentación</a>
+                            <a href="institucional/mision-vision.html" class="spa-link block px-5 py-3 text-sm hover:bg-principal hover:text-white transition-colors border-b border-gray-100">Misión y Visión</a>
+                            <a href="institucional/ib-myp.html" class="spa-link block px-5 py-3 text-sm hover:bg-principal hover:text-white transition-colors border-b border-gray-100">IB - MYP</a>
+                            <a href="institucional/historia.html" class="spa-link block px-5 py-3 text-sm hover:bg-principal hover:text-white transition-colors">Historia</a>
+                        </div>
+                    </div>
+
+                    <!-- Niveles Dropdown -->
+                    <div class="relative group dropdown">
+                        <a href="inicio.html#niveles-block" class="spa-link hover:text-oro py-2 flex items-center transition-colors">
+                            Niveles <i class="fas fa-chevron-down ml-2 text-[10px]"></i>
+                        </a>
+                        <div class="absolute left-0 mt-0 w-56 bg-white text-texto border-t-4 border-oro shadow-xl rounded-b-lg hidden dropdown-menu z-50">
+                            <a href="niveles/inicial.html" class="spa-link block px-5 py-3 text-sm hover:bg-principal hover:text-white transition-colors border-b border-gray-100">Inicial</a>
+                            <a href="niveles/primaria.html" class="spa-link block px-5 py-3 text-sm hover:bg-principal hover:text-white transition-colors border-b border-gray-100">Primaria</a>
+                            <a href="niveles/secundaria.html" class="spa-link block px-5 py-3 text-sm hover:bg-principal hover:text-white transition-colors">Secundaria</a>
+                        </div>
+                    </div>
+
+                    <!-- Convenios Dropdown -->
+                    <div class="relative group dropdown">
+                        <a href="inicio.html#convenios-block" class="spa-link hover:text-oro py-2 flex items-center transition-colors">
+                            Convenios <i class="fas fa-chevron-down ml-2 text-[10px]"></i>
+                        </a>
+                        <div class="absolute left-0 mt-0 w-56 bg-white text-texto border-t-4 border-oro shadow-xl rounded-b-lg hidden dropdown-menu z-50">
+                            <a href="convenios/academicos.html" class="spa-link block px-5 py-3 text-sm hover:bg-principal hover:text-white transition-colors border-b border-gray-100">Académicos</a>
+                            <a href="convenios/alianza.html" class="spa-link block px-5 py-3 text-sm hover:bg-principal hover:text-white transition-colors border-b border-gray-100">Alianza Francesa</a>
+                            <a href="convenios/cambridge.html" class="spa-link block px-5 py-3 text-sm hover:bg-principal hover:text-white transition-colors">Cambridge</a>
+                        </div>
+                    </div>
+
+                    <!-- Servicios Dropdown -->
+                    <div class="relative group dropdown">
+                        <a href="inicio.html#servicios-block" class="spa-link hover:text-oro py-2 flex items-center transition-colors">
+                            Servicios <i class="fas fa-chevron-down ml-2 text-[10px]"></i>
+                        </a>
+                        <div class="absolute left-0 mt-0 w-56 bg-white text-texto border-t-4 border-oro shadow-xl rounded-b-lg hidden dropdown-menu z-50">
+                            <a href="servicios/psicopedagogico.html" class="spa-link block px-5 py-3 text-sm hover:bg-principal hover:text-white transition-colors border-b border-gray-100">Psicopedagógico</a>
+                            <a href="servicios/escuela-padres.html" class="spa-link block px-5 py-3 text-sm hover:bg-principal hover:text-white transition-colors border-b border-gray-100">Escuela para padres</a>
+                            <a href="servicios/comedor.html" class="spa-link block px-5 py-3 text-sm hover:bg-principal hover:text-white transition-colors">Comedor</a>
+                        </div>
+                    </div>
+
+                    <a href="admision.html" class="spa-link hover:text-oro py-2 transition-colors">Admisión</a>
+                    <a href="contacto.html" class="spa-link hover:text-oro py-2 transition-colors">Contacto</a>
+                </div>
+            </div>
+            
+            <!-- Menú Móvil Desplegable (Acordeón) -->
+            <div id="mobile-menu" class="md:hidden hidden border-t border-white/20 pt-2 pb-4 max-h-[70vh] overflow-y-auto">
+                <a href="inicio.html" class="spa-link block py-3 px-4 text-oro font-medium bg-black/10 rounded">Inicio</a>
+                
+                <!-- Institucional -->
+                <div>
+                    <button class="w-full text-left py-3 px-4 text-white hover:text-oro flex justify-between items-center transition-colors" onclick="toggleMobileSubmenu('mob-institucional')">
+                        Institucional <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+                    <div id="mob-institucional" class="hidden bg-black/10 pl-6 border-l-2 border-oro ml-4 my-1">
+                        <a href="inicio.html#institucional-block" class="spa-link block py-2 text-oro font-semibold">Ver todo Institucional</a>
+                        <a href="institucional/presentacion.html" class="spa-link block py-2 text-gray-300 hover:text-white">Presentación</a>
+                        <a href="institucional/mision-vision.html" class="spa-link block py-2 text-gray-300 hover:text-white">Misión y Visión</a>
+                        <a href="institucional/ib-myp.html" class="spa-link block py-2 text-gray-300 hover:text-white">IB - MYP</a>
+                        <a href="institucional/historia.html" class="spa-link block py-2 text-gray-300 hover:text-white">Historia</a>
+                    </div>
+                </div>
+
+                <!-- Niveles -->
+                <div>
+                    <button class="w-full text-left py-3 px-4 text-white hover:text-oro flex justify-between items-center transition-colors" onclick="toggleMobileSubmenu('mob-niveles')">
+                        Niveles <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+                    <div id="mob-niveles" class="hidden bg-black/10 pl-6 border-l-2 border-oro ml-4 my-1">
+                        <a href="inicio.html#niveles-block" class="spa-link block py-2 text-oro font-semibold">Ver todo Niveles</a>
+                        <a href="niveles/inicial.html" class="spa-link block py-2 text-gray-300 hover:text-white">Inicial</a>
+                        <a href="niveles/primaria.html" class="spa-link block py-2 text-gray-300 hover:text-white">Primaria</a>
+                        <a href="niveles/secundaria.html" class="spa-link block py-2 text-gray-300 hover:text-white">Secundaria</a>
+                    </div>
+                </div>
+
+                <!-- Convenios -->
+                <div>
+                    <button class="w-full text-left py-3 px-4 text-white hover:text-oro flex justify-between items-center transition-colors" onclick="toggleMobileSubmenu('mob-convenios')">
+                        Convenios <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+                    <div id="mob-convenios" class="hidden bg-black/10 pl-6 border-l-2 border-oro ml-4 my-1">
+                        <a href="inicio.html#convenios-block" class="spa-link block py-2 text-oro font-semibold">Ver todo Convenios</a>
+                        <a href="convenios/academicos.html" class="spa-link block py-2 text-gray-300 hover:text-white">Académicos</a>
+                        <a href="convenios/alianza.html" class="spa-link block py-2 text-gray-300 hover:text-white">Alianza Francesa</a>
+                        <a href="convenios/cambridge.html" class="spa-link block py-2 text-gray-300 hover:text-white">Cambridge</a>
+                    </div>
+                </div>
+
+                <!-- Servicios -->
+                <div>
+                    <button class="w-full text-left py-3 px-4 text-white hover:text-oro flex justify-between items-center transition-colors" onclick="toggleMobileSubmenu('mob-servicios')">
+                        Servicios <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+                    <div id="mob-servicios" class="hidden bg-black/10 pl-6 border-l-2 border-oro ml-4 my-1">
+                        <a href="inicio.html#servicios-block" class="spa-link block py-2 text-oro font-semibold">Ver todo Servicios</a>
+                        <a href="servicios/psicopedagogico.html" class="spa-link block py-2 text-gray-300 hover:text-white">Psicopedagógico</a>
+                        <a href="servicios/escuela-padres.html" class="spa-link block py-2 text-gray-300 hover:text-white">Escuela para padres</a>
+                        <a href="servicios/comedor.html" class="spa-link block py-2 text-gray-300 hover:text-white">Comedor</a>
+                    </div>
+                </div>
+
+                <a href="admision.html" class="spa-link block py-3 px-4 text-white hover:bg-black/10 hover:text-oro transition-colors">Admisión</a>
+                <a href="contacto.html" class="spa-link block py-3 px-4 text-white hover:bg-black/10 hover:text-oro transition-colors">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    
+    <!-- MAIN CONTENT SPA ROUTER -->
+    <main id="contenido-principal" class="transition-opacity duration-300 opacity-100 min-h-[60vh] flex flex-col relative z-20">
+        <!-- El contenido se inyectará aquí dinámicamente -->
+    </main>
+
+
+    
+
+    <!-- Footer Institucional -->
+    <footer class="bg-principal text-white pt-12 pb-6 border-t-8 border-oro relative overflow-hidden" data-aos="fade-up">
+        <!-- Decoración de fondo suave -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-48 h-48 rounded-full bg-white opacity-5"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-60 h-60 rounded-full bg-oro opacity-5"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <!-- Info Colegio -->
+                <div class="md:col-span-1">
+                    <div class="flex items-center gap-1.5 mb-4">
+                        <img src="images/logovertical1.png" alt="Logo Mater Admirabilis" class="h-16 w-auto object-contain" onerror="this.src='https://via.placeholder.com/60'">
+                        <div class="flex flex-col items-center">
+                            <span class="text-white font-bold text-base md:text-lg tracking-wide leading-none">Mater Admirabilis</span>
+                            <span class="text-white/70 font-medium text-[8px] md:text-[9px] uppercase tracking-widest mt-0.5">Colegio Inglés de Mujeres</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-xs leading-relaxed mb-4">
+                        Formando mujeres líderes de fe, con mentalidad internacional y compromiso social.
+                    </p>
+                </div>
+
+                <!-- Contacto -->
+                <div class="md:col-span-1">
+                    <h4 class="text-base font-bold text-oro mb-4">Contacto</h4>
+                    <ul class="space-y-2 text-xs text-gray-300">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-oro text-sm"></i>
+                            <span>Av. Arica 898, San Miguel<br>Lima, Perú</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-oro text-sm"></i>
+                            <span>460-7600 / 460-8306</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-oro text-sm"></i>
+                            <span>admision@maternet.edu.pe</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Enlaces Rápidos -->
+                <div class="md:col-span-1">
+                    <h4 class="text-base font-bold text-oro mb-4">Enlaces Rápidos</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="admision.html" class="spa-link text-gray-300 hover:text-white hover:pl-1.5 transition-all flex items-center"><i class="fas fa-angle-right mr-1.5 text-oro"></i> Proceso de Admisión</a></li>
+                        <li><a href="institucional/presentacion.html" class="spa-link text-gray-300 hover:text-white hover:pl-1.5 transition-all flex items-center"><i class="fas fa-angle-right mr-1.5 text-oro"></i> Proyecto Educativo</a></li>
+                        <li><a href="institucional/mision-vision.html" class="spa-link text-gray-300 hover:text-white hover:pl-1.5 transition-all flex items-center"><i class="fas fa-angle-right mr-1.5 text-oro"></i> Misión y Visión</a></li>
+                        <li><a href="convenios/academicos.html" class="spa-link text-gray-300 hover:text-white hover:pl-1.5 transition-all flex items-center"><i class="fas fa-angle-right mr-1.5 text-oro"></i> Convenios Académicos</a></li>
+                    </ul>
+                </div>
+
+                <!-- Redes Sociales -->
+                <div class="md:col-span-1">
+                    <h4 class="text-base font-bold text-oro mb-4">Síguenos</h4>
+                    <p class="text-gray-300 text-xs mb-4">Conéctate con nuestra comunidad digital.</p>
+                    <div class="flex space-x-3">
+                        <a href="https://www.facebook.com/colegiodemujeresmateradmirabilis" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-oro hover:text-principal transition-all duration-300 shadow-md" title="Facebook">
+                            <i class="fab fa-facebook-f text-sm"></i>
+                        </a>
+                        <a href="https://www.instagram.com/colegiomateradmirabilismujeres/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-oro hover:text-principal transition-all duration-300 shadow-md" title="Instagram">
+                            <i class="fab fa-instagram text-sm"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@colegiomateradmirabilis" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-oro hover:text-principal transition-all duration-300 shadow-md" title="TikTok">
+                            <i class="fab fa-tiktok text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="border-t border-white/20 pt-8 text-center text-gray-400 text-sm flex flex-col md:flex-row justify-between items-center">
+                <p>&copy; 2027 Colegio Mater Admirabilis. Todos los derechos reservados.</p>
+                <div class="mt-4 md:mt-0 space-x-4">
+                    <a href="#" class="hover:text-white transition-colors">Políticas de Privacidad</a>
+                    <span>|</span>
+                    <a href="#" class="hover:text-white transition-colors">Términos de Uso</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollTopBtn" class="fixed bottom-8 right-8 bg-oro text-principal w-12 h-12 rounded-full flex items-center justify-center shadow-xl opacity-0 translate-y-10 pointer-events-none transition-all duration-300 z-50 hover:bg-yellow-400 hover:-translate-y-1 focus:outline-none hover:shadow-[0_0_15px_rgba(235,179,0,0.6)]">
+        <i class="fas fa-arrow-up text-xl"></i>
+    </button>
+
+    
+    <!-- AOS Animation Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true, offset: 100 });
+
+        // Scroll to Top Logic
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+                scrollTopBtn.classList.add('opacity-100', 'translate-y-0');
+            } else {
+                scrollTopBtn.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+                scrollTopBtn.classList.remove('opacity-100', 'translate-y-0');
+            }
+        });
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Toggle Mobile Submenus
+        function toggleMobileSubmenu(id) {
+            const el = document.getElementById(id);
+            if(el) {
+                el.classList.toggle('hidden');
+                let icon = el.previousElementSibling.querySelector('i');
+                if(icon) {
+                    icon.classList.toggle('fa-chevron-down');
+                    icon.classList.toggle('fa-chevron-up');
+                }
+            }
+        }
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // ---------------------------------------------------------
+        // MOTOR SPA (Single Page Application)
+        // ---------------------------------------------------------
+        const mainContainer = document.getElementById('contenido-principal');
+        let currentPageUrl = 'inicio.html';
+
+        async function loadPage(url, pushHistory = true) {
+            try {
+                // Separar URL base y el ancla (hash)
+                const parts = url.split('#');
+                const baseUrl = parts[0] || 'inicio.html';
+                const hash = parts[1] || '';
+
+                // Si ya estamos en la misma página y tiene ancla, nos desplazamos suavemente
+                if (baseUrl === currentPageUrl && hash) {
+                    const targetEl = document.getElementById(hash);
+                    if (targetEl) {
+                        targetEl.scrollIntoView({ behavior: 'smooth' });
+                        if (pushHistory) {
+                            history.pushState({ url: url }, "", baseUrl === 'inicio.html' ? 'index.html#' + hash : "?" + baseUrl + '#' + hash);
+                        }
+                        document.getElementById('mobile-menu').classList.add('hidden');
+                        return;
+                    }
+                }
+
+                // Iniciar transición
+                mainContainer.style.opacity = 0;
+                
+                // Fetch del contenido
+                const response = await fetch(baseUrl);
+                if (!response.ok) throw new Error("Página no encontrada");
+                const htmlContent = await response.text();
+                
+                // Esperar a que termine el fade-out (300ms)
+                setTimeout(() => {
+                    window.flipBookInstance = null; // reset dflip
+                    mainContainer.innerHTML = htmlContent;
+                    
+                    // Ejecutar Scripts inyectados
+                    const scripts = mainContainer.querySelectorAll('script');
+                    scripts.forEach(oldScript => {
+                        const newScript = document.createElement('script');
+                        Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
+                        newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+                        oldScript.parentNode.replaceChild(newScript, oldScript);
+                    });
+
+                    currentPageUrl = baseUrl;
+
+                    // Push History
+                    if(pushHistory) {
+                        history.pushState({ url: url }, "", baseUrl === 'inicio.html' ? (hash ? 'index.html#' + hash : 'index.html') : (hash ? "?" + baseUrl + '#' + hash : "?" + baseUrl));
+                    }
+
+                    // Reset Scroll o scroll al ancla específica
+                    if (hash) {
+                        setTimeout(() => {
+                            const targetEl = document.getElementById(hash);
+                            if (targetEl) {
+                                targetEl.scrollIntoView({ behavior: 'smooth' });
+                            } else {
+                                window.scrollTo(0,0);
+                            }
+                        }, 100);
+                    } else {
+                        window.scrollTo(0,0);
+                    }
+
+                    setTimeout(() => {
+                        AOS.refreshHard();
+                        mainContainer.style.opacity = 1;
+                        initMicroInteractions();
+                    }, 100);
+                    
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                    
+                }, 300);
+            } catch (e) {
+                console.error("Error loading page:", e);
+                mainContainer.innerHTML = '<div class="py-20 text-center text-red-500"><h2 class="text-3xl font-bold">Error</h2><p>No se pudo cargar la página.</p></div>';
+                mainContainer.style.opacity = 1;
+            }
+        }
+
+        // ---------------------------------------------------------
+        // MICRO-INTERACCIONES CON ANIME.JS
+        // ---------------------------------------------------------
+        function initMicroInteractions() {
+            // 1. Tarjetas con efecto resorte elástico (Spring hover)
+            const cards = document.querySelectorAll(
+                '#institucional-block .grid > div, ' +
+                '#niveles-block .grid > div, ' +
+                '#convenios-block .grid > div, ' +
+                '#servicios-block .grid > div'
+            );
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    anime({
+                        targets: card,
+                        scale: 1.025,
+                        boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.03)',
+                        duration: 600,
+                        easing: 'easeOutElastic(1, .8)'
+                    });
+                });
+                card.addEventListener('mouseleave', () => {
+                    anime({
+                        targets: card,
+                        scale: 1.0,
+                        boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.01)',
+                        duration: 400,
+                        easing: 'easeOutQuad'
+                    });
+                });
+            });
+
+            // 2. Micro-interacción en Inputs del Formulario de Admisión
+            const inputs = document.querySelectorAll('form input, form select, form textarea');
+            inputs.forEach(input => {
+                input.addEventListener('focus', () => {
+                    anime({
+                        targets: input,
+                        scale: 1.015,
+                        duration: 300,
+                        easing: 'easeOutQuad'
+                    });
+                });
+                input.addEventListener('blur', () => {
+                    anime({
+                        targets: input,
+                        scale: 1.0,
+                        duration: 250,
+                        easing: 'easeOutQuad'
+                    });
+                });
+            });
+        }
+
+        // Parallax interactivo para los Blobs (Global para movimientos de mouse)
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = (e.clientX / window.innerWidth - 0.5) * 35;
+            const mouseY = (e.clientY / window.innerHeight - 0.5) * 35;
+            
+            anime({
+                targets: '.animate-blob-1',
+                translateX: mouseX,
+                translateY: mouseY,
+                duration: 1200,
+                easing: 'easeOutQuad'
+            });
+            anime({
+                targets: '.animate-blob-2',
+                translateX: -mouseX,
+                translateY: -mouseY,
+                duration: 1200,
+                easing: 'easeOutQuad'
+            });
+        });
+
+        // Interceptar clicks en enlaces SPA
+        document.addEventListener('click', (e) => {
+            const link = e.target.closest('a.spa-link');
+            if (link) {
+                e.preventDefault();
+                const url = link.getAttribute('href');
+                if(url) loadPage(url);
+            }
+        });
+
+        // Botones Atrás/Adelante del navegador
+        window.addEventListener('popstate', (e) => {
+            if(e.state && e.state.url) {
+                loadPage(e.state.url, false);
+            } else {
+                loadPage('inicio.html', false);
+            }
+        });
+
+        // Carga Inicial
+        window.addEventListener('DOMContentLoaded', () => {
+            const params = window.location.search;
+            const hash = window.location.hash ? window.location.hash.substring(1) : '';
+            if(params && params.length > 1) {
+                loadPage(params.substring(1) + (hash ? '#' + hash : ''), false);
+            } else if (hash) {
+                loadPage('inicio.html#' + hash, false);
+            } else {
+                loadPage('inicio.html', false);
+            }
+        });
+
+    </script>
+</body>
+</html>
+

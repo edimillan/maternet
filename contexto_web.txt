@@ -1,0 +1,49 @@
+======================================================================
+CONTEXTO DEL SISTEMA - COLEGIO MATER ADMIRABILIS
+======================================================================
+
+1. CARACTERÍSTICAS ACTUALES DEL SISTEMA (¿Cómo es la Web?)
+----------------------------------------------------------------------
+- Tipo de Arquitectura: Single Page Application (SPA) dinámica. La cabecera (Header) y el pie de página (Footer) están fijos en "index.html" y el contenido cambia dentro de un contenedor central mediante JavaScript (Fetch/AJAX) sin recargar la página completa.
+- Enrutamiento por Anclas Inteligente: El motor SPA (`loadPage`) soporta anclajes (`#id-seccion`). Si el usuario hace clic en un menú de la barra de navegación (como "Niveles"), la web hace un desplazamiento suave (`scroll-mt-28` en CSS para compensar la barra fija) hacia el bloque correspondiente. Si está en otra página, carga la inicio primero y luego se desplaza.
+- Estilo y Diseño Premium:
+  * Paleta oficial: Verde principal (`#005931`), Oro (`#EBB300`), Fondo Neutro (`#f8f9fa`) y Texto Oscuro (`#1A252C`).
+  * Fondos "Aurora" Animados: Blobs difuminados flotantes (verde y oro al 5% con `blur-3xl`) que flotan dinámicamente mediante animaciones CSS optimizadas en cada sección.
+  * Paralaje Interactivo (Anime.js): Los blobs del fondo reaccionan al movimiento físico del mouse desplazándose suavemente en 3D.
+  * Spring-Hover en Tarjetas (Anime.js): Todas las tarjetas informativas principales del Home reaccionan con un sutil e interactivo rebote elástico al pasar el cursor.
+  * Micro-interacciones de Formulario (Anime.js): Los campos de entrada del formulario de postulación rápida se expanden sutilmente en foco.
+- Coherencia Institucional de Género: Auditoría completa de textos. El lenguaje se adaptó al perfil del colegio (mujeres en Primaria y Secundaria: "alumnas", "hijas", "líderes analíticas y ciudadanas"). En Nivel Inicial (3 y 4 años) se especifica explícitamente la coeducación (niños y niñas), mientras que el aula de 5 años es exclusiva para niñas.
+
+2. MAPA DE ARCHIVOS Y COMPONENTES
+----------------------------------------------------------------------
+Todos los archivos secundarios son parciales limpios (sin cabeceras ni pies repetidos) que se inyectan en `<main>`:
+- index.html -> Contenedor principal, cabecera fija (con logo vertical alineado y subtítulo centrado), barra superior, menú móvil tipo acordeón interactivo, pie de página maestro y script del motor SPA + Anime.js.
+- inicio.html -> Página de bienvenida reordenada en bloques anclados:
+  * Banner Mosaico (Bienvenida)
+  * Proyecto Institucional (`#institucional-block` -> Enlaces a Presentación, Misión, IB e Historia)
+  * Nuestros Niveles Educativos (`#niveles-block` -> Inicial, Primaria, Secundaria)
+  * Convenios y Alianzas (`#convenios-block` -> Académicos, Alianza Francesa, Cambridge)
+  * Servicios de la Comunidad (`#servicios-block` -> Psicopedagógico, Escuela para padres, Comedor)
+  * Comunidad y Admisión (`#comunidad-block` -> Noticias, Actividades y Formulario de postulación rápida enlazado a requisitos completos).
+- institucional/presentacion.html -> Propuesta educativa, pilares y talleres extracurriculares.
+- institucional/historia.html -> Origen (1950), hitos y Libro/Revista Interactiva 3D (dFlip) con sonido real.
+- niveles/inicial.html -> Detalle del Nivel Inicial (3 a 5 años), especificando co-ed en 3 y 4 años y niñas en 5 años.
+- niveles/primaria.html -> Detalles de jornada, metodología transdisciplinar e indagación.
+- niveles/secundaria.html -> Rigor académico e internacional de cara al Bachillerato Internacional.
+- admision.html -> Requisitos de matrícula, calendario completo y vacantes por traslado.
+- contacto.html -> Datos de localización, canales y mapa del campus.
+
+3. HISTORIAL DE CAMBIOS Y VERSIONES (Log de Modificaciones)
+----------------------------------------------------------------------
+- [Hito 1-5]: Estructuración de textos base, agenda/noticias en home, integración de historia/IB y revista 3D interactiva.
+- [Hito 6]: Migración de la web a sistema dinámico (SPA) con motor Fetch, menú móvil tipo acordeón y limpieza de HTML.
+- [Hito 7]: Actualización de Logotipos. Sustitución de logos anteriores por el nuevo logo vertical transparente (`logovertical1.png`). Alineación del título "Mater Admirabilis" con el subtítulo "Colegio Inglés de Mujeres" perfectamente centrado y con ajuste milimétrico vertical (`translate-y-[4px]`) y horizontal (`gap-1.5`) al costado del logotipo.
+- [Hito 8]: Navegación por Anclas e Integración "Opción A". Reordenamiento de bloques del Home. Programación del scroll inteligente y `scroll-mt-28` para evitar que la cabecera fija tape los títulos de los bloques. Se implementó la "Opción A" en Admisiones (enlace rápido en el formulario de inicio hacia los requisitos completos en `admision.html`).
+- [Hito 9]: Efectos Visuales y Micro-interacciones. Carga de Anime.js en el core. Implementación de los fondos dinámicos estilo Aurora con blobs flotantes, efecto paralaje interactivo con el puntero, rebote elástico en tarjetas y zoom dinámico en inputs.
+- [Hito 10]: Auditoría de Género de Textos. Ajuste terminológico en el 100% de la web para referirse a "alumnas", "hijas", "estudiantes" y "mujeres líderes". Configuración explícita del Nivel Inicial: aulas de 3 y 4 años mixtas (niños y niñas) y aula de 5 años únicamente de niñas.
+
+4. PRÓXIMOS PASOS (Tareas Pendientes)
+----------------------------------------------------------------------
+- [ ] Validar el funcionamiento del paralaje y el spring hover en navegadores móviles/táctiles.
+- [ ] Optimizar la carga de imágenes pesadas en el mosaico del banner de inicio.
+- [ ] Monitorear el correcto funcionamiento de las transiciones de página dinámicas en enlaces profundos de convenios y servicios.

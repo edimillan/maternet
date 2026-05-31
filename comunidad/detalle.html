@@ -1,0 +1,213 @@
+<div class="bg-white shadow-xl rounded-2xl overflow-hidden border border-gray-100 max-w-4xl mx-auto relative z-10" data-aos="fade-up">
+    <!-- Banner de Cabecera Dinámico -->
+    <div class="relative h-64 md:h-80 overflow-hidden bg-principal">
+        <!-- Imagen de fondo difuminada decorativa -->
+        <img id="detalle-banner-img" src="" alt="Banner del Evento" class="w-full h-full object-cover opacity-30 blur-[2px]">
+        <div class="absolute inset-0 bg-gradient-to-t from-principal via-principal/55 to-transparent"></div>
+        <div class="absolute inset-0 flex items-end p-8 md:p-12">
+            <div class="text-white max-w-2xl">
+                <span id="detalle-tag" class="bg-oro text-principal text-[10px] md:text-xs font-bold uppercase tracking-wider py-1 px-3 rounded-full mb-4 inline-block">Noticias y Eventos</span>
+                <h1 id="detalle-titulo" class="text-2xl md:text-4xl font-extrabold mb-3 leading-tight">Cargando evento...</h1>
+                <div class="flex items-center space-x-4 text-white/80 text-xs font-medium">
+                    <span id="detalle-fecha"><i class="far fa-calendar-alt mr-2 text-oro"></i>--/--/----</span>
+                    <span id="detalle-extra-info" class="hidden"><i class="fas fa-map-marker-alt mr-2 text-oro"></i>---</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenido Principal -->
+    <div class="p-8 md:p-12">
+        <div class="flex flex-col lg:flex-row gap-10 items-start">
+            <!-- Columna Texto -->
+            <div class="w-full lg:w-2/3">
+                <div class="w-16 h-1.5 bg-oro mb-6 rounded-full"></div>
+                <div id="detalle-contenido" class="text-gray-650 leading-relaxed text-sm md:text-base space-y-6 font-medium">
+                    <p>Por favor espera un momento mientras recuperamos el contenido del boletín o actividad...</p>
+                </div>
+            </div>
+
+            <!-- Columna lateral informativa -->
+            <div class="w-full lg:w-1/3 bg-gray-50 border border-gray-100 p-6 rounded-2xl shadow-sm">
+                <h4 class="text-principal font-bold text-lg mb-4 pb-2 border-b border-gray-200/60">Ficha Informativa</h4>
+                <ul class="space-y-4 text-xs md:text-sm">
+                    <li class="flex items-start">
+                        <i class="fas fa-bookmark mt-1 mr-3 text-oro"></i>
+                        <div>
+                            <strong class="block text-texto">Categoría</strong>
+                            <span id="ficha-categoria" class="text-gray-500 font-medium">Comunidad Mater</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-calendar-day mt-1 mr-3 text-oro"></i>
+                        <div>
+                            <strong class="block text-texto">Fecha</strong>
+                            <span id="ficha-fecha" class="text-gray-500 font-medium">-- -- ----</span>
+                        </div>
+                    </li>
+                    <li id="ficha-modalidad-item" class="flex items-start">
+                        <i class="fas fa-laptop-house mt-1 mr-3 text-oro"></i>
+                        <div>
+                            <strong class="block text-texto">Modalidad</strong>
+                            <span id="ficha-modalidad" class="text-gray-500 font-medium">Presencial / Virtual</span>
+                        </div>
+                    </li>
+                </ul>
+                <div class="mt-6 pt-6 border-t border-gray-200/60 flex flex-col gap-2">
+                    <button onclick="window.print()" class="w-full bg-principal hover:bg-green-800 text-white font-bold text-xs py-2.5 px-4 rounded-xl shadow transition-all duration-300 flex items-center justify-center gap-2">
+                        <i class="fas fa-print"></i> Imprimir Boletín
+                    </button>
+                    <a href="inicio.html#comunidad-block" class="spa-link w-full bg-white hover:bg-gray-100 text-principal border border-principal/30 font-bold text-xs py-2.5 px-4 rounded-xl shadow transition-all duration-300 flex items-center justify-center gap-2">
+                        <i class="fas fa-arrow-left"></i> Volver a Comunidad
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección Galería de Fotos (Inyectado si existe) -->
+        <div id="detalle-galeria-seccion" class="hidden mt-12 pt-10 border-t border-gray-150">
+            <h3 class="text-2xl font-bold text-principal mb-6 flex items-center gap-2">
+                <i class="fas fa-images text-oro"></i> Galería del Evento
+            </h3>
+            <div id="detalle-galeria-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- Se inyectarán las fotos aquí -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Lightbox Modal para fotos de la galería (CSS/JS simple) -->
+<div id="lightbox-modal" class="fixed inset-0 bg-black/90 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm transition-opacity duration-300 opacity-0">
+    <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white hover:text-oro text-3xl focus:outline-none transition-colors" title="Cerrar Imagen">
+        <i class="fas fa-times"></i>
+    </button>
+    <img id="lightbox-img" src="" alt="Vista Expandida" class="max-w-full max-h-[85vh] rounded-xl shadow-2xl object-contain transform scale-95 transition-transform duration-300">
+</div>
+
+<script>
+    (async function() {
+        try {
+            // 1. Obtener ID de la URL
+            const urlParams = new URLSearchParams(window.location.search);
+            let id = urlParams.get('id');
+            if (!id) {
+                const match = window.location.search.match(/[?&]id=([^&]+)/);
+                if (match) id = match[1];
+            }
+
+            if (!id) {
+                document.getElementById('detalle-titulo').innerText = "Evento No Encontrado";
+                document.getElementById('detalle-contenido').innerHTML = "<p class='text-red-500'>No se especificó un ID de evento válido en la URL de navegación.</p>";
+                return;
+            }
+
+            // 2. Fetch de base de datos JSON
+            const response = await fetch('data/comunidad.json');
+            if(!response.ok) throw new Error("No se pudo cargar la base de datos");
+            const db = await response.json();
+
+            // Buscar en noticias y en actividades
+            let item = db.noticias.find(n => n.id === id);
+            let esNoticia = true;
+
+            if (!item) {
+                item = db.actividades.find(a => a.id === id);
+                esNoticia = false;
+            }
+
+            if (!item) {
+                document.getElementById('detalle-titulo').innerText = "Publicación no Encontrada";
+                document.getElementById('detalle-contenido').innerHTML = `<p class='text-red-500'>El evento con ID "${id}" no existe en los registros actuales.</p>`;
+                return;
+            }
+
+            // 3. Renderizar los datos
+            document.getElementById('detalle-titulo').innerText = item.titulo;
+            
+            if (esNoticia) {
+                document.getElementById('detalle-tag').innerText = "Noticias y Boletines";
+                document.getElementById('detalle-fecha').innerHTML = `<i class="far fa-calendar-alt mr-2 text-oro"></i>Publicado el ${item.fecha}`;
+                document.getElementById('detalle-banner-img').src = item.imagen;
+                document.getElementById('detalle-banner-img').classList.remove('opacity-30');
+                document.getElementById('detalle-banner-img').classList.add('opacity-45');
+                document.getElementById('ficha-categoria').innerText = "Noticia Institucional";
+                document.getElementById('ficha-fecha').innerText = item.fecha;
+                document.getElementById('ficha-modalidad-item').classList.add('hidden'); // No aplica modalidad a noticias
+                
+                // Formatear Markdown básico
+                document.getElementById('detalle-contenido').innerHTML = formatMarkdownText(item.contenido);
+
+                // Renderizar galería si existe
+                if (item.galeria && item.galeria.length > 0) {
+                    document.getElementById('detalle-galeria-seccion').classList.remove('hidden');
+                    const grid = document.getElementById('detalle-galeria-grid');
+                    grid.innerHTML = "";
+                    
+                    item.galeria.forEach(imgUrl => {
+                        // El CMS puede guardar imágenes como objetos o strings simples
+                        const src = typeof imgUrl === 'object' && imgUrl.image_path ? imgUrl.image_path : imgUrl;
+                        if(src) {
+                            const wrapper = document.createElement('div');
+                            wrapper.className = "relative h-32 md:h-40 overflow-hidden rounded-xl border border-gray-250 cursor-pointer shadow-sm group hover:border-oro transition-colors";
+                            wrapper.innerHTML = `<img src="${src}" alt="Galería" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onclick="openLightbox('${src}')">`;
+                            grid.appendChild(wrapper);
+                        }
+                    });
+                }
+            } else {
+                // Es Actividad
+                document.getElementById('detalle-tag').innerText = "Próximas Actividades";
+                document.getElementById('detalle-fecha').innerHTML = `<i class="far fa-clock mr-2 text-oro"></i>${item.fecha_display}`;
+                document.getElementById('detalle-banner-img').src = "images/banner2.jpg"; // Default
+                document.getElementById('ficha-categoria').innerText = "Actividad / Agenda";
+                document.getElementById('ficha-fecha').innerText = item.fecha_display.split(',')[0];
+                document.getElementById('ficha-modalidad').innerText = item.tipo;
+                
+                // Formatear Markdown básico
+                document.getElementById('detalle-contenido').innerHTML = formatMarkdownText(item.contenido);
+            }
+
+        } catch (e) {
+            console.error("Error al renderizar el detalle:", e);
+            document.getElementById('detalle-titulo').innerText = "Error de Carga";
+            document.getElementById('detalle-contenido').innerHTML = "<p class='text-red-500'>Hubo un problema al cargar los datos del evento. Intente recargar.</p>";
+        }
+    })();
+
+    // Formateador simple de Markdown a HTML para evitar dependencias
+    function formatMarkdownText(text) {
+        if(!text) return "";
+        let formatted = text
+            .replace(/\n\n/g, '</p><p class="mb-4">')
+            .replace(/\n/g, '<br>')
+            .replace(/\*\*([^*]+)\*\*/g, '<strong class="text-principal font-bold">$1</strong>')
+            .replace(/\*([^*]+)\*/g, '<em class="italic">$1</em>');
+        return `<p class="mb-4">${formatted}</p>`;
+    }
+
+    // Lightbox modal functions
+    function openLightbox(src) {
+        const modal = document.getElementById('lightbox-modal');
+        const img = document.getElementById('lightbox-img');
+        img.src = src;
+        modal.classList.remove('hidden');
+        setTimeout(() => {
+            modal.classList.remove('opacity-0');
+            modal.classList.add('opacity-100');
+            img.classList.remove('scale-95');
+            img.classList.add('scale-100');
+        }, 50);
+    }
+
+    function closeLightbox() {
+        const modal = document.getElementById('lightbox-modal');
+        const img = document.getElementById('lightbox-img');
+        modal.classList.remove('opacity-100');
+        modal.classList.add('opacity-0');
+        img.classList.remove('scale-100');
+        img.classList.add('scale-95');
+        setTimeout(() => {
+            modal.classList.add('hidden');
+        }, 300);
+    }
+</script>
