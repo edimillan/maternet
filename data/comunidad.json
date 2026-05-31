@@ -39,6 +39,16 @@
       "mes": "asd",
       "dia": "ad",
       "fecha": "asda"
+    },
+    {
+      "id": "232313",
+      "titulo": "123231",
+      "fecha": "13213",
+      "mes": "1232131",
+      "dia": "2313",
+      "imagen": "images/banner1.webp",
+      "resumen": "3213131131",
+      "contenido": "131232112313"
     }
   ],
   "actividades": [
