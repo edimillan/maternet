@@ -20,31 +20,35 @@ collections:
           - label: "Noticias y Boletines"
             name: "noticias"
             widget: "list"
+            collapsed: true
             summary: "{{fields.titulo}}"
             fields:
-              - { label: "ID único (ej: dia-madre-2027)", name: "id", widget: "string" }
-              - { label: "Título de la Noticia", name: "titulo", widget: "string" }
-              - { label: "Fecha Completa (ej: 25 Mayo 2027)", name: "fecha", widget: "string" }
-              - { label: "Mes Abreviado (ej: MAY)", name: "mes", widget: "string" }
-              - { label: "Día Número (ej: 25)", name: "dia", widget: "string" }
-              - { label: "Imagen Destacada", name: "imagen", widget: "image" }
-              - { label: "Resumen Breve (para el listado)", name: "resumen", widget: "text" }
-              - { label: "Contenido Completo (para la vista de detalle)", name: "contenido", widget: "markdown" }
+              - { label: "ID único", name: "id", widget: "string", hint: "Identificador para la URL. Sin espacios, tildes ni mayúsculas. Ej: dia-madre-2027" }
+              - { label: "Título de la Noticia", name: "titulo", widget: "string", hint: "Título atractivo para el listado y la cabecera del boletín." }
+              - { label: "Fecha Completa", name: "fecha", widget: "string", hint: "Ej: 25 Mayo 2027" }
+              - { label: "Mes Abreviado", name: "mes", widget: "string", hint: "Exactamente 3 letras en mayúsculas. Ej: MAY" }
+              - { label: "Día Número", name: "dia", widget: "string", hint: "El número del día del evento. Ej: 25" }
+              - { label: "Imagen Destacada", name: "imagen", widget: "image", hint: "Foto principal. Formato WebP sugerido de 800x600px." }
+              - { label: "Resumen Breve", name: "resumen", widget: "text", hint: "Extracto corto de 1 o 2 líneas para el listado de novedades." }
+              - { label: "Contenido Completo", name: "contenido", widget: "markdown", hint: "Cuerpo de la noticia redactado con formato enriquecido." }
               - label: "Galería de Fotos del Evento"
                 name: "galeria"
                 widget: "list"
-                field: { label: "Imagen", name: "image_path", widget: "image" }
+                collapsed: true
+                summary: "Foto {{index}}"
+                field: { label: "Imagen", name: "image_path", widget: "image", hint: "Foto de la galería del evento." }
           - label: "Próximas Actividades"
             name: "actividades"
             widget: "list"
+            collapsed: true
             summary: "{{fields.titulo}}"
             fields:
-              - { label: "ID único (ej: taller-padres)", name: "id", widget: "string" }
-              - { label: "Título de la Actividad", name: "titulo", widget: "string" }
-              - { label: "Fecha y Hora Display (ej: Jueves 04 Junio, 18:00 hrs)", name: "fecha_display", widget: "string" }
-              - { label: "Tipo / Modalidad", name: "tipo", widget: "select", options: ["Virtual", "Presencial", "Colegio"] }
-              - { label: "Resumen Corto", name: "resumen", widget: "text" }
-              - { label: "Contenido / Detalles de la Actividad", name: "contenido", widget: "markdown" }
+              - { label: "ID único", name: "id", widget: "string", hint: "Sin espacios ni tildes. Ej: taller-padres-2027" }
+              - { label: "Título de la Actividad", name: "titulo", widget: "string", hint: "Ej: Taller Educativo para Padres" }
+              - { label: "Fecha y Hora Display", name: "fecha_display", widget: "string", hint: "Ej: Jueves 04 Junio, 18:00 hrs" }
+              - { label: "Tipo / Modalidad", name: "tipo", widget: "select", options: ["Virtual", "Presencial", "Colegio"], hint: "Selecciona si es virtual o presencial." }
+              - { label: "Resumen Corto", name: "resumen", widget: "text", hint: "Frase descriptiva corta de la actividad." }
+              - { label: "Contenido / Detalles de la Actividad", name: "contenido", widget: "markdown", hint: "Instrucciones, temario o link de ingreso." }
 
   - name: "inicio_data"
     label: "Configuración Inicio"
@@ -56,6 +60,7 @@ collections:
           - label: "Mosaico de Fotos de Portada (Ideal: 600x450px en WebP)"
             name: "mosaico"
             widget: "list"
+            collapsed: true
             summary: "Foto {{index}}"
             max: 8
             min: 6
@@ -113,6 +118,8 @@ collections:
               - label: "Lista de Modalidades"
                 name: "lista"
                 widget: "list"
+                collapsed: true
+                summary: "{{fields.titulo}}"
                 fields:
                   - { label: "Título Modalidad", name: "titulo", widget: "string" }
                   - { label: "Descripción", name: "descripcion", widget: "text" }
@@ -135,9 +142,10 @@ collections:
           - label: "Secciones Informativas (Metodología, Aulas, etc.)"
             name: "secciones"
             widget: "list"
+            collapsed: true
             summary: "{{fields.titulo}}"
             fields:
-              - { label: "Icono (FontAwesome, ej: fas fa-puzzle-piece)", name: "icon", widget: "string" }
+              - { label: "Icono", name: "icon", widget: "string", hint: "Nombre del icono de FontAwesome. Ej: fas fa-puzzle-piece" }
               - { label: "Título", name: "titulo", widget: "string" }
               - { label: "Descripción", name: "descripcion", widget: "text" }
 
@@ -150,9 +158,10 @@ collections:
           - label: "Secciones Informativas"
             name: "secciones"
             widget: "list"
+            collapsed: true
             summary: "{{fields.titulo}}"
             fields:
-              - { label: "Icono (FontAwesome, ej: fas fa-search)", name: "icon", widget: "string" }
+              - { label: "Icono", name: "icon", widget: "string", hint: "Nombre del icono de FontAwesome. Ej: fas fa-search" }
               - { label: "Título", name: "titulo", widget: "string" }
               - { label: "Descripción", name: "descripcion", widget: "text" }
           - label: "Sección Especial de Inglés"
@@ -172,9 +181,10 @@ collections:
           - label: "Secciones Informativas"
             name: "secciones"
             widget: "list"
+            collapsed: true
             summary: "{{fields.titulo}}"
             fields:
-              - { label: "Icono (FontAwesome, ej: fas fa-globe-americas)", name: "icon", widget: "string" }
+              - { label: "Icono", name: "icon", widget: "string", hint: "Nombre del icono de FontAwesome. Ej: fas fa-globe-americas" }
               - { label: "Título", name: "titulo", widget: "string" }
               - { label: "Descripción", name: "descripcion", widget: "text" }
           - label: "Sección Especial Bachillerato (IB)"
