@@ -1,7 +1,7 @@
 backend:
   name: git-gateway
   branch: main
-  repo: edimillan/maternet # Línea clave añadida para asegurar los permisos
+  repo: edimillan/maternet
 
 media_folder: "images"
 public_folder: "images"
@@ -28,8 +28,8 @@ collections:
               - { label: "Resumen Breve (para el listado)", name: "resumen", widget: "text" }
               - { label: "Contenido Completo (para la vista de detalle)", name: "contenido", widget: "markdown" }
               - label: "Galería de Fotos del Evento"
-                widget: "list"
                 name: "galeria"
+                widget: "list"
                 field: { label: "Imagen", name: "image_path", widget: "image" }
           - label: "Próximas Actividades"
             name: "actividades"
