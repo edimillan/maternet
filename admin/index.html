@@ -6,6 +6,8 @@
   <title>Mater Admirabilis | Panel de Administración</title>
 </head>
 <body>
+  <!-- Carga de localforage para inyección en IndexedDB -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/localforage/1.10.0/localforage.min.js"></script>
   <!-- Carga del core de Decap CMS -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   <script>
@@ -13,83 +15,48 @@
     CMS.registerPreviewStyle("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
     CMS.registerPreviewStyle("https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css");
 
-    // Escuchador de diagnóstico y puente de orígenes nativo
-    let isReplaying = false;
+    // Escuchador para inyectar la sesión desde el popup de GitHub OAuth
     window.addEventListener('message', (event) => {
-      console.log('%c[DEBUG CMS] Mensaje recibido en ventana principal:', 'color: #00bcd4; font-weight: bold;', event);
-      console.log('Origen del evento:', event.origin);
-      console.log('Datos del evento:', event.data);
-
-      if (isReplaying) {
-        return;
-      }
-
       if (event.data && typeof event.data === 'string' && event.data.startsWith('authorization:github:success:')) {
-        console.log('[DEBUG CMS] Detectado mensaje de éxito de OAuth. Iniciando guardado manual en LocalStorage...');
-        isReplaying = true;
-        
         try {
-          // Extraer la cadena de datos después del prefijo
           const rawJson = event.data.replace('authorization:github:success:', '');
           const oauthData = JSON.parse(rawJson);
           
           if (oauthData && oauthData.token) {
-            console.log('[DEBUG CMS] Token extraído:', oauthData.token.substring(0, 10) + '...');
-            
-            // Estructura de usuario que espera Decap CMS para iniciar sesión de forma automática
             const userObj = {
               token: oauthData.token,
               name: "Administrador",
               login: "admin",
               email: "",
-              avatar_url: ""
+              avatar_url: "",
+              backendName: "github"
             };
             
-            // Guardar directamente en LocalStorage para forzar la sesión activa
+            // 1. Guardar en LocalStorage
             localStorage.setItem('decap-cms-user', JSON.stringify(userObj));
             localStorage.setItem('netlify-cms-user', JSON.stringify(userObj));
             
-            console.log('%c[DEBUG CMS] ¡Sesión inyectada con éxito! Recargando para acceder al panel...', 'color: #4caf50; font-weight: bold; font-size: 14px;');
-            
-            setTimeout(() => {
+            // 2. Guardar en IndexedDB (localforage)
+            if (window.localforage) {
+              const storeDecap = localforage.createInstance({ name: 'decap-cms', storeName: 'keyvaluepairs' });
+              const storeNetlify = localforage.createInstance({ name: 'netlify-cms', storeName: 'keyvaluepairs' });
+
+              Promise.all([
+                storeDecap.setItem('user', userObj),
+                storeNetlify.setItem('user', userObj)
+              ]).then(() => {
+                window.location.reload();
+              }).catch((err) => {
+                console.error('Error al escribir en IndexedDB:', err);
+                window.location.reload();
+              });
+            } else {
               window.location.reload();
-            }, 300);
-            return;
+            }
           }
         } catch (err) {
-          console.error('[DEBUG CMS] Error al inyectar la sesión manualmente:', err);
+          console.error('Error al procesar la autenticación:', err);
         }
-
-        // Fallback: Si la inyección falla, reenviamos de forma nativa a los escuchadores
-        const originsToTry = [
-          event.origin,
-          event.origin + '/',
-          'https://maternet.pages.dev',
-          'https://maternet.pages.dev/',
-          window.location.origin,
-          window.location.origin + '/',
-          'https://api.netlify.com'
-        ];
-
-        const uniqueOrigins = [...new Set(originsToTry)];
-
-        uniqueOrigins.forEach((origin) => {
-          try {
-            const nativeEvent = new MessageEvent('message', {
-              data: event.data,
-              origin: origin,
-              source: event.source
-            });
-            console.log(`[DEBUG CMS] Despachando evento nativo con origen: "${origin}"`);
-            window.dispatchEvent(nativeEvent);
-          } catch (err) {
-            console.warn(`[DEBUG CMS] Error al despachar origen "${origin}":`, err);
-          }
-        });
-
-        setTimeout(() => {
-          isReplaying = false;
-        }, 3000);
       }
     }, false);
   </script>

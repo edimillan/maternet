@@ -4,6 +4,7 @@ export async function onRequest(context) {
 
   const url = new URL(context.request.url);
   const code = url.searchParams.get('code');
+  const state = url.searchParams.get('state');
 
   if (!client_id || !client_secret) {
     return new Response("Missing client credentials in environment variables", { status: 500 });
@@ -61,6 +62,7 @@ export async function onRequest(context) {
         <script>
           const token = ${data.access_token ? `"${data.access_token}"` : "null"};
           const provider = "github";
+          const state = "${state || ''}";
           const dataResponse = ${JSON.stringify(data)};
 
           const statusDiv = document.getElementById('status');
@@ -68,7 +70,7 @@ export async function onRequest(context) {
           const debugContent = document.getElementById('debug-content');
 
           if (!token) {
-            statusDiv.innerHTML = "<h3 class='error'>Error: GitHub no devolvió un token de acceso.</h3><p>Esto suele ocurrir si el Client ID o Client Secret son incorrectos, o si el código de autorización ya caducó.</p>";
+            statusDiv.innerHTML = "<h3 class='error'>Error: GitHub no devolvió un token de acceso.</h3><p>Esto suele ocurrir si el Client ID o Client Secret son incorrectos.</p>";
             debugContent.textContent = JSON.stringify(dataResponse, null, 2);
             debugDiv.style.display = 'block';
           } else {
@@ -76,14 +78,15 @@ export async function onRequest(context) {
             
             try {
               if (window.opener) {
+                // Enviar mensaje de éxito a la ventana padre
                 window.opener.postMessage(
-                  'authorization:' + provider + ':success:' + JSON.stringify({ token: token, provider: provider }),
+                  'authorization:' + provider + ':success:' + JSON.stringify({ token: token, provider: provider, state: state }),
                   '*'
                 );
-                // Cerrar después de 1.5 segundos para dar tiempo a que se procese
+                // Cerrar después de 1 segundo para dar tiempo al procesamiento
                 setTimeout(() => {
                   window.close();
-                }, 1500);
+                }, 1000);
               } else {
                 statusDiv.innerHTML = "<h3 class='error'>Error: No se encontró la ventana principal (opener).</h3>";
               }
