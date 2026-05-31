@@ -383,11 +383,12 @@
                             if(!res.ok) throw new Error("Error de red");
                             const db = await res.json();
                             
-                            // 1. Inyectar Noticias
+                            // 1. Inyectar Noticias (Últimas agregadas primero)
                             const notiContainer = document.getElementById('comunidad-noticias-container');
                             if(notiContainer && db.noticias) {
                                 notiContainer.innerHTML = "";
-                                db.noticias.slice(0, 2).forEach(noticia => {
+                                const noticiasOrdenadas = [...db.noticias].reverse();
+                                noticiasOrdenadas.slice(0, 2).forEach(noticia => {
                                     const card = document.createElement('a');
                                     card.href = `comunidad/detalle.html?id=${noticia.id}`;
                                     card.className = "spa-link group block bg-fondo p-5 rounded-2xl border border-gray-100 hover:border-oro transition-colors hover:shadow-lg";
@@ -407,11 +408,12 @@
                                 });
                             }
 
-                            // 2. Inyectar Actividades
+                            // 2. Inyectar Actividades (Últimas agregadas primero)
                             const actContainer = document.getElementById('comunidad-actividades-container');
                             if(actContainer && db.actividades) {
                                 actContainer.innerHTML = "";
-                                db.actividades.slice(0, 3).forEach(act => {
+                                const actividadesOrdenadas = [...db.actividades].reverse();
+                                actividadesOrdenadas.slice(0, 3).forEach(act => {
                                     const li = document.createElement('li');
                                     li.className = "p-5 flex items-center hover:bg-white transition-colors rounded-xl cursor-pointer";
                                     li.setAttribute("onclick", `loadPage('comunidad/detalle.html?id=${act.id}')`);
