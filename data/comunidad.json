@@ -51,5 +51,14 @@
       "contenido": "131232112313"
     }
   ],
-  "actividades": []
+  "actividades": [
+    {
+      "id": "asd",
+      "titulo": "asd",
+      "fecha_display": "asd",
+      "tipo": "Presencial",
+      "resumen": "asdasa",
+      "contenido": "asdaa"
+    }
+  ]
 }
