@@ -20,6 +20,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@dearhive/dearflip-jquery-flipbook@1.7.3/dflip/js/dflip.min.js"></script>
     <!-- Anime.js for micro-interactions -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <!-- Netlify Identity Widget for CMS Authentication -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
 
     <!-- Tailwind CSS CDN -->
@@ -560,6 +562,17 @@
                 loadPage('inicio.html', false);
             }
         });
+
+        // Inicializar Netlify Identity (Redirección post-login y captura de tokens)
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", user => {
+                if (!user) {
+                    window.netlifyIdentity.on("login", () => {
+                        document.location.href = "/admin/";
+                    });
+                }
+            });
+        }
 
     </script>
 </body>
