@@ -1,4 +1,15 @@
 {
-  "noticias": [],
+  "noticias": [
+    {
+      "id": "DIA-MADRE-2027",
+      "titulo": "DIA DE LA MADRE",
+      "fecha": "25 DE MAYO 2027",
+      "mes": "MAY",
+      "dia": "25",
+      "imagen": "images/valores_colegio.jpg",
+      "resumen": "Nuestras alumnas más pequeñas de Early Years disfrutaron de un día lleno de magia, juegos de integración y talleres de psicomotricidad en celebración del Día de la Educación Inicial.",
+      "contenido": "\n\nCon mucha alegría y entusiasmo, nuestro colegio celebró el Día de la Educación Inicial. Las estudiantes de Kindergarten y Early Years participaron en una jornada especial que incluyó un divertido show de títeres en inglés, circuitos de psicomotricidad al aire libre y un compartir lleno de sonrisas.\n\nEsta fecha nos invita a revalorar la importancia de los primeros años de aprendizaje, donde el juego, la exploración y el afecto son la base para el desarrollo de nuestras futuras líderes. Agradecemos a las misses y a los padres de familia por hacer de este día una experiencia inolvidable para nuestras pequeñas."
+    }
+  ],
   "actividades": []
 }
