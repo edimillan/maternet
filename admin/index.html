@@ -13,26 +13,54 @@
     CMS.registerPreviewStyle("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
     CMS.registerPreviewStyle("https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css");
 
-    // Interceptar addEventListener para capturar el manejador de mensajes de Decap CMS
-    const originalAddEventListener = window.addEventListener;
-    const messageListeners = [];
-    window.addEventListener = function(type, listener, options) {
-      if (type === 'message') {
-        messageListeners.push(listener);
-      }
-      return originalAddEventListener.apply(this, arguments);
-    };
-
-    // Escuchador de diagnóstico y puente de orígenes para asegurar la autenticación
+    // Escuchador de diagnóstico y puente de orígenes nativo
+    let isReplaying = false;
     window.addEventListener('message', (event) => {
       console.log('%c[DEBUG CMS] Mensaje recibido en ventana principal:', 'color: #00bcd4; font-weight: bold;', event);
       console.log('Origen del evento:', event.origin);
       console.log('Datos del evento:', event.data);
 
+      if (isReplaying) {
+        return;
+      }
+
       if (event.data && typeof event.data === 'string' && event.data.startsWith('authorization:github:success:')) {
-        console.log('[DEBUG CMS] Detectado mensaje de éxito de OAuth. Reenviando con variaciones de origen...');
+        console.log('[DEBUG CMS] Detectado mensaje de éxito de OAuth. Iniciando guardado manual en LocalStorage...');
+        isReplaying = true;
         
-        // Generar posibles variaciones del origen para evitar problemas con barras diagonales, localhost o Netlify
+        try {
+          // Extraer la cadena de datos después del prefijo
+          const rawJson = event.data.replace('authorization:github:success:', '');
+          const oauthData = JSON.parse(rawJson);
+          
+          if (oauthData && oauthData.token) {
+            console.log('[DEBUG CMS] Token extraído:', oauthData.token.substring(0, 10) + '...');
+            
+            // Estructura de usuario que espera Decap CMS para iniciar sesión de forma automática
+            const userObj = {
+              token: oauthData.token,
+              name: "Administrador",
+              login: "admin",
+              email: "",
+              avatar_url: ""
+            };
+            
+            // Guardar directamente en LocalStorage para forzar la sesión activa
+            localStorage.setItem('decap-cms-user', JSON.stringify(userObj));
+            localStorage.setItem('netlify-cms-user', JSON.stringify(userObj));
+            
+            console.log('%c[DEBUG CMS] ¡Sesión inyectada con éxito! Recargando para acceder al panel...', 'color: #4caf50; font-weight: bold; font-size: 14px;');
+            
+            setTimeout(() => {
+              window.location.reload();
+            }, 300);
+            return;
+          }
+        } catch (err) {
+          console.error('[DEBUG CMS] Error al inyectar la sesión manualmente:', err);
+        }
+
+        // Fallback: Si la inyección falla, reenviamos de forma nativa a los escuchadores
         const originsToTry = [
           event.origin,
           event.origin + '/',
@@ -45,25 +73,23 @@
 
         const uniqueOrigins = [...new Set(originsToTry)];
 
-        messageListeners.forEach((listener) => {
-          uniqueOrigins.forEach((origin) => {
-            try {
-              // Fabricar un evento simulado con el origen específico
-              const fakeEvent = {
-                data: event.data,
-                origin: origin,
-                source: event.source,
-                ports: event.ports,
-                stopPropagation: () => {},
-                preventDefault: () => {}
-              };
-              console.log(`[DEBUG CMS] Reenviando a Decap CMS usando origen: "${origin}"`);
-              listener(fakeEvent);
-            } catch (err) {
-              console.warn(`[DEBUG CMS] Error reenviando con origen "${origin}":`, err);
-            }
-          });
+        uniqueOrigins.forEach((origin) => {
+          try {
+            const nativeEvent = new MessageEvent('message', {
+              data: event.data,
+              origin: origin,
+              source: event.source
+            });
+            console.log(`[DEBUG CMS] Despachando evento nativo con origen: "${origin}"`);
+            window.dispatchEvent(nativeEvent);
+          } catch (err) {
+            console.warn(`[DEBUG CMS] Error al despachar origen "${origin}":`, err);
+          }
         });
+
+        setTimeout(() => {
+          isReplaying = false;
+        }, 3000);
       }
     }, false);
   </script>
