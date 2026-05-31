@@ -1,5 +1,19 @@
 {
-  "noticias": [],
+  "noticias": [
+    {
+      "resumen": "ADSAFSFAFAS",
+      "imagen": "images/ib_servicio_accion_stands.jpg",
+      "galeria": [
+        "images/inicial_juego.jpg"
+      ],
+      "contenido": "SDFSAFSFSAFSDFSFSDSF\n\nSDAFDSAF\n\nSAF\n\nSDF\n\nSDF\n\nDSF\n\nS\n\nFSD",
+      "titulo": "FERIA DE SERVICIO",
+      "id": "Feria-Personal",
+      "mes": "MAY",
+      "dia": "25",
+      "fecha": "25 MAYO 2027"
+    }
+  ],
   "actividades": [
     {
       "id": "taller-padres-junio",
