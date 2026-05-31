@@ -377,152 +377,154 @@
 
                 <!-- Script del Bloque Comunidad Dinámica (Netlify CMS Integrado) -->
                 <script>
-                    async function cargarComunidad() {
-                        try {
-                            const res = await fetch('data/comunidad.json?v=' + new Date().getTime());
-                            if(!res.ok) throw new Error("Error de red");
-                            const db = await res.json();
-                            
-                            // 1. Inyectar Noticias (Últimas agregadas primero)
-                            const notiContainer = document.getElementById('comunidad-noticias-container');
-                            if(notiContainer && db.noticias) {
-                                notiContainer.innerHTML = "";
-                                const noticiasOrdenadas = [...db.noticias].reverse();
-                                noticiasOrdenadas.slice(0, 2).forEach(noticia => {
-                                    const card = document.createElement('a');
-                                    card.href = `comunidad/detalle.html?id=${noticia.id}`;
-                                    card.className = "spa-link group block bg-fondo p-5 rounded-2xl border border-gray-100 hover:border-oro transition-colors hover:shadow-lg";
-                                    card.innerHTML = `
-                                        <div class="flex items-start gap-5">
-                                            <div class="bg-principal text-white rounded-xl p-3 text-center min-w-[75px] shadow-sm">
-                                                <span class="block text-xs font-bold uppercase tracking-wider opacity-90">${noticia.mes}</span>
-                                                <span class="block text-2xl font-black">${noticia.dia}</span>
-                                            </div>
-                                            <div>
-                                                <h4 class="font-bold text-principal group-hover:text-oro transition-colors text-lg mb-2">${noticia.titulo}</h4>
-                                                <p class="text-gray-600 text-sm leading-relaxed">${noticia.resumen}</p>
-                                            </div>
-                                        </div>
-                                    `;
-                                    notiContainer.appendChild(card);
-                                });
-                            }
-
-                            // 2. Inyectar Actividades (Últimas agregadas primero)
-                            const actContainer = document.getElementById('comunidad-actividades-container');
-                            if(actContainer && db.actividades) {
-                                actContainer.innerHTML = "";
-                                const actividadesOrdenadas = [...db.actividades].reverse();
-                                actividadesOrdenadas.slice(0, 3).forEach(act => {
-                                    const li = document.createElement('li');
-                                    li.className = "p-5 flex items-center hover:bg-white transition-colors rounded-xl cursor-pointer";
-                                    li.setAttribute("onclick", `loadPage('comunidad/detalle.html?id=${act.id}')`);
-                                    
-                                    let bulletColor = "bg-oro";
-                                    if(act.tipo === "Presencial") bulletColor = "bg-principal";
-                                    
-                                    li.innerHTML = `
-                                        <div class="w-3 h-3 rounded-full ${bulletColor} mr-5 flex-shrink-0"></div>
-                                        <div class="flex-grow">
-                                            <h4 class="font-bold text-texto text-base mb-1">${act.titulo}</h4>
-                                            <span class="text-sm text-gray-500 font-medium"><i class="far fa-clock mr-1"></i> ${act.fecha_display}</span>
-                                        </div>
-                                        <span class="bg-principal/10 text-principal text-xs px-4 py-1.5 rounded-full font-bold tracking-wide ml-4 hidden sm:inline-block">${act.tipo}</span>
-                                    `;
-                                    actContainer.appendChild(li);
-                                });
-                            }
-                        } catch (e) {
-                            console.error("Error al inyectar comunidad:", e);
-                        }
-                    }
-
-                    async function cargarInicio() {
-                        try {
-                            const res = await fetch('data/inicio.json?v=' + new Date().getTime());
-                            if(!res.ok) throw new Error("Error de red al cargar inicio.json");
-                            const db = await res.json();
-
-                            // 1. Inyectar Mosaico de Portada (6 a 8 imágenes)
-                            const col1 = document.getElementById('mosaico-col-1');
-                            const col2 = document.getElementById('mosaico-col-2');
-                            if(col1 && col2 && db.mosaico) {
-                                col1.innerHTML = "";
-                                col2.innerHTML = "";
+                    (function() {
+                        async function cargarComunidad() {
+                            try {
+                                const res = await fetch('data/comunidad.json?v=' + new Date().getTime());
+                                if(!res.ok) throw new Error("Error de red");
+                                const db = await res.json();
                                 
-                                db.mosaico.forEach((item, index) => {
-                                    const img = document.createElement('img');
-                                    img.src = item.path;
-                                    img.alt = `Imagen de Portada ${index + 1}`;
-                                    
-                                    // Alturas y efectos de borde alternados para mantener el mosaico asimétrico dinámico
-                                    let heightClass = "h-40 md:h-48";
-                                    let borderColor = "hover:border-oro hover:shadow-[0_10px_30px_rgba(235,179,0,0.4)]";
-                                    
-                                    if (index % 3 === 1) {
-                                        heightClass = "h-32 md:h-40";
-                                        borderColor = "hover:border-principal hover:shadow-[0_10px_30px_rgba(0,89,49,0.4)]";
-                                    }
-                                    
-                                    img.className = `rounded-2xl shadow-lg w-full ${heightClass} object-cover border-2 border-transparent ${borderColor} transition-all duration-300`;
-                                    
-                                    // Distribuir de forma alternada en las columnas del grid
-                                    if (index % 2 === 0) {
-                                        col1.appendChild(img);
-                                    } else {
-                                        col2.appendChild(img);
-                                    }
-                                });
-                            }
+                                // 1. Inyectar Noticias (Últimas agregadas primero)
+                                const notiContainer = document.getElementById('comunidad-noticias-container');
+                                if(notiContainer && db.noticias) {
+                                    notiContainer.innerHTML = "";
+                                    const noticiasOrdenadas = [...db.noticias].reverse();
+                                    noticiasOrdenadas.slice(0, 2).forEach(noticia => {
+                                        const card = document.createElement('a');
+                                        card.href = `comunidad/detalle.html?id=${noticia.id}`;
+                                        card.className = "spa-link group block bg-fondo p-5 rounded-2xl border border-gray-100 hover:border-oro transition-colors hover:shadow-lg";
+                                        card.innerHTML = `
+                                            <div class="flex items-start gap-5">
+                                                <div class="bg-principal text-white rounded-xl p-3 text-center min-w-[75px] shadow-sm">
+                                                    <span class="block text-xs font-bold uppercase tracking-wider opacity-90">${noticia.mes}</span>
+                                                    <span class="block text-2xl font-black">${noticia.dia}</span>
+                                                </div>
+                                                <div>
+                                                    <h4 class="font-bold text-principal group-hover:text-oro transition-colors text-lg mb-2">${noticia.titulo}</h4>
+                                                    <p class="text-gray-600 text-sm leading-relaxed">${noticia.resumen}</p>
+                                                </div>
+                                            </div>
+                                        `;
+                                        notiContainer.appendChild(card);
+                                    });
+                                }
 
-                            // 2. Inyectar Niveles Educativos (Imágenes y Descripciones)
-                            if(db.nivel_inicial) {
-                                const img = document.getElementById('nivel-inicial-img');
-                                const txt = document.getElementById('nivel-inicial-text');
-                                if(img) img.src = db.nivel_inicial.imagen;
-                                if(txt) txt.innerText = db.nivel_inicial.descripcion;
+                                // 2. Inyectar Actividades (Últimas agregadas primero)
+                                const actContainer = document.getElementById('comunidad-actividades-container');
+                                if(actContainer && db.actividades) {
+                                    actContainer.innerHTML = "";
+                                    const actividadesOrdenadas = [...db.actividades].reverse();
+                                    actividadesOrdenadas.slice(0, 3).forEach(act => {
+                                        const li = document.createElement('li');
+                                        li.className = "p-5 flex items-center hover:bg-white transition-colors rounded-xl cursor-pointer";
+                                        li.setAttribute("onclick", `loadPage('comunidad/detalle.html?id=${act.id}')`);
+                                        
+                                        let bulletColor = "bg-oro";
+                                        if(act.tipo === "Presencial") bulletColor = "bg-principal";
+                                        
+                                        li.innerHTML = `
+                                            <div class="w-3 h-3 rounded-full ${bulletColor} mr-5 flex-shrink-0"></div>
+                                            <div class="flex-grow">
+                                                <h4 class="font-bold text-texto text-base mb-1">${act.titulo}</h4>
+                                                <span class="text-sm text-gray-500 font-medium"><i class="far fa-clock mr-1"></i> ${act.fecha_display}</span>
+                                            </div>
+                                            <span class="bg-principal/10 text-principal text-xs px-4 py-1.5 rounded-full font-bold tracking-wide ml-4 hidden sm:inline-block">${act.tipo}</span>
+                                        `;
+                                        actContainer.appendChild(li);
+                                    });
+                                }
+                            } catch (e) {
+                                console.error("Error al inyectar comunidad:", e);
                             }
-                            if(db.nivel_primaria) {
-                                const img = document.getElementById('nivel-primaria-img');
-                                const txt = document.getElementById('nivel-primaria-text');
-                                if(img) img.src = db.nivel_primaria.imagen;
-                                if(txt) txt.innerText = db.nivel_primaria.descripcion;
-                            }
-                            if(db.nivel_secundaria) {
-                                const img = document.getElementById('nivel-secundaria-img');
-                                const txt = document.getElementById('nivel-secundaria-text');
-                                if(img) img.src = db.nivel_secundaria.imagen;
-                                if(txt) txt.innerText = db.nivel_secundaria.descripcion;
-                            }
-
-                        } catch (e) {
-                            console.error("Error al inyectar recursos de inicio.json:", e);
                         }
-                    }
 
-                    // Carga inicial
-                    cargarComunidad();
-                    cargarInicio();
+                        async function cargarInicio() {
+                            try {
+                                const res = await fetch('data/inicio.json?v=' + new Date().getTime());
+                                if(!res.ok) throw new Error("Error de red al cargar inicio.json");
+                                const db = await res.json();
 
-                    // Polling cada 30 segundos en segundo plano
-                    const intervalComunidad = setInterval(cargarComunidad, 30000);
-                    const intervalInicio = setInterval(cargarInicio, 30000);
-                    
-                    window.spaIntervals = window.spaIntervals || [];
-                    window.spaIntervals.push(intervalComunidad, intervalInicio);
+                                // 1. Inyectar Mosaico de Portada (6 a 8 imágenes)
+                                const col1 = document.getElementById('mosaico-col-1');
+                                const col2 = document.getElementById('mosaico-col-2');
+                                if(col1 && col2 && db.mosaico) {
+                                    col1.innerHTML = "";
+                                    col2.innerHTML = "";
+                                    
+                                    db.mosaico.forEach((item, index) => {
+                                        const img = document.createElement('img');
+                                        img.src = item.path;
+                                        img.alt = `Imagen de Portada ${index + 1}`;
+                                        
+                                        // Alturas y efectos de borde alternados para mantener el mosaico asimétrico dinámico
+                                        let heightClass = "h-40 md:h-48";
+                                        let borderColor = "hover:border-oro hover:shadow-[0_10px_30px_rgba(235,179,0,0.4)]";
+                                        
+                                        if (index % 3 === 1) {
+                                            heightClass = "h-32 md:h-40";
+                                            borderColor = "hover:border-principal hover:shadow-[0_10px_30px_rgba(0,89,49,0.4)]";
+                                        }
+                                        
+                                        img.className = `rounded-2xl shadow-lg w-full ${heightClass} object-cover border-2 border-transparent ${borderColor} transition-all duration-300`;
+                                        
+                                        // Distribuir de forma alternada en las columnas del grid
+                                        if (index % 2 === 0) {
+                                            col1.appendChild(img);
+                                        } else {
+                                            col2.appendChild(img);
+                                        }
+                                    });
+                                }
 
-                    // Detectar cuando la pestaña vuelve a tener foco (el usuario regresa de la pestaña del CMS)
-                    const visibilityHandler = () => {
-                        if (document.visibilityState === 'visible') {
-                            cargarComunidad();
-                            cargarInicio();
+                                // 2. Inyectar Niveles Educativos (Imágenes y Descripciones)
+                                if(db.nivel_inicial) {
+                                    const img = document.getElementById('nivel-inicial-img');
+                                    const txt = document.getElementById('nivel-inicial-text');
+                                    if(img) img.src = db.nivel_inicial.imagen;
+                                    if(txt) txt.innerText = db.nivel_inicial.descripcion;
+                                }
+                                if(db.nivel_primaria) {
+                                    const img = document.getElementById('nivel-primaria-img');
+                                    const txt = document.getElementById('nivel-primaria-text');
+                                    if(img) img.src = db.nivel_primaria.imagen;
+                                    if(txt) txt.innerText = db.nivel_primaria.descripcion;
+                                }
+                                if(db.nivel_secundaria) {
+                                    const img = document.getElementById('nivel-secundaria-img');
+                                    const txt = document.getElementById('nivel-secundaria-text');
+                                    if(img) img.src = db.nivel_secundaria.imagen;
+                                    if(txt) txt.innerText = db.nivel_secundaria.descripcion;
+                                }
+
+                            } catch (e) {
+                                console.error("Error al inyectar recursos de inicio.json:", e);
+                            }
                         }
-                    };
-                    document.addEventListener('visibilitychange', visibilityHandler);
-                    window.spaCleanups = window.spaCleanups || [];
-                    window.spaCleanups.push(() => {
-                        document.removeEventListener('visibilitychange', visibilityHandler);
-                    });
+
+                        // Carga inicial
+                        cargarComunidad();
+                        cargarInicio();
+
+                        // Polling cada 30 segundos en segundo plano
+                        const intervalComunidad = setInterval(cargarComunidad, 30000);
+                        const intervalInicio = setInterval(cargarInicio, 30000);
+                        
+                        window.spaIntervals = window.spaIntervals || [];
+                        window.spaIntervals.push(intervalComunidad, intervalInicio);
+
+                        // Detectar cuando la pestaña vuelve a tener foco (el usuario regresa de la pestaña del CMS)
+                        const visibilityHandler = () => {
+                            if (document.visibilityState === 'visible') {
+                                cargarComunidad();
+                                cargarInicio();
+                            }
+                        };
+                        document.addEventListener('visibilitychange', visibilityHandler);
+                        window.spaCleanups = window.spaCleanups || [];
+                        window.spaCleanups.push(() => {
+                            document.removeEventListener('visibilitychange', visibilityHandler);
+                        });
+                    })();
                 </script>
 
                 <!-- Columna Derecha: Admisión 2027 -->
