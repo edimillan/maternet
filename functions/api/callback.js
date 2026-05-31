@@ -46,7 +46,7 @@ export async function onRequest(context) {
           
           window.opener.postMessage(
             'authorization:' + provider + ':success:' + JSON.stringify({ token: token, provider: provider }),
-            window.location.origin
+            '*'
           );
           window.close();
         </script>
