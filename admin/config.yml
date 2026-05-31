@@ -1,3 +1,4 @@
+site_url: https://maternet.pages.dev
 backend:
   name: github
   repo: edimillan/maternet
