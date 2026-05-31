@@ -10,5 +10,10 @@
 <body>
   <!-- Carga del core de Decap CMS -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    // Registrar fuentes y Tailwind CSS para que la vista previa dentro del editor del CMS se vea estilizada
+    CMS.registerPreviewStyle("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+    CMS.registerPreviewStyle("https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css");
+  </script>
 </body>
 </html>

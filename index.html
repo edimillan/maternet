@@ -6,6 +6,13 @@
     <title>Mater Admirabilis | Educación Integral Católica</title>
     <meta name="description" content="Colegio Mater Admirabilis. Ofrecemos educación de excelencia en los niveles de Inicial, Primaria y Secundaria.">
     
+    <!-- SEO Open Graph -->
+    <meta property="og:title" content="Mater Admirabilis | Educación Integral Católica">
+    <meta property="og:description" content="Colegio Mater Admirabilis. Ofrecemos educación de excelencia en los niveles de Inicial, Primaria y Secundaria.">
+    <meta property="og:image" content="https://maternet.netlify.app/images/logo_vertical.png">
+    <meta property="og:url" content="https://maternet.netlify.app">
+    <meta property="og:type" content="website">
+    
     <!-- Fuentes e Íconos -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -56,6 +63,14 @@
                 display: block;
             }
             
+            @keyframes float-soft {
+                0%, 100% { transform: translateY(0px); }
+                50% { transform: translateY(-6px); }
+            }
+            .animate-float-soft {
+                animation: float-soft 6s infinite ease-in-out;
+            }
+            
             /* Animaciones para Blobs del Fondo */
             @keyframes float-blob-1 {
                 0% { transform: translate(0px, 0px) scale(1); }
@@ -100,7 +115,7 @@
             <div class="flex justify-between items-center py-4">
                 <!-- Logo -->
                 <a href="inicio.html" class="spa-link flex items-center gap-1.5 group">
-                    <img src="images/logovertical1.png" alt="Logo Mater Admirabilis" class="h-20 md:h-24 w-auto object-contain transition-transform duration-300 group-hover:scale-105" onerror="this.src='https://via.placeholder.com/80'">
+                    <img src="images/logovertical1.webp" alt="Logo Mater Admirabilis" class="h-20 md:h-24 w-auto object-contain" onerror="this.src='https://via.placeholder.com/80'">
                     <div class="flex flex-col items-center">
                         <span class="text-white font-extrabold text-2xl md:text-3xl tracking-wider group-hover:text-oro transition-colors leading-none">Mater Admirabilis</span>
                         <span class="text-white/80 font-medium text-[10px] md:text-xs uppercase tracking-widest mt-0.5 group-hover:text-white transition-colors">Colegio Inglés de Mujeres</span>
@@ -255,7 +270,7 @@
                 <!-- Info Colegio -->
                 <div class="md:col-span-1">
                     <div class="flex items-center gap-1.5 mb-4">
-                        <img src="images/logovertical1.png" alt="Logo Mater Admirabilis" class="h-16 w-auto object-contain" onerror="this.src='https://via.placeholder.com/60'">
+                        <img src="images/logovertical1.webp" alt="Logo Mater Admirabilis" class="h-16 w-auto object-contain" onerror="this.src='https://via.placeholder.com/60'">
                         <div class="flex flex-col items-center">
                             <span class="text-white font-bold text-base md:text-lg tracking-wide leading-none">Mater Admirabilis</span>
                             <span class="text-white/70 font-medium text-[8px] md:text-[9px] uppercase tracking-widest mt-0.5">Colegio Inglés de Mujeres</span>
@@ -399,8 +414,8 @@
                 // Iniciar transición
                 mainContainer.style.opacity = 0;
                 
-                // Fetch del contenido
-                const response = await fetch(baseUrl);
+                // Fetch del contenido con cache-buster para asegurar carga en tiempo real de los cambios
+                const response = await fetch(baseUrl + (baseUrl.includes('?') ? '&' : '?') + 'v=' + new Date().getTime());
                 if (!response.ok) throw new Error("Página no encontrada");
                 const htmlContent = await response.text();
                 
@@ -408,6 +423,14 @@
                 setTimeout(() => {
                     window.flipBookInstance = null; // reset dflip
                     mainContainer.innerHTML = htmlContent;
+                    
+                    currentPageUrl = baseUrl;
+                    window.currentSpaUrl = url;
+
+                    // Push History (Se hace antes de ejecutar los scripts para que window.location.search tenga los parámetros correctos)
+                    if(pushHistory) {
+                        history.pushState({ url: url }, "", baseUrl === 'inicio.html' ? (hash ? 'index.html#' + hash : 'index.html') : (hash ? "?" + baseUrl + '#' + hash : "?" + baseUrl));
+                    }
                     
                     // Ejecutar Scripts inyectados
                     const scripts = mainContainer.querySelectorAll('script');
@@ -417,13 +440,6 @@
                         newScript.appendChild(document.createTextNode(oldScript.innerHTML));
                         oldScript.parentNode.replaceChild(newScript, oldScript);
                     });
-
-                    currentPageUrl = baseUrl;
-
-                    // Push History
-                    if(pushHistory) {
-                        history.pushState({ url: url }, "", baseUrl === 'inicio.html' ? (hash ? 'index.html#' + hash : 'index.html') : (hash ? "?" + baseUrl + '#' + hash : "?" + baseUrl));
-                    }
 
                     // Reset Scroll o scroll al ancla específica
                     if (hash) {
@@ -459,42 +475,16 @@
         // MICRO-INTERACCIONES CON ANIME.JS
         // ---------------------------------------------------------
         function initMicroInteractions() {
-            // 1. Tarjetas con efecto resorte elástico (Spring hover)
-            const cards = document.querySelectorAll(
-                '#institucional-block .grid > div, ' +
-                '#niveles-block .grid > div, ' +
-                '#convenios-block .grid > div, ' +
-                '#servicios-block .grid > div'
-            );
+            // Se eliminó la animación de escala de tarjetas por JS debido a conflicto de transform.
+            // Ahora la elevación se ejecuta mediante transiciones de hardware aceleradas nativas en CSS/Tailwind.
             
-            cards.forEach(card => {
-                card.addEventListener('mouseenter', () => {
-                    anime({
-                        targets: card,
-                        scale: 1.025,
-                        boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.03)',
-                        duration: 600,
-                        easing: 'easeOutElastic(1, .8)'
-                    });
-                });
-                card.addEventListener('mouseleave', () => {
-                    anime({
-                        targets: card,
-                        scale: 1.0,
-                        boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.01)',
-                        duration: 400,
-                        easing: 'easeOutQuad'
-                    });
-                });
-            });
-
-            // 2. Micro-interacción en Inputs del Formulario de Admisión
+            // 1. Micro-interacción en Inputs del Formulario de Admisión
             const inputs = document.querySelectorAll('form input, form select, form textarea');
             inputs.forEach(input => {
                 input.addEventListener('focus', () => {
                     anime({
                         targets: input,
-                        scale: 1.015,
+                        scale: 1.01,
                         duration: 300,
                         easing: 'easeOutQuad'
                     });

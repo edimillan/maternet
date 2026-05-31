@@ -1,0 +1,21 @@
+{
+  "lema": "\"Brindamos una educación diferenciada con sólidos valores éticos, dominio intensivo del idioma inglés y una rigurosa preparación para los retos del mundo globalizado.\"",
+  "imagen": "images/secundaria_estudiantes.jpg",
+  "secciones": [
+    {
+      "icon": "fas fa-university",
+      "titulo": "Enfoque Universitario",
+      "descripcion": "El 5to año de secundaria enfoca sus metas en responder con éxito a las altas exigencias de admisión de las mejores universidades del país y del extranjero, mediante simulacros y asesorías continuas."
+    },
+    {
+      "icon": "fas fa-flag-checkered",
+      "titulo": "Perfil del Egresado",
+      "descripcion": "Nuestra meta es entregar a la sociedad jóvenes con valores sólidos, autónomas, con alta capacidad de liderazgo y preparadas académicamente para desenvolverse con solvencia en su vida personal y profesional."
+    }
+  ],
+  "seccion_ib": {
+    "imagen": "images/logoIB.png",
+    "titulo": "Rigor Internacional (PAI - IB)",
+    "descripcion": "De sexto de primaria a cuarto año de secundaria, nuestras estudiantes avanzan con el prestigioso Programa de Años Intermedios (PAI) de Bachillerato Internacional, promoviendo una mentalidad analítica y abierta."
+  }
+}

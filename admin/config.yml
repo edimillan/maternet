@@ -1,7 +1,9 @@
 backend:
-  name: git-gateway
-  branch: main
+  name: github
   repo: edimillan/maternet
+  branch: main
+  base_url: https://maternet.pages.dev
+  auth_endpoint: api/auth
 
 media_folder: "images"
 public_folder: "images"
@@ -42,3 +44,142 @@ collections:
               - { label: "Tipo / Modalidad", name: "tipo", widget: "select", options: ["Virtual", "Presencial", "Colegio"] }
               - { label: "Resumen Corto", name: "resumen", widget: "text" }
               - { label: "Contenido / Detalles de la Actividad", name: "contenido", widget: "markdown" }
+
+  - name: "inicio_data"
+    label: "Configuración Inicio"
+    files:
+      - file: "data/inicio.json"
+        label: "Portada y Niveles Educativos"
+        name: "inicio"
+        fields:
+          - label: "Mosaico de Fotos de Portada (Ideal: 600x450px en WebP)"
+            name: "mosaico"
+            widget: "list"
+            summary: "Foto {{index}}"
+            max: 8
+            min: 6
+            field: { label: "Imagen", name: "path", widget: "image" }
+          - label: "Nivel Inicial"
+            name: "nivel_inicial"
+            widget: "object"
+            fields:
+              - { label: "Imagen Inicial (Ideal: 800x600px en WebP)", name: "imagen", widget: "image" }
+              - { label: "Texto Descriptivo", name: "descripcion", widget: "text" }
+          - label: "Nivel Primaria"
+            name: "nivel_primaria"
+            widget: "object"
+            fields:
+              - { label: "Imagen Primaria (Ideal: 800x600px en WebP)", name: "imagen", widget: "image" }
+              - { label: "Texto Descriptivo", name: "descripcion", widget: "text" }
+          - label: "Nivel Secundaria"
+            name: "nivel_secundaria"
+            widget: "object"
+            fields:
+              - { label: "Imagen Secundaria (Ideal: 800x600px en WebP)", name: "imagen", widget: "image" }
+              - { label: "Texto Descriptivo", name: "descripcion", widget: "text" }
+
+  - name: "paginas"
+    label: "Páginas del Sitio"
+    files:
+      - file: "data/admision.json"
+        label: "Página de Admisión"
+        name: "admision"
+        fields:
+          - { label: "Título de Admisión", name: "titulo", widget: "string" }
+          - { label: "Descripción General", name: "descripcion", widget: "text" }
+          - label: "Charla Informativa"
+            name: "charla"
+            widget: "object"
+            fields:
+              - { label: "Imagen Charla (Ideal: 800x600px WebP)", name: "imagen", widget: "image" }
+              - { label: "Título de Charla", name: "titulo", widget: "string" }
+              - { label: "Descripción", name: "descripcion", widget: "text" }
+              - { label: "Fecha", name: "fecha", widget: "string" }
+              - { label: "Hora", name: "hora", widget: "string" }
+              - { label: "Lugar", name: "lugar", widget: "string" }
+          - label: "Requisitos de Edad"
+            name: "requisitos"
+            widget: "object"
+            fields:
+              - { label: "Título", name: "titulo", widget: "string" }
+              - { label: "Descripción", name: "descripcion", widget: "text" }
+              - { label: "Aviso Extra", name: "extra", widget: "text" }
+          - label: "Modalidades de Ingreso"
+            name: "modalidades"
+            widget: "object"
+            fields:
+              - { label: "Título", name: "titulo", widget: "string" }
+              - label: "Lista de Modalidades"
+                name: "lista"
+                widget: "list"
+                fields:
+                  - { label: "Título Modalidad", name: "titulo", widget: "string" }
+                  - { label: "Descripción", name: "descripcion", widget: "text" }
+          - label: "Traslados e Idiomas"
+            name: "traslados"
+            widget: "object"
+            fields:
+              - { label: "Título Sección", name: "titulo", widget: "string" }
+              - { label: "Descripción Traslados", name: "descripcion", widget: "text" }
+              - { label: "Título de Evaluación", name: "evaluacion_titulo", widget: "string" }
+              - { label: "Descripción de Evaluación", name: "evaluacion_descripcion", widget: "text" }
+              - { label: "Detalle de Nivelación", name: "evaluacion_detalle", widget: "text" }
+
+      - file: "data/nivel_inicial.json"
+        label: "Nivel Inicial (Contenido Detallado)"
+        name: "nivel_inicial"
+        fields:
+          - { label: "Lema / Frase Introductoria", name: "lema", widget: "text" }
+          - { label: "Imagen Destacada (Ideal: 800x600px WebP)", name: "imagen", widget: "image" }
+          - label: "Secciones Informativas (Metodología, Aulas, etc.)"
+            name: "secciones"
+            widget: "list"
+            summary: "{{fields.titulo}}"
+            fields:
+              - { label: "Icono (FontAwesome, ej: fas fa-puzzle-piece)", name: "icon", widget: "string" }
+              - { label: "Título", name: "titulo", widget: "string" }
+              - { label: "Descripción", name: "descripcion", widget: "text" }
+
+      - file: "data/nivel_primaria.json"
+        label: "Nivel Primaria (Contenido Detallado)"
+        name: "nivel_primaria"
+        fields:
+          - { label: "Lema / Frase Introductoria", name: "lema", widget: "text" }
+          - { label: "Imagen Destacada (Ideal: 800x600px WebP)", name: "imagen", widget: "image" }
+          - label: "Secciones Informativas"
+            name: "secciones"
+            widget: "list"
+            summary: "{{fields.titulo}}"
+            fields:
+              - { label: "Icono (FontAwesome, ej: fas fa-search)", name: "icon", widget: "string" }
+              - { label: "Título", name: "titulo", widget: "string" }
+              - { label: "Descripción", name: "descripcion", widget: "text" }
+          - label: "Sección Especial de Inglés"
+            name: "seccion_ingles"
+            widget: "object"
+            fields:
+              - { label: "Imagen Inglés (Ideal: 600x400px WebP)", name: "imagen", widget: "image" }
+              - { label: "Título", name: "titulo", widget: "string" }
+              - { label: "Descripción", name: "descripcion", widget: "text" }
+
+      - file: "data/nivel_secundaria.json"
+        label: "Nivel Secundaria (Contenido Detallado)"
+        name: "nivel_secundaria"
+        fields:
+          - { label: "Lema / Frase Introductoria", name: "lema", widget: "text" }
+          - { label: "Imagen Destacada (Ideal: 800x600px WebP)", name: "imagen", widget: "image" }
+          - label: "Secciones Informativas"
+            name: "secciones"
+            widget: "list"
+            summary: "{{fields.titulo}}"
+            fields:
+              - { label: "Icono (FontAwesome, ej: fas fa-globe-americas)", name: "icon", widget: "string" }
+              - { label: "Título", name: "titulo", widget: "string" }
+              - { label: "Descripción", name: "descripcion", widget: "text" }
+          - label: "Sección Especial Bachillerato (IB)"
+            name: "seccion_ib"
+            widget: "object"
+            fields:
+              - { label: "Logo IB (Ideal: logoIB.png)", name: "imagen", widget: "image" }
+              - { label: "Título", name: "titulo", widget: "string" }
+              - { label: "Descripción", name: "descripcion", widget: "text" }

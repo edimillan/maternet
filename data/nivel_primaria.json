@@ -1,0 +1,31 @@
+{
+  "lema": "\"Nuestra primaria trabaja bajo un modelo de indagación transdisciplinar que conecta las materias teóricas con el mundo real, preparando el camino hacia el Bachillerato Internacional.\"",
+  "imagen": "images/primaria_clima_escolar.jpg",
+  "secciones": [
+    {
+      "icon": "fas fa-search",
+      "titulo": "Indagación Transdisciplinar",
+      "descripcion": "Desarrollamos el pensamiento crítico y la curiosidad científica mediante proyectos de investigación guiada donde la alumna conecta conceptos y asignaturas de forma práctica."
+    },
+    {
+      "icon": "fas fa-clock",
+      "titulo": "Jornada y Horarios",
+      "descripcion": "Las clases inician a las 7:30 a.m. y culminan a las 2:50 p.m. Consta de 8 horas pedagógicas optimizadas con 3 recreos para recreación y descanso saludable."
+    },
+    {
+      "icon": "fas fa-laptop",
+      "titulo": "Soporte Tecnológico",
+      "descripcion": "Aulas implementadas con proyectores multimedia y acceso a plataformas de aprendizaje virtual interactivo, potenciando la autonomía digital (especialmente de 5to a 6to grado)."
+    },
+    {
+      "icon": "fas fa-medal",
+      "titulo": "Evaluación de Desempeño",
+      "descripcion": "Evaluamos de manera integral el avance académico y la \"Actitud frente al área\" (puntualidad, orden, respeto, participación y vocabulario adecuado), reportando calificaciones de forma bimestral."
+    }
+  ],
+  "seccion_ingles": {
+    "imagen": "images/primaria_ingles.webp",
+    "titulo": "Enseñanza Intensiva de Inglés",
+    "descripcion": "Nuestras alumnas se sumergen desde temprana edad en el dominio del idioma inglés, participando activamente en debates y exposiciones interactivas para cimentar su vocabulario y fluidez comunicativa."
+  }
+}

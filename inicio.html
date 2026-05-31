@@ -23,18 +23,11 @@
                     </div>
                 </div>
 
-                <!-- Lado Derecho: Mosaico de 6 imágenes -->
-                <div class="w-full lg:w-1/2 grid grid-cols-2 gap-4 order-1 lg:order-2">
-                    <div class="space-y-4 pt-10" data-aos="fade-down" data-aos-delay="100">
-                        <img src="images/banner1.png" alt="Imagen 1" class="rounded-2xl shadow-lg w-full h-40 md:h-48 object-cover border-2 border-transparent hover:border-oro hover:shadow-[0_10px_30px_rgba(235,179,0,0.4)] transition-all duration-300">
-                        <img src="images/banner2.jpg" alt="Imagen 2" class="rounded-2xl shadow-lg w-full h-32 md:h-40 object-cover border-2 border-transparent hover:border-principal hover:shadow-[0_10px_30px_rgba(0,89,49,0.4)] transition-all duration-300">
-                        <img src="images/banner5.jpg" alt="Imagen 5" class="rounded-2xl shadow-lg w-full h-40 md:h-48 object-cover border-2 border-transparent hover:border-oro hover:shadow-[0_10px_30px_rgba(235,179,0,0.4)] transition-all duration-300">
-                     </div>
-                    <div class="space-y-4" data-aos="fade-up" data-aos-delay="300">
-                        <img src="images/banner3.jpg" alt="Imagen 3" class="rounded-2xl shadow-lg w-full h-40 md:h-48 object-cover border-2 border-transparent hover:border-principal hover:shadow-[0_10px_30px_rgba(0,89,49,0.4)] transition-all duration-300">
-                        <img src="images/banner4.jpg" alt="Imagen 4" class="rounded-2xl shadow-lg w-full h-40 md:h-48 object-cover border-2 border-transparent hover:border-oro hover:shadow-[0_10px_30px_rgba(235,179,0,0.4)] transition-all duration-300">
-                        <img src="images/banner6.jpg" alt="Imagen 6" class="rounded-2xl shadow-lg w-full h-32 md:h-40 object-cover border-2 border-transparent hover:border-principal hover:shadow-[0_10px_30px_rgba(0,89,49,0.4)] transition-all duration-300">
-                   </div>
+                <!-- Lado Derecho: Mosaico de 6 a 8 imágenes dinámico -->
+                <div id="mosaico-container" class="w-full lg:w-1/2 grid grid-cols-2 gap-4 order-1 lg:order-2">
+                    <!-- Cargado dinámicamente desde data/inicio.json -->
+                    <div class="space-y-4 pt-10" id="mosaico-col-1"></div>
+                    <div class="space-y-4" id="mosaico-col-2"></div>
                 </div>
 
             </div>
@@ -146,8 +139,8 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
                 <!-- Tarjeta: Nivel Inicial -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 flex flex-col h-full border border-gray-100" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="relative h-72 overflow-hidden">
-                        <img src="images/inicial1.jpg" alt="Nivel Inicial" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out">
+                    <div class="relative w-full aspect-[4/3] overflow-hidden">
+                        <img id="nivel-inicial-img" src="images/inicial1.webp" alt="Nivel Inicial" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-principal/90 via-principal/30 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
                         <div class="absolute bottom-0 left-0 w-full p-6">
                             <span class="bg-oro text-principal text-xs font-bold uppercase tracking-wider py-1 px-3 rounded-full mb-3 inline-block">3 a 5 años</span>
@@ -155,8 +148,8 @@
                         </div>
                     </div>
                     <div class="p-8 flex-grow flex flex-col">
-                        <p class="text-gray-600 mb-8 flex-grow leading-relaxed">
-                            Estimulamos la curiosidad natural en un entorno lúdico y seguro. Fomentamos el desarrollo motor, social y emocional con metodologías activas centradas en el juego.
+                        <p id="nivel-inicial-text" class="text-gray-600 mb-8 flex-grow leading-relaxed">
+                            Estimulamos la curiosidad natural en un entorno lúdico y seguro. Fomentamos el desarrollo motor, social and emocional con metodologías activas centradas en el juego.
                         </p>
                         <a href="niveles/inicial.html" class="spa-link inline-flex items-center text-principal font-bold group-hover:text-oro transition-colors text-lg">
                             Explorar Nivel Inicial <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform duration-300"></i>
@@ -166,8 +159,8 @@
 
                 <!-- Tarjeta: Nivel Primaria -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 flex flex-col h-full border border-gray-100" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="relative h-72 overflow-hidden">
-                        <img src="images/primaria1.jpg" alt="Nivel Primaria" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out">
+                    <div class="relative w-full aspect-[4/3] overflow-hidden">
+                        <img id="nivel-primaria-img" src="images/primaria1.webp" alt="Nivel Primaria" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-principal/90 via-principal/30 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
                         <div class="absolute bottom-0 left-0 w-full p-6">
                             <span class="bg-oro text-principal text-xs font-bold uppercase tracking-wider py-1 px-3 rounded-full mb-3 inline-block">1ro a 6to Grado</span>
@@ -175,7 +168,7 @@
                         </div>
                     </div>
                     <div class="p-8 flex-grow flex flex-col">
-                        <p class="text-gray-600 mb-8 flex-grow leading-relaxed">
+                        <p id="nivel-primaria-text" class="text-gray-600 mb-8 flex-grow leading-relaxed">
                             Consolidamos las bases del aprendizaje a través de la investigación guiada. Integramos tecnología, bilingüismo y profundos valores católicos en cada paso.
                         </p>
                         <a href="niveles/primaria.html" class="spa-link inline-flex items-center text-principal font-bold group-hover:text-oro transition-colors text-lg">
@@ -186,8 +179,8 @@
 
                 <!-- Tarjeta: Nivel Secundaria -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 flex flex-col h-full border border-gray-100" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="relative h-72 overflow-hidden">
-                        <img src="images/secundaria1.jpg" alt="Nivel Secundaria" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out">
+                    <div class="relative w-full aspect-[4/3] overflow-hidden">
+                        <img id="nivel-secundaria-img" src="images/secundaria1.webp" alt="Nivel Secundaria" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-principal/90 via-principal/30 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
                         <div class="absolute bottom-0 left-0 w-full p-6">
                             <span class="bg-oro text-principal text-xs font-bold uppercase tracking-wider py-1 px-3 rounded-full mb-3 inline-block">1er a 5to Año (PAI)</span>
@@ -195,7 +188,7 @@
                         </div>
                     </div>
                     <div class="p-8 flex-grow flex flex-col">
-                        <p class="text-gray-600 mb-8 flex-grow leading-relaxed">
+                        <p id="nivel-secundaria-text" class="text-gray-600 mb-8 flex-grow leading-relaxed">
                             Preparamos a nuestras estudiantes con el rigor internacional del Programa de Años Intermedios, formando líderes analíticas y ciudadanas del mundo.
                         </p>
                         <a href="niveles/secundaria.html" class="spa-link inline-flex items-center text-principal font-bold group-hover:text-oro transition-colors text-lg">
@@ -441,6 +434,70 @@
                             console.error("Error al inyectar comunidad:", e);
                         }
                     })();
+
+                    // Inyección dinámica de Mosaico y Niveles Educativos (Controlado por Decap CMS)
+                    (async function() {
+                        try {
+                            const res = await fetch('data/inicio.json?v=' + new Date().getTime());
+                            if(!res.ok) throw new Error("Error de red al cargar inicio.json");
+                            const db = await res.json();
+
+                            // 1. Inyectar Mosaico de Portada (6 a 8 imágenes)
+                            const col1 = document.getElementById('mosaico-col-1');
+                            const col2 = document.getElementById('mosaico-col-2');
+                            if(col1 && col2 && db.mosaico) {
+                                col1.innerHTML = "";
+                                col2.innerHTML = "";
+                                
+                                db.mosaico.forEach((item, index) => {
+                                    const img = document.createElement('img');
+                                    img.src = item.path;
+                                    img.alt = `Imagen de Portada ${index + 1}`;
+                                    
+                                    // Alturas y efectos de borde alternados para mantener el mosaico asimétrico dinámico
+                                    let heightClass = "h-40 md:h-48";
+                                    let borderColor = "hover:border-oro hover:shadow-[0_10px_30px_rgba(235,179,0,0.4)]";
+                                    
+                                    if (index % 3 === 1) {
+                                        heightClass = "h-32 md:h-40";
+                                        borderColor = "hover:border-principal hover:shadow-[0_10px_30px_rgba(0,89,49,0.4)]";
+                                    }
+                                    
+                                    img.className = `rounded-2xl shadow-lg w-full ${heightClass} object-cover border-2 border-transparent ${borderColor} transition-all duration-300`;
+                                    
+                                    // Distribuir de forma alternada en las columnas del grid
+                                    if (index % 2 === 0) {
+                                        col1.appendChild(img);
+                                    } else {
+                                        col2.appendChild(img);
+                                    }
+                                });
+                            }
+
+                            // 2. Inyectar Niveles Educativos (Imágenes y Descripciones)
+                            if(db.nivel_inicial) {
+                                const img = document.getElementById('nivel-inicial-img');
+                                const txt = document.getElementById('nivel-inicial-text');
+                                if(img) img.src = db.nivel_inicial.imagen;
+                                if(txt) txt.innerText = db.nivel_inicial.descripcion;
+                            }
+                            if(db.nivel_primaria) {
+                                const img = document.getElementById('nivel-primaria-img');
+                                const txt = document.getElementById('nivel-primaria-text');
+                                if(img) img.src = db.nivel_primaria.imagen;
+                                if(txt) txt.innerText = db.nivel_primaria.descripcion;
+                            }
+                            if(db.nivel_secundaria) {
+                                const img = document.getElementById('nivel-secundaria-img');
+                                const txt = document.getElementById('nivel-secundaria-text');
+                                if(img) img.src = db.nivel_secundaria.imagen;
+                                if(txt) txt.innerText = db.nivel_secundaria.descripcion;
+                            }
+
+                        } catch (e) {
+                            console.error("Error al inyectar recursos de inicio.json:", e);
+                        }
+                    })();
                 </script>
 
                 <!-- Columna Derecha: Admisión 2027 -->
@@ -458,14 +515,14 @@
                             </p>
 
                             <!-- Formulario de Contacto -->
-                            <form action="#" method="POST" class="space-y-4 relative z-20">
+                            <form name="admision-rapida" method="POST" data-netlify="true" class="space-y-4 relative z-20">
                                 <div>
                                     <label class="sr-only">Nombre y Apellido del Padre/Madre</label>
                                     <div class="relative">
                                         <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
                                             <i class="fas fa-user text-gray-400 text-sm"></i>
                                         </div>
-                                        <input type="text" placeholder="Nombre y Apellido del Apoderado" class="w-full bg-white/95 backdrop-blur-sm rounded-xl py-3 pl-10 pr-4 text-texto text-sm placeholder:text-gray-400/90 placeholder:text-xs focus:outline-none focus:ring-4 focus:ring-oro/50 transition-all shadow-inner" required>
+                                        <input type="text" name="nombre" placeholder="Nombre y Apellido del Apoderado" class="w-full bg-white/95 backdrop-blur-sm rounded-xl py-3 pl-10 pr-4 text-texto text-sm placeholder:text-gray-400/90 placeholder:text-xs focus:outline-none focus:ring-4 focus:ring-oro/50 transition-all shadow-inner" required>
                                     </div>
                                 </div>
 
@@ -474,13 +531,13 @@
                                         <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
                                             <i class="fas fa-envelope text-gray-400 text-sm"></i>
                                         </div>
-                                        <input type="email" placeholder="Correo Electrónico" class="w-full bg-white/95 backdrop-blur-sm rounded-xl py-3 pl-10 pr-4 text-texto text-sm placeholder:text-gray-400/90 placeholder:text-xs focus:outline-none focus:ring-4 focus:ring-oro/50 transition-all shadow-inner" required>
+                                        <input type="email" name="email" placeholder="Correo Electrónico" class="w-full bg-white/95 backdrop-blur-sm rounded-xl py-3 pl-10 pr-4 text-texto text-sm placeholder:text-gray-400/90 placeholder:text-xs focus:outline-none focus:ring-4 focus:ring-oro/50 transition-all shadow-inner" required>
                                     </div>
                                     <div class="relative">
                                         <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
                                             <i class="fas fa-phone text-gray-400 text-sm"></i>
                                         </div>
-                                        <input type="tel" placeholder="Teléfono / Celular" class="w-full bg-white/95 backdrop-blur-sm rounded-xl py-3 pl-10 pr-4 text-texto text-sm placeholder:text-gray-400/90 placeholder:text-xs focus:outline-none focus:ring-4 focus:ring-oro/50 transition-all shadow-inner" required>
+                                        <input type="tel" name="telefono" placeholder="Teléfono / Celular" class="w-full bg-white/95 backdrop-blur-sm rounded-xl py-3 pl-10 pr-4 text-texto text-sm placeholder:text-gray-400/90 placeholder:text-xs focus:outline-none focus:ring-4 focus:ring-oro/50 transition-all shadow-inner" required>
                                     </div>
                                 </div>
 
@@ -488,7 +545,7 @@
                                     <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none z-10">
                                         <i class="fas fa-graduation-cap text-gray-400 text-sm"></i>
                                     </div>
-                                    <select class="w-full bg-white/95 backdrop-blur-sm rounded-xl py-3 pl-10 pr-10 text-texto text-sm placeholder:text-gray-400/90 placeholder:text-xs focus:outline-none focus:ring-4 focus:ring-oro/50 transition-all appearance-none cursor-pointer shadow-inner relative z-0" required>
+                                    <select name="grado" class="w-full bg-white/95 backdrop-blur-sm rounded-xl py-3 pl-10 pr-10 text-texto text-sm placeholder:text-gray-400/90 placeholder:text-xs focus:outline-none focus:ring-4 focus:ring-oro/50 transition-all appearance-none cursor-pointer shadow-inner relative z-0" required>
                                         <option value="" disabled selected class="text-xs">Grado al que postula...</option>
                                         <option value="inicial" class="text-sm">Nivel Inicial</option>
                                         <option value="primaria" class="text-sm">Nivel Primaria</option>
@@ -503,7 +560,7 @@
                                     <div class="absolute top-3 left-3.5 pointer-events-none">
                                         <i class="fas fa-comment-dots text-gray-400 text-sm"></i>
                                     </div>
-                                    <textarea placeholder="Déjanos un mensaje o consulta breve..." rows="3" class="w-full bg-white/95 backdrop-blur-sm rounded-xl py-3 pl-10 pr-4 text-texto text-sm placeholder:text-gray-400/90 placeholder:text-xs focus:outline-none focus:ring-4 focus:ring-oro/50 transition-all resize-none shadow-inner"></textarea>
+                                    <textarea name="mensaje" placeholder="Déjanos un mensaje o consulta breve..." rows="3" class="w-full bg-white/95 backdrop-blur-sm rounded-xl py-3 pl-10 pr-4 text-texto text-sm placeholder:text-gray-400/90 placeholder:text-xs focus:outline-none focus:ring-4 focus:ring-oro/50 transition-all resize-none shadow-inner"></textarea>
                                 </div>
 
                                 <button type="submit" class="w-full bg-oro hover:bg-yellow-400 text-texto font-bold text-base py-3 rounded-xl shadow-lg transition-all transform hover:-translate-y-1 hover:shadow-2xl mt-2 border border-oro/50 flex items-center justify-center">

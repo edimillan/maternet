@@ -4,46 +4,67 @@ CONTEXTO DEL SISTEMA - COLEGIO MATER ADMIRABILIS
 
 1. CARACTERÍSTICAS ACTUALES DEL SISTEMA (¿Cómo es la Web?)
 ----------------------------------------------------------------------
-- Tipo de Arquitectura: Single Page Application (SPA) dinámica. La cabecera (Header) y el pie de página (Footer) están fijos en "index.html" y el contenido cambia dentro de un contenedor central mediante JavaScript (Fetch/AJAX) sin recargar la página completa.
-- Enrutamiento por Anclas Inteligente: El motor SPA (`loadPage`) soporta anclajes (`#id-seccion`). Si el usuario hace clic en un menú de la barra de navegación (como "Niveles"), la web hace un desplazamiento suave (`scroll-mt-28` en CSS para compensar la barra fija) hacia el bloque correspondiente. Si está en otra página, carga la inicio primero y luego se desplaza.
+- Tipo de Arquitectura: Single Page Application (SPA) dinámica. La cabecera (Header) y el pie de página (Footer) están fijos en "index.html" y el contenido cambia dentro de un contenedor central mediante JavaScript (Fetch/AJAX) con cache-buster dinámico (`?v=timestamp`) para evitar cacheo de archivos en cambios del CMS.
+- Enrutamiento por Anclas Inteligente: El motor SPA (`loadPage`) soporta anclajes (`#id-seccion`). Si el usuario hace clic en un menú de la barra de navegación (como "Niveles"), la web hace un desplazamiento suave hacia el bloque correspondiente.
 - Estilo y Diseño Premium:
   * Paleta oficial: Verde principal (`#005931`), Oro (`#EBB300`), Fondo Neutro (`#f8f9fa`) y Texto Oscuro (`#1A252C`).
   * Fondos "Aurora" Animados: Blobs difuminados flotantes (verde y oro al 5% con `blur-3xl`) que flotan dinámicamente mediante animaciones CSS optimizadas en cada sección.
   * Paralaje Interactivo (Anime.js): Los blobs del fondo reaccionan al movimiento físico del mouse desplazándose suavemente en 3D.
-  * Spring-Hover en Tarjetas (Anime.js): Todas las tarjetas informativas principales del Home reaccionan con un sutil e interactivo rebote elástico al pasar el cursor.
-  * Micro-interacciones de Formulario (Anime.js): Los campos de entrada del formulario de postulación rápida se expanden sutilmente en foco.
+  * Transiciones de Elevación y Sombra Nativas: Las tarjetas informativas principales del Home y niveles reaccionan con un sutil e interactivo levantamiento y sombra al pasar el cursor manejados por hardware mediante CSS Transitions, eliminando bloqueos de JavaScript.
+  * Micro-interacción de Elementos Decorativos: Animación CSS `@keyframes float-soft` que añade un vaivén flotante constante a badges e íconos decorativos.
 - Coherencia Institucional de Género: Auditoría completa de textos. El lenguaje se adaptó al perfil del colegio (mujeres en Primaria y Secundaria: "alumnas", "hijas", "líderes analíticas y ciudadanas"). En Nivel Inicial (3 y 4 años) se especifica explícitamente la coeducación (niños y niñas), mientras que el aula de 5 años es exclusiva para niñas.
 
 2. MAPA DE ARCHIVOS Y COMPONENTES
 ----------------------------------------------------------------------
-Todos los archivos secundarios son parciales limpios (sin cabeceras ni pies repetidos) que se inyectan en `<main>`:
-- index.html -> Contenedor principal, cabecera fija (con logo vertical alineado y subtítulo centrado), barra superior, menú móvil tipo acordeón interactivo, pie de página maestro y script del motor SPA + Anime.js.
-- inicio.html -> Página de bienvenida reordenada en bloques anclados:
-  * Banner Mosaico (Bienvenida)
+Todos los archivos secundarios son parciales limpios que se inyectan en `<main>` de forma dinámica y reactiva:
+- index.html -> Contenedor principal, cabecera fija, barra superior, menú móvil tipo acordeón interactivo, pie de página maestro, motor SPA con cache-buster, y metaetiquetas SEO Open Graph para compartir enlaces.
+- inicio.html -> Página de bienvenida en bloques anclados:
+  * Banner Mosaico (Carga dinámica de 6 a 8 imágenes WebP distribuidas asimétricamente)
   * Proyecto Institucional (`#institucional-block` -> Enlaces a Presentación, Misión, IB e Historia)
-  * Nuestros Niveles Educativos (`#niveles-block` -> Inicial, Primaria, Secundaria)
+  * Nuestros Niveles Educativos (`#niveles-block` -> Inicial, Primaria, Secundaria en proporción aspect-[4/3])
   * Convenios y Alianzas (`#convenios-block` -> Académicos, Alianza Francesa, Cambridge)
   * Servicios de la Comunidad (`#servicios-block` -> Psicopedagógico, Escuela para padres, Comedor)
-  * Comunidad y Admisión (`#comunidad-block` -> Noticias, Actividades y Formulario de postulación rápida enlazado a requisitos completos).
-- institucional/presentacion.html -> Propuesta educativa, pilares y talleres extracurriculares.
-- institucional/historia.html -> Origen (1950), hitos y Libro/Revista Interactiva 3D (dFlip) con sonido real.
-- niveles/inicial.html -> Detalle del Nivel Inicial (3 a 5 años), especificando co-ed en 3 y 4 años y niñas en 5 años.
-- niveles/primaria.html -> Detalles de jornada, metodología transdisciplinar e indagación.
-- niveles/secundaria.html -> Rigor académico e internacional de cara al Bachillerato Internacional.
-- admision.html -> Requisitos de matrícula, calendario completo y vacantes por traslado.
-- contacto.html -> Datos de localización, canales y mapa del campus.
+  * Comunidad y Admisión (`#comunidad-block` -> Noticias y actividades reales conectadas a JSON, y admisión rápida con Netlify Forms).
+- niveles/inicial.html -> Detalle dinámico del Nivel Inicial conectado a `data/nivel_inicial.json`.
+- niveles/primaria.html -> Detalle dinámico de Primaria conectado a `data/nivel_primaria.json` (incluye sección especial de inglés).
+- niveles/secundaria.html -> Detalle dinámico de Secundaria conectado a `data/nivel_secundaria.json` (incluye tarjeta destacada con logotipo oficial de Bachillerato Internacional).
+- admision.html -> Proceso de postulación completo de forma dinámica mediante `data/admision.json`.
+- contacto.html -> Datos de localización, canales, mapa del campus y formulario dinámico enlazado a Netlify Forms.
+- comunidad/detalle.html -> Plantilla de detalle de noticias dinámico con lightbox de fotos y hoja de estilos de impresión oficial optimizada para boletines en PDF/Papel.
+- 404.html -> Página de error personalizada con el branding del colegio y redireccionamiento automático.
 
-3. HISTORIAL DE CAMBIOS Y VERSIONES (Log de Modificaciones)
+3. DATA JSON E INTEGRACIÓN DE DECAP CMS
+----------------------------------------------------------------------
+Los contenidos de la web se gestionan a través de archivos de datos que lee JavaScript:
+- data/comunidad.json -> Colección de noticias y próximas actividades del colegio.
+- data/inicio.json -> Configuración de imágenes del mosaico de inicio y fotos/textos de los niveles de la portada.
+- data/admision.json -> Contenido oficial del proceso de admisión.
+- data/nivel_inicial.json / nivel_primaria.json / nivel_secundaria.json -> Textos, mallas curriculares e imágenes de cada nivel educativo.
+- admin/config.yml -> Configuración del CMS Decap usando el backend directo de GitHub (`name: github`) enlazado a los endpoints de la API de Cloudflare.
+- admin/index.html -> Panel administrativo del CMS con estilos e Inter/Tailwind inyectados para previsualización.
+- functions/api/auth.js / callback.js -> Endpoints serverless creados para Cloudflare Pages para procesar la autorización del login mediante OAuth de GitHub de manera segura sin Netlify.
+
+4. HISTORIAL DE CAMBIOS Y VERSIONES (Log de Modificaciones)
 ----------------------------------------------------------------------
 - [Hito 1-5]: Estructuración de textos base, agenda/noticias en home, integración de historia/IB y revista 3D interactiva.
 - [Hito 6]: Migración de la web a sistema dinámico (SPA) con motor Fetch, menú móvil tipo acordeón y limpieza de HTML.
-- [Hito 7]: Actualización de Logotipos. Sustitución de logos anteriores por el nuevo logo vertical transparente (`logovertical1.png`). Alineación del título "Mater Admirabilis" con el subtítulo "Colegio Inglés de Mujeres" perfectamente centrado y con ajuste milimétrico vertical (`translate-y-[4px]`) y horizontal (`gap-1.5`) al costado del logotipo.
-- [Hito 8]: Navegación por Anclas e Integración "Opción A". Reordenamiento de bloques del Home. Programación del scroll inteligente y `scroll-mt-28` para evitar que la cabecera fija tape los títulos de los bloques. Se implementó la "Opción A" en Admisiones (enlace rápido en el formulario de inicio hacia los requisitos completos en `admision.html`).
-- [Hito 9]: Efectos Visuales y Micro-interacciones. Carga de Anime.js en el core. Implementación de los fondos dinámicos estilo Aurora con blobs flotantes, efecto paralaje interactivo con el puntero, rebote elástico en tarjetas y zoom dinámico en inputs.
-- [Hito 10]: Auditoría de Género de Textos. Ajuste terminológico en el 100% de la web para referirse a "alumnas", "hijas", "estudiantes" y "mujeres líderes". Configuración explícita del Nivel Inicial: aulas de 3 y 4 años mixtas (niños y niñas) y aula de 5 años únicamente de niñas.
+- [Hito 7]: Actualización de Logotipos. Sustitución por el nuevo logo vertical transparente (`logovertical1.png`).
+- [Hito 8]: Navegación por Anclas e Integración "Opción A". Reordenamiento de bloques del Home.
+- [Hito 9]: Efectos Visuales y Micro-interacciones. Carga de Anime.js en el core. Blobs flotantes y paralaje interactivo.
+- [Hito 10]: Auditoría de Género de Textos. Ajuste terminológico en el 100% de la web.
+- [Hito 11] (Mayo 2026): Optimización, CMS Completo y Animaciones:
+  * Digitalización y desacoplamiento de páginas del Home, Admisiones e Inicial/Primaria/Secundaria a JSONs dinámicos editables vía Decap CMS.
+  * Conversión de las 10 imágenes principales de la web a formato `.webp` de alto rendimiento y redimensionamiento inteligente mediante script en Python.
+  * Solución a conflictos de animación. Remoción de eventos JS de escala de tarjetas a favor de transiciones nativas por GPU en CSS (evitando congelamiento en hovers rápidos).
+  * Inyección de animación `@keyframes float-soft` en CSS.
+  * Solución a race conditions del motor SPA mediante actualización de `pushState` previa a la ejecución de scripts.
+  * Creación de `404.html` personalizada e implementación de `@media print` en detalle de noticias para imprimir boletines limpios.
+  * Tarjeta e integración del logo de Bachillerato Internacional (`logoIB.png`) en Secundaria.
+- [Hito 12] (Mayo 2026): Migración de Hosting y Backend Serverless:
+  * Reconfiguración del backend de Decap CMS en `admin/config.yml` para desacoplarlo de Netlify y pasar al backend directo de GitHub (`name: github`).
+  * Creación de las Cloudflare Pages Functions (`functions/api/auth.js` y `functions/api/callback.js`) para desplegar un OAuth Gatekeeper Serverless propio e ilimitado en Cloudflare Pages, evitando el consumo de minutos de compilación de Netlify.
 
-4. PRÓXIMOS PASOS (Tareas Pendientes)
+5. PRÓXIMOS PASOS (Tareas Pendientes)
 ----------------------------------------------------------------------
-- [ ] Validar el funcionamiento del paralaje y el spring hover en navegadores móviles/táctiles.
-- [ ] Optimizar la carga de imágenes pesadas en el mosaico del banner de inicio.
-- [ ] Monitorear el correcto funcionamiento de las transiciones de página dinámicas en enlaces profundos de convenios y servicios.
+- [ ] Subir el repositorio modificado a GitHub y configurar el proyecto en Cloudflare Pages.
+- [ ] Crear la App de OAuth en GitHub Developer Settings e inyectar el Client ID y Client Secret en las variables de entorno de Cloudflare.

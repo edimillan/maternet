@@ -6,74 +6,65 @@
             <span class="bg-oro/20 text-principal text-xs font-bold uppercase tracking-wider py-1.5 px-4 rounded-full mb-4 inline-block">Educación Inicial (3 a 5 años)</span>
             <h2 class="text-4xl font-bold text-principal mb-6">Nivel Inicial</h2>
             <div class="w-20 h-1 bg-oro mb-6 rounded-full"></div>
-            <p class="text-xl text-principal font-semibold leading-relaxed mb-6 italic">
-                "Nuestro nivel inicial cuenta con un espacio propio y acondicionado. Empleamos estrategias modernas de educación personalizada que respetan el ritmo de desarrollo de cada niño y niña en las aulas de 3 y 4 años, y de nuestras niñas a los 5 años."
+            <p id="inicial-lema" class="text-xl text-principal font-semibold leading-relaxed mb-6 italic">
+                Cargando lema educativo...
             </p>
         </div>
         <!-- Lado Derecho: Imagen Ilustrativa -->
         <div class="w-full lg:w-1/2">
             <div class="relative overflow-hidden rounded-3xl shadow-lg border-2 border-oro/20 group">
-                <img src="images/inicial_juego.jpg" alt="Niños y Niñas de Inicial Jugando" class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500">
+                <img id="inicial-img" src="" alt="Niños y Niñas de Inicial Jugando" class="w-full h-80 object-cover">
                 <div class="absolute inset-0 bg-gradient-to-t from-principal/60 to-transparent opacity-60"></div>
             </div>
         </div>
     </div>
 
     <!-- Secciones del Nivel -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- Metodología -->
-        <div class="p-8 rounded-2xl border border-gray-100 bg-gray-50 hover:shadow-lg transition-all group">
-            <div class="w-14 h-14 bg-principal/10 text-principal rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-                <i class="fas fa-puzzle-piece"></i>
-            </div>
-            <h3 class="text-xl font-bold text-principal mb-3">Metodología Activa</h3>
-            <p class="text-gray-600 leading-relaxed">
-                Fomentamos el aprendizaje vivencial donde cada niño y niña (aulas de 3 y 4 años) y nuestras niñas (aula de 5 años) son protagonistas de su propio descubrimiento, guiados por docentes especializadas en estimulación y desarrollo infantil temprano.
-            </p>
-        </div>
-
-        <!-- Organización de Aulas -->
-        <div class="p-8 rounded-2xl border border-gray-100 bg-gray-50 hover:shadow-lg transition-all group">
-            <div class="w-14 h-14 bg-oro/20 text-oro rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-                <i class="fas fa-users"></i>
-            </div>
-            <h3 class="text-xl font-bold text-principal mb-3">Salones y Distribución</h3>
-            <p class="text-gray-600 leading-relaxed">
-                Nos organizamos en 7 salones temáticos adecuados para su edad: <strong class="text-principal">Golondrinas, Turtupilines, Colibríes, Saltapalitos, Jilgueros, Gorriones y Cascabelitas</strong>. Cada salón cuenta con una tutora y una auxiliar exclusiva.
-            </p>
-        </div>
-
-        <!-- Docencia y Especialidades -->
-        <div class="p-8 rounded-2xl border border-gray-100 bg-gray-50 hover:shadow-lg transition-all group">
-            <div class="w-14 h-14 bg-principal/10 text-principal rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-                <i class="fas fa-music"></i>
-            </div>
-            <h3 class="text-xl font-bold text-principal mb-3">Talleres y Especialidades</h3>
-            <p class="text-gray-600 leading-relaxed">
-                Enriquecemos el desarrollo cognitivo y social con profesoras especialistas en las áreas de Inglés, Expresión Musical, Psicomotricidad, Plan Lector y Religión.
-            </p>
-        </div>
-
-        <!-- Tecnología Educativa -->
-        <div class="p-8 rounded-2xl border border-gray-100 bg-gray-50 hover:shadow-lg transition-all group">
-            <div class="w-14 h-14 bg-oro/20 text-oro rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-                <i class="fas fa-chalkboard-teacher"></i>
-            </div>
-            <h3 class="text-xl font-bold text-principal mb-3">Tecnología de Aula</h3>
-            <p class="text-gray-600 leading-relaxed">
-                Integramos pizarras digitales interactivas (smartboards) y recursos multimedia adaptados para la estimulación visual y auditiva de forma lúdica.
-            </p>
-        </div>
-
-        <!-- Evaluación Formativa -->
-        <div class="p-8 rounded-2xl border border-gray-100 bg-gray-50 hover:shadow-lg transition-all group md:col-span-2">
-            <div class="w-14 h-14 bg-principal/10 text-principal rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-                <i class="fas fa-star"></i>
-            </div>
-            <h3 class="text-xl font-bold text-principal mb-3">Evaluación Formativa y Monitoreo</h3>
-            <p class="text-gray-600 leading-relaxed">
-                Nuestra evaluación es continua, formativa y basada en la observación directa. Los resultados de los logros de aprendizaje (A, B y C) se reportan a los padres a través de la plataforma virtual SIE al finalizar cada bimestre escolar.
-            </p>
-        </div>
+    <div id="inicial-secciones-container" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Se cargará dinámicamente desde data/nivel_inicial.json -->
+        <p class="text-gray-500 italic text-center col-span-2">Cargando enfoques pedagógicos...</p>
     </div>
 </div>
+
+<script>
+    (async function() {
+        try {
+            const res = await fetch('data/nivel_inicial.json?v=' + new Date().getTime());
+            if(!res.ok) throw new Error("Error al leer el archivo JSON de nivel inicial");
+            const data = await res.json();
+            
+            // 1. Cargar Lema e Imagen
+            const lemaEl = document.getElementById('inicial-lema');
+            const imgEl = document.getElementById('inicial-img');
+            if(lemaEl) lemaEl.innerText = data.lema;
+            if(imgEl) imgEl.src = data.imagen;
+            
+            // 2. Renderizar secciones
+            const container = document.getElementById('inicial-secciones-container');
+            if(container && data.secciones) {
+                container.innerHTML = "";
+                data.secciones.forEach((sec, idx) => {
+                    const card = document.createElement('div');
+                    // Si es la última sección y el total es impar, hacemos que ocupe las dos columnas en desktop
+                    const isLastOdd = (idx === data.secciones.length - 1) && (data.secciones.length % 2 !== 0);
+                    
+                    card.className = `p-8 rounded-2xl border border-gray-100 bg-gray-50 hover:shadow-xl hover:border-oro transition-all duration-300 transform hover:-translate-y-1.5 group ${isLastOdd ? 'md:col-span-2' : ''}`;
+                    
+                    // Elegir color alternado de icono para consistencia de marca (verde y dorado)
+                    const iconBgClass = idx % 2 === 0 ? 'bg-principal/10 text-principal' : 'bg-oro/20 text-oro';
+                    
+                    card.innerHTML = `
+                        <div class="w-14 h-14 ${iconBgClass} rounded-xl flex items-center justify-center text-2xl mb-6">
+                            <i class="${sec.icon || 'fas fa-book'}"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-principal mb-3">${sec.titulo}</h3>
+                        <p class="text-gray-600 leading-relaxed">${sec.descripcion}</p>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+        } catch(e) {
+            console.error("Error al inyectar contenido dinámico de Inicial:", e);
+        }
+    })();
+</script>

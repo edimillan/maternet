@@ -1,6 +1,117 @@
+<style>
+    @media print {
+        /* Ocultar elementos de navegación general e interactivos */
+        nav, footer, .z-50, #scrollTopBtn, 
+        .w-full.lg\:w-1\/3, /* Columna lateral de ficha */
+        #lightbox-modal, button, a {
+            display: none !important;
+        }
+
+        /* Hacer que el contenedor principal ocupe todo el ancho para la impresión */
+        .max-w-4xl {
+            max-width: 100% !important;
+            width: 100% !important;
+            box-shadow: none !important;
+            border: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .p-8, .md\:p-12 {
+            padding: 0 !important;
+        }
+
+        .w-full.lg\:w-2\/3 {
+            width: 100% !important;
+        }
+
+        /* Reestructurar el banner para mostrar la imagen y datos debajo */
+        .relative.h-64.md\:h-80 {
+            height: auto !important;
+            display: flex !important;
+            flex-direction: column !important;
+            background: none !important;
+            position: relative !important;
+        }
+
+        /* Mostrar la imagen del boletín de manera limpia a tamaño completo */
+        #detalle-banner-img {
+            display: block !important;
+            width: 100% !important;
+            height: 280px !important;
+            object-fit: cover !important;
+            border-radius: 12px !important;
+            opacity: 1 !important;
+            filter: none !important;
+            margin-bottom: 20px !important;
+            position: relative !important;
+        }
+
+        /* Colocar el texto del banner debajo de la imagen en negro/verde */
+        .absolute.inset-0.flex.items-end {
+            position: relative !important;
+            padding: 0 !important;
+            color: #1A252C !important;
+        }
+
+        .text-white {
+            color: #1A252C !important;
+        }
+
+        #detalle-titulo {
+            color: #005931 !important;
+            font-size: 24pt !important;
+            font-weight: 800 !important;
+            margin-top: 10px !important;
+            margin-bottom: 12px !important;
+            line-height: 1.25 !important;
+        }
+
+        #detalle-tag {
+            background-color: #005931 !important;
+            color: white !important;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+            border-radius: 9999px !important;
+            padding: 4px 12px !important;
+            font-size: 9pt !important;
+            display: inline-block !important;
+            margin-bottom: 5px !important;
+        }
+
+        #detalle-fecha, #detalle-fecha * {
+            color: #555555 !important;
+            font-size: 9.5pt !important;
+            margin-bottom: 20px !important;
+            display: block !important;
+        }
+
+        /* Ocultar el degradado sobre la imagen */
+        .absolute.inset-0.bg-gradient-to-t {
+            display: none !important;
+        }
+
+        /* Mostrar y formatear grilla de imágenes en la impresión */
+        #detalle-galeria-seccion {
+            display: block !important;
+            page-break-before: auto;
+        }
+        
+        #detalle-galeria-grid {
+            display: grid !important;
+            grid-template-cols: repeat(3, 1fr) !important;
+            gap: 12px !important;
+        }
+        
+        #detalle-galeria-grid div {
+            height: 140px !important;
+        }
+    }
+</style>
+
 <div class="bg-white shadow-xl rounded-2xl overflow-hidden border border-gray-100 max-w-4xl mx-auto relative z-10" data-aos="fade-up">
     <!-- Banner de Cabecera Dinámico -->
-    <div class="relative h-64 md:h-80 overflow-hidden bg-principal">
+    <div class="relative w-full aspect-[4/3] md:aspect-[21/9] md:max-h-[380px] overflow-hidden bg-principal">
         <!-- Imagen de fondo difuminada decorativa -->
         <img id="detalle-banner-img" src="" alt="Banner del Evento" class="w-full h-full object-cover opacity-30 blur-[2px]">
         <div class="absolute inset-0 bg-gradient-to-t from-principal via-principal/55 to-transparent"></div>
@@ -87,9 +198,28 @@
 <script>
     (async function() {
         try {
-            // 1. Obtener ID de la URL
-            const urlParams = new URLSearchParams(window.location.search);
-            let id = urlParams.get('id');
+            // 1. Obtener ID de la URL (Múltiples métodos de contingencia para el motor SPA)
+            let id = null;
+            
+            // Método A: Buscar en window.currentSpaUrl (creado por nuestro motor SPA)
+            if (window.currentSpaUrl) {
+                const spaMatch = window.currentSpaUrl.match(/[?&]id=([^&]+)/);
+                if (spaMatch) id = spaMatch[1];
+            }
+            
+            // Método B: Buscar en el estado del historial
+            if (!id && window.history.state && window.history.state.url) {
+                const stateMatch = window.history.state.url.match(/[?&]id=([^&]+)/);
+                if (stateMatch) id = stateMatch[1];
+            }
+            
+            // Método C: URLSearchParams estándar (para carga directa/F5)
+            if (!id) {
+                const urlParams = new URLSearchParams(window.location.search);
+                id = urlParams.get('id');
+            }
+            
+            // Método D: Regex estándar en window.location.search
             if (!id) {
                 const match = window.location.search.match(/[?&]id=([^&]+)/);
                 if (match) id = match[1];
@@ -151,10 +281,10 @@
                         // El CMS puede guardar imágenes como objetos o strings simples
                         const src = typeof imgUrl === 'object' && imgUrl.image_path ? imgUrl.image_path : imgUrl;
                         if(src) {
-                            const wrapper = document.createElement('div');
-                            wrapper.className = "relative h-32 md:h-40 overflow-hidden rounded-xl border border-gray-250 cursor-pointer shadow-sm group hover:border-oro transition-colors";
-                            wrapper.innerHTML = `<img src="${src}" alt="Galería" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onclick="openLightbox('${src}')">`;
-                            grid.appendChild(wrapper);
+                              const wrapper = document.createElement('div');
+                              wrapper.className = "relative h-32 md:h-40 overflow-hidden rounded-xl border border-gray-250 cursor-pointer shadow-sm group hover:border-oro transition-colors";
+                              wrapper.innerHTML = `<img src="${src}" alt="Galería" class="w-full h-full object-cover" onclick="openLightbox('${src}')">`;
+                              grid.appendChild(wrapper);
                         }
                     });
                 }
@@ -162,7 +292,7 @@
                 // Es Actividad
                 document.getElementById('detalle-tag').innerText = "Próximas Actividades";
                 document.getElementById('detalle-fecha').innerHTML = `<i class="far fa-clock mr-2 text-oro"></i>${item.fecha_display}`;
-                document.getElementById('detalle-banner-img').src = "images/banner2.jpg"; // Default
+                document.getElementById('detalle-banner-img').src = "images/banner2.webp"; // Default
                 document.getElementById('ficha-categoria').innerText = "Actividad / Agenda";
                 document.getElementById('ficha-fecha').innerText = item.fecha_display.split(',')[0];
                 document.getElementById('ficha-modalidad').innerText = item.tipo;

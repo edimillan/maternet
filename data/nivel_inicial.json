@@ -1,0 +1,31 @@
+{
+  "lema": "\"Nuestro nivel inicial cuenta con un espacio propio y acondicionado. Empleamos estrategias modernas de educación personalizada que respetan el ritmo de desarrollo de cada niño y niña en las aulas de 3 y 4 años, y de nuestras niñas a los 5 años.\"",
+  "imagen": "images/inicial_juego.jpg",
+  "secciones": [
+    {
+      "icon": "fas fa-puzzle-piece",
+      "titulo": "Metodología Activa",
+      "descripcion": "Fomentamos el aprendizaje vivencial donde cada niño y niña (aulas de 3 y 4 años) y nuestras niñas (aula de 5 años) son protagonistas de su propio descubrimiento, guiados por docentes especializadas en estimulación y desarrollo infantil temprano."
+    },
+    {
+      "icon": "fas fa-users",
+      "titulo": "Salones y Distribución",
+      "descripcion": "Nos organizamos en 7 salones temáticos adecuados para su edad: Golondrinas, Turtupilines, Colibríes, Saltapalitos, Jilgueros, Gorriones y Cascabelitas. Cada salón cuenta con una tutora y una auxiliar exclusiva."
+    },
+    {
+      "icon": "fas fa-music",
+      "titulo": "Talleres y Especialidades",
+      "descripcion": "Enriquecemos el desarrollo cognitivo y social con profesoras especialistas en las áreas de Inglés, Expresión Musical, Psicomotricidad, Plan Lector y Religión."
+    },
+    {
+      "icon": "fas fa-chalkboard-teacher",
+      "titulo": "Tecnología de Aula",
+      "descripcion": "Integramos pizarras digitales interactivas (smartboards) y recursos multimedia adaptados para la estimulación visual y auditiva de forma lúdica."
+    },
+    {
+      "icon": "fas fa-star",
+      "titulo": "Evaluación Formativa y Monitoreo",
+      "descripcion": "Nuestra evaluación es continua, formativa y basada en la observación directa. Los resultados de los logros de aprendizaje (A, B y C) se reportan a los padres a través de la plataforma virtual SIE al finalizar cada bimestre escolar."
+    }
+  ]
+}

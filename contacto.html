@@ -90,14 +90,14 @@
                     <span class="inline-block bg-oro text-principal font-bold tracking-widest uppercase text-xs px-4 py-1.5 rounded-full mb-6 shadow-md">Envíanos un Mensaje</span>
                     <h3 class="text-3xl font-extrabold text-white mb-6 tracking-tight">Formulario de Contacto</h3>
                     
-                    <form action="#" method="POST" class="space-y-4 relative z-20">
+                    <form name="contacto" method="POST" data-netlify="true" class="space-y-4 relative z-20">
                         <div>
                             <label class="sr-only">Nombre y Apellido</label>
                             <div class="relative">
                                 <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
                                     <i class="fas fa-user text-gray-400 text-sm"></i>
                                 </div>
-                                <input type="text" placeholder="Nombre y Apellido del Apoderado" class="w-full bg-white/95 backdrop-blur-sm rounded-xl py-3 pl-10 pr-4 text-texto text-sm placeholder:text-gray-400/90 placeholder:text-xs focus:outline-none focus:ring-4 focus:ring-oro/50 transition-all shadow-inner" required>
+                                <input type="text" name="nombre" placeholder="Nombre y Apellido del Apoderado" class="w-full bg-white/95 backdrop-blur-sm rounded-xl py-3 pl-10 pr-4 text-texto text-sm placeholder:text-gray-400/90 placeholder:text-xs focus:outline-none focus:ring-4 focus:ring-oro/50 transition-all shadow-inner" required>
                             </div>
                         </div>
 
@@ -106,13 +106,13 @@
                                 <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
                                     <i class="fas fa-envelope text-gray-400 text-sm"></i>
                                 </div>
-                                <input type="email" placeholder="Correo Electrónico" class="w-full bg-white/95 backdrop-blur-sm rounded-xl py-3 pl-10 pr-4 text-texto text-sm placeholder:text-gray-400/90 placeholder:text-xs focus:outline-none focus:ring-4 focus:ring-oro/50 transition-all shadow-inner" required>
+                                <input type="email" name="email" placeholder="Correo Electrónico" class="w-full bg-white/95 backdrop-blur-sm rounded-xl py-3 pl-10 pr-4 text-texto text-sm placeholder:text-gray-400/90 placeholder:text-xs focus:outline-none focus:ring-4 focus:ring-oro/50 transition-all shadow-inner" required>
                             </div>
                             <div class="relative">
                                 <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
                                     <i class="fas fa-phone text-gray-400 text-sm"></i>
                                 </div>
-                                <input type="tel" placeholder="Teléfono / Celular" class="w-full bg-white/95 backdrop-blur-sm rounded-xl py-3 pl-10 pr-4 text-texto text-sm placeholder:text-gray-400/90 placeholder:text-xs focus:outline-none focus:ring-4 focus:ring-oro/50 transition-all shadow-inner" required>
+                                <input type="tel" name="telefono" placeholder="Teléfono / Celular" class="w-full bg-white/95 backdrop-blur-sm rounded-xl py-3 pl-10 pr-4 text-texto text-sm placeholder:text-gray-400/90 placeholder:text-xs focus:outline-none focus:ring-4 focus:ring-oro/50 transition-all shadow-inner" required>
                             </div>
                         </div>
 
@@ -120,7 +120,7 @@
                             <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none z-10">
                                 <i class="fas fa-graduation-cap text-gray-400 text-sm"></i>
                             </div>
-                            <select class="w-full bg-white/95 backdrop-blur-sm rounded-xl py-3 pl-10 pr-10 text-texto text-sm placeholder:text-gray-400/90 placeholder:text-xs focus:outline-none focus:ring-4 focus:ring-oro/50 transition-all appearance-none cursor-pointer shadow-inner relative z-0" required>
+                            <select name="grado" class="w-full bg-white/95 backdrop-blur-sm rounded-xl py-3 pl-10 pr-10 text-texto text-sm placeholder:text-gray-400/90 placeholder:text-xs focus:outline-none focus:ring-4 focus:ring-oro/50 transition-all appearance-none cursor-pointer shadow-inner relative z-0" required>
                                 <option value="" disabled selected class="text-xs">Grado de interés...</option>
                                 <option value="inicial" class="text-sm">Nivel Inicial</option>
                                 <option value="primaria" class="text-sm">Nivel Primaria</option>
@@ -136,7 +136,7 @@
                             <div class="absolute top-3 left-3.5 pointer-events-none">
                                 <i class="fas fa-comment-dots text-gray-400 text-sm"></i>
                             </div>
-                            <textarea placeholder="¿Cuál es tu consulta o mensaje?" rows="3" class="w-full bg-white/95 backdrop-blur-sm rounded-xl py-3 pl-10 pr-4 text-texto text-sm placeholder:text-gray-400/90 placeholder:text-xs focus:outline-none focus:ring-4 focus:ring-oro/50 transition-all resize-none shadow-inner"></textarea>
+                            <textarea name="mensaje" placeholder="¿Cuál es tu consulta o mensaje?" rows="3" class="w-full bg-white/95 backdrop-blur-sm rounded-xl py-3 pl-10 pr-4 text-texto text-sm placeholder:text-gray-400/90 placeholder:text-xs focus:outline-none focus:ring-4 focus:ring-oro/50 transition-all resize-none shadow-inner"></textarea>
                         </div>
 
                         <button type="submit" class="w-full bg-oro hover:bg-yellow-400 text-texto font-bold text-base py-3 rounded-xl shadow-lg transition-all transform hover:-translate-y-1 hover:shadow-2xl mt-2 border border-oro/50 flex items-center justify-center">

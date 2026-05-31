@@ -2,30 +2,28 @@
     <!-- Encabezado de la página -->
     <div class="mb-12 text-center">
         <span class="bg-oro/20 text-principal text-xs font-bold uppercase tracking-wider py-1.5 px-4 rounded-full mb-4 inline-block">Proceso de Postulación</span>
-        <h2 class="text-3xl font-bold text-principal mb-6">Admisión 2027</h2>
+        <h2 id="admision-titulo" class="text-3xl font-bold text-principal mb-6">Cargando...</h2>
         <div class="w-24 h-1 bg-oro mx-auto mb-8 rounded-full"></div>
-        <p class="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            Agradecemos su interés en formar parte de la familia del Colegio Mater Admirabilis. A continuación, le detallamos el procedimiento, requisitos y modalidades para postular al año escolar 2027.
+        <p id="admision-descripcion" class="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
+            Por favor espera un momento mientras cargamos la información de admisión...
         </p>
     </div>
 
     <!-- Charla Informativa Banner -->
-    <div class="bg-gray-50 border border-gray-150 rounded-3xl p-8 mb-12 flex flex-col md:flex-row gap-8 items-center" data-aos="fade-up">
+    <div id="charla-banner" class="bg-gray-50 border border-gray-150 rounded-3xl p-8 mb-12 flex flex-col md:flex-row gap-8 items-center hidden" data-aos="fade-up">
         <div class="w-full md:w-1/2">
             <div class="relative overflow-hidden rounded-2xl shadow-md border border-gray-200 group">
-                <img src="images/admision_charla_boletin.jpg" alt="Charla de Admisión 2027" class="w-full object-cover group-hover:scale-105 transition-transform duration-500 rounded-2xl">
+                <img id="charla-img" src="" alt="Charla de Admisión" class="w-full object-cover rounded-2xl">
             </div>
         </div>
         <div class="w-full md:w-1/2">
             <span class="bg-oro text-principal text-xs font-bold uppercase tracking-wider py-1 px-3 rounded-full mb-3 inline-block">Charla Informativa</span>
-            <h3 class="text-2xl font-bold text-principal mb-4">Próxima Charla de Admisión 2027</h3>
-            <p class="text-gray-600 leading-relaxed mb-6">
-                Te invitamos a participar en nuestra charla informativa presencial para los niveles de Inicial, Primer Grado y Traslados. Conoce nuestra propuesta educativa de la mano de nuestro equipo directivo.
-            </p>
+            <h3 id="charla-titulo" class="text-2xl font-bold text-principal mb-4">--</h3>
+            <p id="charla-descripcion" class="text-gray-600 leading-relaxed mb-6">--</p>
             <div class="bg-white p-4 rounded-xl border border-gray-150 shadow-sm space-y-2">
-                <p class="text-gray-700 text-sm"><i class="fas fa-calendar-alt text-oro mr-2"></i> <strong>Fecha:</strong> Domingo 31 de Mayo</p>
-                <p class="text-gray-700 text-sm"><i class="fas fa-clock text-oro mr-2"></i> <strong>Hora:</strong> 10:00 AM</p>
-                <p class="text-gray-700 text-sm"><i class="fas fa-map-marker-alt text-oro mr-2"></i> <strong>Lugar:</strong> Auditorio del Colegio Mater Admirabilis</p>
+                <p class="text-gray-700 text-sm"><i class="fas fa-calendar-alt text-oro mr-2"></i> <strong>Fecha:</strong> <span id="charla-fecha">--</span></p>
+                <p class="text-gray-700 text-sm"><i class="fas fa-clock text-oro mr-2"></i> <strong>Hora:</strong> <span id="charla-hora">--</span></p>
+                <p class="text-gray-700 text-sm"><i class="fas fa-map-marker-alt text-oro mr-2"></i> <strong>Lugar:</strong> <span id="charla-lugar">--</span></p>
             </div>
         </div>
     </div>
@@ -34,31 +32,22 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
         <!-- Requisitos Generales -->
         <div class="p-8 rounded-2xl border border-gray-100 bg-gray-50 hover:shadow-lg transition-all group">
-            <div class="w-14 h-14 bg-principal/10 text-principal rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+            <div class="w-14 h-14 bg-principal/10 text-principal rounded-xl flex items-center justify-center text-2xl mb-6">
                 <i class="fas fa-calendar-check"></i>
             </div>
-            <h3 class="text-xl font-bold text-principal mb-3">Requisitos de Edad</h3>
-            <p class="text-gray-600 leading-relaxed mb-4">
-                Para postular a las vacantes del nivel de **Inicial (3, 4 y 5 años)** y **Primer Grado de Primaria**, las y los postulantes deberán tener la edad correspondiente cumplida obligatoriamente al <strong class="text-principal">31 de marzo de 2027</strong>.
-            </p>
-            <p class="text-gray-600 leading-relaxed">
-                El proceso de admisión definitivo está sujeto a la disponibilidad de vacantes y a la presentación completa del expediente de postulación en los plazos establecidos.
-            </p>
+            <h3 id="requisitos-titulo" class="text-xl font-bold text-principal mb-3">Requisitos de Edad</h3>
+            <p id="requisitos-descripcion" class="text-gray-600 leading-relaxed mb-4">--</p>
+            <p id="requisitos-extra" class="text-gray-600 leading-relaxed font-medium">--</p>
         </div>
 
         <!-- Modalidades de Admisión -->
         <div class="p-8 rounded-2xl border border-gray-100 bg-gray-50 hover:shadow-lg transition-all group">
-            <div class="w-14 h-14 bg-oro/20 text-oro rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+            <div class="w-14 h-14 bg-oro/20 text-oro rounded-xl flex items-center justify-center text-2xl mb-6">
                 <i class="fas fa-list-ol"></i>
             </div>
-            <h3 class="text-xl font-bold text-principal mb-3">Modalidades de Ingreso</h3>
-            <ul class="text-gray-600 space-y-3">
-                <li>
-                    <strong>Prioridad - Modalidad 1:</strong> Dirigido a hermanos e hijas del personal de la institución y hermanas de nuestras alumnas que completen oportunamente el procedimiento.
-                </li>
-                <li>
-                    <strong>Modalidad 2:</strong> Abierto al público en general de acuerdo al cronograma y plazas disponibles publicadas en el folleto informativo.
-                </li>
+            <h3 id="modalidades-titulo" class="text-xl font-bold text-principal mb-3">Modalidades de Ingreso</h3>
+            <ul id="modalidades-lista" class="text-gray-600 space-y-4">
+                <!-- Se inyecta dinámicamente -->
             </ul>
         </div>
     </div>
@@ -69,19 +58,13 @@
             <div class="w-12 h-12 bg-principal/10 text-principal rounded-xl flex items-center justify-center text-xl mr-4">
                 <i class="fas fa-exchange-alt"></i>
             </div>
-            <h3 class="text-2xl font-bold text-principal">Traslados e Idiomas</h3>
+            <h3 id="traslados-titulo" class="text-2xl font-bold text-principal">--</h3>
         </div>
-        <p class="text-gray-600 leading-relaxed mb-6">
-            El proceso de postulación por traslado (dirigido a estudiantes desde **Segundo de Primaria hasta Quinto de Secundaria**) inicia en la segunda semana de **Agosto**, sujeto a la disponibilidad de vacantes por aula.
-        </p>
+        <p id="traslados-descripcion" class="text-gray-600 leading-relaxed mb-6">--</p>
         <div class="bg-white p-6 rounded-xl border border-gray-150 shadow-inner">
-            <h4 class="font-bold text-principal mb-2"><i class="fas fa-language text-oro mr-2"></i> Evaluación y Nivelación de Inglés:</h4>
-            <p class="text-gray-600 text-sm leading-relaxed mb-4">
-                Las estudiantes postulantes por traslado deberán pasar una entrevista de evaluación con la Coordinadora de Inglés para determinar su nivel comunicativo.
-            </p>
-            <p class="text-gray-600 text-sm leading-relaxed">
-                En caso de presentar un nivel inferior al estándar del aula, la institución ofrece la alternativa de incorporarse a la **Academia de Inglés**, la cual opera por las tardes en las instalaciones del colegio brindando un soporte exclusivo de nivelación.
-            </p>
+            <h4 id="evaluacion-titulo" class="font-bold text-principal mb-2"><i class="fas fa-language text-oro mr-2"></i> --</h4>
+            <p id="evaluacion-descripcion" class="text-gray-600 text-sm leading-relaxed mb-4">--</p>
+            <p id="evaluacion-detalle" class="text-gray-600 text-sm leading-relaxed font-medium">--</p>
         </div>
     </div>
 
@@ -98,9 +81,59 @@
             <a href="mailto:admision@maternet.edu.pe" class="bg-principal text-white font-bold py-3 px-6 rounded-xl hover:bg-green-800 transition-colors shadow-sm">
                 <i class="fas fa-envelope mr-2"></i> admision@maternet.edu.pe
             </a>
-            <span class="bg-oro/10 text-texto font-bold py-3 px-6 rounded-xl border border-oro/30">
-                <i class="fas fa-phone-alt mr-2 text-oro"></i> 460-8306 / 460-7600
-            </span>
         </div>
     </div>
 </div>
+
+<script>
+    (async function() {
+        try {
+            const res = await fetch('data/admision.json?v=' + new Date().getTime());
+            if(!res.ok) throw new Error("No se pudo cargar el archivo JSON de admision");
+            const data = await res.json();
+
+            // 1. Encabezado
+            document.getElementById('admision-titulo').innerText = data.titulo;
+            document.getElementById('admision-descripcion').innerText = data.descripcion;
+
+            // 2. Charla Informativa Banner
+            if (data.charla && data.charla.titulo) {
+                const banner = document.getElementById('charla-banner');
+                banner.classList.remove('hidden');
+                document.getElementById('charla-img').src = data.charla.imagen;
+                document.getElementById('charla-titulo').innerText = data.charla.titulo;
+                document.getElementById('charla-descripcion').innerText = data.charla.descripcion;
+                document.getElementById('charla-fecha').innerText = data.charla.fecha;
+                document.getElementById('charla-hora').innerText = data.charla.hora;
+                document.getElementById('charla-lugar').innerText = data.charla.lugar;
+            }
+
+            // 3. Requisitos
+            document.getElementById('requisitos-titulo').innerText = data.requisitos.titulo;
+            document.getElementById('requisitos-descripcion').innerText = data.requisitos.descripcion;
+            document.getElementById('requisitos-extra').innerText = data.requisitos.extra;
+
+            // 4. Modalidades
+            document.getElementById('modalidades-titulo').innerText = data.modalidades.titulo;
+            const listaContainer = document.getElementById('modalidades-lista');
+            if (listaContainer && data.modalidades.lista) {
+                listaContainer.innerHTML = "";
+                data.modalidades.lista.forEach(mod => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<strong>${mod.titulo}:</strong> ${mod.descripcion}`;
+                    listaContainer.appendChild(li);
+                });
+            }
+
+            // 5. Traslados
+            document.getElementById('traslados-titulo').innerHTML = `<i class="fas fa-exchange-alt mr-2 text-oro"></i> ${data.traslados.titulo}`;
+            document.getElementById('traslados-descripcion').innerText = data.traslados.descripcion;
+            document.getElementById('evaluacion-titulo').innerHTML = `<i class="fas fa-language text-oro mr-2"></i> ${data.traslados.evaluacion_titulo}`;
+            document.getElementById('evaluacion-descripcion').innerText = data.traslados.evaluacion_descripcion;
+            document.getElementById('evaluacion-detalle').innerText = data.traslados.evaluacion_detalle;
+
+        } catch (e) {
+            console.error("Error al inyectar contenido dinámico de Admisión:", e);
+        }
+    })();
+</script>

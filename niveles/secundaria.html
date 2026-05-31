@@ -6,52 +6,81 @@
             <span class="bg-oro/20 text-principal text-xs font-bold uppercase tracking-wider py-1.5 px-4 rounded-full mb-4 inline-block">Educación Secundaria</span>
             <h2 class="text-4xl font-bold text-principal mb-6">Nivel Secundaria</h2>
             <div class="w-20 h-1 bg-oro mb-6 rounded-full"></div>
-            <p class="text-xl text-principal font-semibold leading-relaxed mb-6 italic">
-                "Brindamos una educación diferenciada con sólidos valores éticos, dominio intensivo del idioma inglés y una rigurosa preparación para los retos del mundo globalizado."
+            <p id="secundaria-lema" class="text-xl text-principal font-semibold leading-relaxed mb-6 italic">
+                Cargando lema educativo...
             </p>
         </div>
         <!-- Lado Derecho: Imagen Ilustrativa -->
         <div class="w-full lg:w-1/2">
             <div class="relative overflow-hidden rounded-3xl shadow-lg border-2 border-oro/20 group">
-                <img src="images/secundaria_estudiantes.jpg" alt="Estudiantes de Secundaria caminando" class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500">
+                <img id="secundaria-img" src="" alt="Estudiantes de Secundaria" class="w-full h-80 object-cover">
                 <div class="absolute inset-0 bg-gradient-to-t from-principal/60 to-transparent opacity-60"></div>
             </div>
         </div>
     </div>
 
     <!-- Secciones del Nivel -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- PAI -->
-        <div class="p-8 rounded-2xl border border-gray-100 bg-gray-50 hover:shadow-lg transition-all group">
-            <div class="w-14 h-14 bg-principal/10 text-principal rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-                <i class="fas fa-globe-americas"></i>
-            </div>
-            <h3 class="text-xl font-bold text-principal mb-3">Rigor Internacional (PAI - IB)</h3>
-            <p class="text-gray-600 leading-relaxed">
-                De sexto de primaria a cuarto año de secundaria, nuestras estudiantes avanzan con el prestigioso Programa de Años Intermedios (PAI) de Bachillerato Internacional, promoviendo una mentalidad analítica y abierta.
-            </p>
-        </div>
-
-        <!-- Quinto Año -->
-        <div class="p-8 rounded-2xl border border-gray-100 bg-gray-50 hover:shadow-lg transition-all group">
-            <div class="w-14 h-14 bg-oro/20 text-oro rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-                <i class="fas fa-university"></i>
-            </div>
-            <h3 class="text-xl font-bold text-principal mb-3">Enfoque Universitario</h3>
-            <p class="text-gray-600 leading-relaxed">
-                El 5to año de secundaria enfoca sus metas en responder con éxito a las altas exigencias de admisión de las mejores universidades del país y del extranjero, mediante simulacros y asesorías continuas.
-            </p>
-        </div>
-
-        <!-- Metas y Competencias -->
-        <div class="p-8 rounded-2xl border border-gray-100 bg-gray-50 hover:shadow-lg transition-all group md:col-span-2">
-            <div class="w-14 h-14 bg-principal/10 text-principal rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-                <i class="fas fa-flag-checkered"></i>
-            </div>
-            <h3 class="text-xl font-bold text-principal mb-3">Perfil del Egresado</h3>
-            <p class="text-gray-600 leading-relaxed">
-                Nuestra meta es entregar a la sociedad jóvenes con valores sólidos, autónomas, con alta capacidad de liderazgo y preparadas académicamente para desenvolverse con solvencia en su vida personal y profesional.
-            </p>
-        </div>
+    <div id="secundaria-secciones-container" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Se cargará dinámicamente desde data/nivel_secundaria.json -->
+        <p class="text-gray-500 italic text-center col-span-2">Cargando enfoques pedagógicos...</p>
     </div>
 </div>
+
+<script>
+    (async function() {
+        try {
+            const res = await fetch('data/nivel_secundaria.json?v=' + new Date().getTime());
+            if(!res.ok) throw new Error("Error al leer el archivo JSON de nivel secundaria");
+            const data = await res.json();
+            
+            // 1. Cargar Lema e Imagen
+            const lemaEl = document.getElementById('secundaria-lema');
+            const imgEl = document.getElementById('secundaria-img');
+            if(lemaEl) lemaEl.innerText = data.lema;
+            if(imgEl) imgEl.src = data.imagen;
+            
+            // 2. Renderizar secciones
+            const container = document.getElementById('secundaria-secciones-container');
+            if(container && data.secciones) {
+                container.innerHTML = "";
+                data.secciones.forEach((sec, idx) => {
+                    const card = document.createElement('div');
+                    const isLastOdd = (idx === data.secciones.length - 1) && (data.secciones.length % 2 !== 0);
+                    card.className = `p-8 rounded-2xl border border-gray-100 bg-gray-50 hover:shadow-xl hover:border-oro transition-all duration-300 transform hover:-translate-y-1.5 group ${isLastOdd ? 'md:col-span-2' : ''}`;
+                    
+                    const iconBgClass = idx % 2 === 0 ? 'bg-principal/10 text-principal' : 'bg-oro/20 text-oro';
+                    
+                    card.innerHTML = `
+                        <div class="w-14 h-14 ${iconBgClass} rounded-xl flex items-center justify-center text-2xl mb-6">
+                            <i class="${sec.icon || 'fas fa-book'}"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-principal mb-3">${sec.titulo}</h3>
+                        <p class="text-gray-600 leading-relaxed">${sec.descripcion}</p>
+                    `;
+                    container.appendChild(card);
+                });
+                
+                // 3. Inyectar Tarjeta Especial de Bachillerato (IB) si existe en el JSON
+                if(data.seccion_ib) {
+                    const ibCard = document.createElement('div');
+                    ibCard.className = "p-8 rounded-2xl border border-gray-100 bg-gray-50 hover:shadow-xl hover:border-oro transition-all duration-300 transform hover:-translate-y-1.5 group md:col-span-2 flex flex-col md:flex-row gap-6 items-center";
+                    ibCard.innerHTML = `
+                        <div class="w-full md:w-1/3 flex justify-center p-4 bg-white rounded-xl border border-gray-100 shadow-sm">
+                            <img src="${data.seccion_ib.imagen}" alt="Logo IB" class="max-h-28 object-contain">
+                        </div>
+                        <div class="w-full md:w-2/3">
+                            <div class="w-12 h-12 bg-principal/10 text-principal rounded-xl flex items-center justify-center text-xl mb-4">
+                                <i class="fas fa-globe-americas"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-principal mb-2">${data.seccion_ib.titulo}</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">${data.seccion_ib.descripcion}</p>
+                        </div>
+                    `;
+                    container.appendChild(ibCard);
+                }
+            }
+        } catch(e) {
+            console.error("Error al inyectar contenido dinámico de Secundaria:", e);
+        }
+    })();
+</script>

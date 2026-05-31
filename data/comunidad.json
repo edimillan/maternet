@@ -1,15 +1,55 @@
 {
   "noticias": [
     {
-      "id": "DIA-MADRE-2027",
-      "titulo": "DIA DE LA MADRE",
-      "fecha": "25 DE MAYO 2027",
+      "id": "dia-madre-2027",
+      "titulo": "Día de la Madre en Mater Admirabilis",
+      "fecha": "25 Mayo 2027",
       "mes": "MAY",
       "dia": "25",
-      "imagen": "images/valores_colegio.jpg",
-      "resumen": "Nuestras alumnas más pequeñas de Early Years disfrutaron de un día lleno de magia, juegos de integración y talleres de psicomotricidad en celebración del Día de la Educación Inicial.",
-      "contenido": "\n\nCon mucha alegría y entusiasmo, nuestro colegio celebró el Día de la Educación Inicial. Las estudiantes de Kindergarten y Early Years participaron en una jornada especial que incluyó un divertido show de títeres en inglés, circuitos de psicomotricidad al aire libre y un compartir lleno de sonrisas.\n\nEsta fecha nos invita a revalorar la importancia de los primeros años de aprendizaje, donde el juego, la exploración y el afecto son la base para el desarrollo de nuestras futuras líderes. Agradecemos a las misses y a los padres de familia por hacer de este día una experiencia inolvidable para nuestras pequeñas."
+      "imagen": "images/banner1.webp",
+      "resumen": "Agradecemos a todas las familias que nos acompañaron en la hermosa liturgia y actuación de nuestras alumnas.",
+      "contenido": "El Colegio Mater Admirabilis celebró el Día de la Madre con una emotiva liturgia y actuaciones especiales preparadas por nuestras estudiantes de Inicial, Primaria y Secundaria. Las madres de familia disfrutaron de bailes, canciones y poemas en un ambiente lleno de amor y gratitud. La rectoría agradece la masiva participación y el apoyo incondicional de los comités de aula.",
+      "galeria": ["images/banner1.webp", "images/banner2.webp", "images/banner3.webp", "images/banner4.webp"]
+    },
+    {
+      "id": "circular-012-sie",
+      "titulo": "Circular 012: Uso de Plataforma SIE",
+      "fecha": "18 Mayo 2027",
+      "mes": "MAY",
+      "dia": "18",
+      "imagen": "images/banner2.webp",
+      "resumen": "Se recuerda a los padres de familia actualizar sus credenciales para la revisión de libretas del 1er Bimestre.",
+      "contenido": "Estimados padres de familia, se les recuerda que a partir de esta semana se encuentra disponible el reporte de calificaciones del Primer Bimestre en la plataforma virtual SIE. Solicitamos actualizar sus credenciales de acceso para asegurar la revisión oportuna de las libretas de notas. Si presenta problemas con su cuenta, contactar con soporte técnico escribiendo al correo soporte@maternet.edu.pe.",
+      "galeria": []
     }
   ],
-  "actividades": []
+  "actividades": [
+    {
+      "id": "taller-padres-junio",
+      "titulo": "Taller Escuela para Padres",
+      "fecha_display": "Jueves 04 Junio, 18:00 hrs",
+      "tipo": "Virtual",
+      "modalidad": "Virtual",
+      "resumen": "Charlas de formación activa y soporte continuo para potenciar la crianza positiva en los hogares.",
+      "contenido": "Invitamos a todos los padres de familia a participar en nuestro primer taller del ciclo 'Escuela para Padres' del presente año escolar. Abordaremos el tema de la crianza positiva en tiempos modernos, control del estrés familiar y el acompañamiento socioemocional de nuestras estudiantes."
+    },
+    {
+      "id": "juegos-deportivos-junio",
+      "titulo": "Inauguración Juegos Deportivos",
+      "fecha_display": "Sábado 13 Junio, 09:00 hrs",
+      "tipo": "Presencial",
+      "modalidad": "Presencial",
+      "resumen": "Inicio de las actividades recreativas y deportivas por olimpiadas escolares en las losas deportivas del campus.",
+      "contenido": "Se dará inicio a las olimpiadas escolares de este año. Contaremos con el desfile de las delegaciones por secciones, el encendido de la antorcha olímpica y encuentros deportivos amistosos en disciplinas como vóley, futsal y atletismo. Invitamos a toda la comunidad educativa a alentar a nuestras estudiantes."
+    },
+    {
+      "id": "simulacro-nacional-sismo",
+      "titulo": "Simulacro Nacional de Sismo",
+      "fecha_display": "Viernes 26 Junio, 10:00 hrs",
+      "tipo": "Colegio",
+      "modalidad": "Colegio",
+      "resumen": "Participación activa en el ejercicio nacional de prevención y evacuación coordinado por INDECI.",
+      "contenido": "Nuestra comunidad educativa participará en el ejercicio nacional preventivo. Este simulacro busca evaluar y afianzar las rutas de evacuación rápida de nuestras estudiantes y el accionar de nuestras brigadas de emergencia de acuerdo a los protocolos de seguridad civil de INDECI."
+    }
+  ]
 }
