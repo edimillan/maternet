@@ -95,14 +95,18 @@
                 if (match) id = match[1];
             }
 
+            if (id) {
+                id = decodeURIComponent(id).trim();
+            }
+
             if (!id) {
                 document.getElementById('detalle-titulo').innerText = "Evento No Encontrado";
                 document.getElementById('detalle-contenido').innerHTML = "<p class='text-red-500'>No se especificó un ID de evento válido en la URL de navegación.</p>";
                 return;
             }
 
-            // 2. Fetch de base de datos JSON
-            const response = await fetch('data/comunidad.json');
+            // 2. Fetch de base de datos JSON (con cache buster)
+            const response = await fetch('data/comunidad.json?v=' + new Date().getTime());
             if(!response.ok) throw new Error("No se pudo cargar la base de datos");
             const db = await response.json();
 

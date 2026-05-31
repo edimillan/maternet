@@ -386,7 +386,7 @@
                 <script>
                     (async function() {
                         try {
-                            const res = await fetch('data/comunidad.json');
+                            const res = await fetch('data/comunidad.json?v=' + new Date().getTime());
                             if(!res.ok) throw new Error("Error de red");
                             const db = await res.json();
                             
