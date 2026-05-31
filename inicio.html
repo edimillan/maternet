@@ -377,7 +377,7 @@
 
                 <!-- Script del Bloque Comunidad Dinámica (Netlify CMS Integrado) -->
                 <script>
-                    (async function() {
+                    async function cargarComunidad() {
                         try {
                             const res = await fetch('data/comunidad.json?v=' + new Date().getTime());
                             if(!res.ok) throw new Error("Error de red");
@@ -433,10 +433,9 @@
                         } catch (e) {
                             console.error("Error al inyectar comunidad:", e);
                         }
-                    })();
+                    }
 
-                    // Inyección dinámica de Mosaico y Niveles Educativos (Controlado por Decap CMS)
-                    (async function() {
+                    async function cargarInicio() {
                         try {
                             const res = await fetch('data/inicio.json?v=' + new Date().getTime());
                             if(!res.ok) throw new Error("Error de red al cargar inicio.json");
@@ -497,7 +496,31 @@
                         } catch (e) {
                             console.error("Error al inyectar recursos de inicio.json:", e);
                         }
-                    })();
+                    }
+
+                    // Carga inicial
+                    cargarComunidad();
+                    cargarInicio();
+
+                    // Polling cada 30 segundos en segundo plano
+                    const intervalComunidad = setInterval(cargarComunidad, 30000);
+                    const intervalInicio = setInterval(cargarInicio, 30000);
+                    
+                    window.spaIntervals = window.spaIntervals || [];
+                    window.spaIntervals.push(intervalComunidad, intervalInicio);
+
+                    // Detectar cuando la pestaña vuelve a tener foco (el usuario regresa de la pestaña del CMS)
+                    const visibilityHandler = () => {
+                        if (document.visibilityState === 'visible') {
+                            cargarComunidad();
+                            cargarInicio();
+                        }
+                    };
+                    document.addEventListener('visibilitychange', visibilityHandler);
+                    window.spaCleanups = window.spaCleanups || [];
+                    window.spaCleanups.push(() => {
+                        document.removeEventListener('visibilitychange', visibilityHandler);
+                    });
                 </script>
 
                 <!-- Columna Derecha: Admisión 2027 -->

@@ -392,6 +392,18 @@
 
         async function loadPage(url, pushHistory = true) {
             try {
+                // Limpiar intervalos y listeners de la página anterior
+                if (window.spaIntervals) {
+                    window.spaIntervals.forEach(clearInterval);
+                    window.spaIntervals = [];
+                }
+                if (window.spaCleanups) {
+                    window.spaCleanups.forEach(cleanup => {
+                        try { cleanup(); } catch (e) { console.error(e); }
+                    });
+                    window.spaCleanups = [];
+                }
+
                 // Separar URL base y el ancla (hash)
                 const parts = url.split('#');
                 const baseUrl = parts[0] || 'inicio.html';
