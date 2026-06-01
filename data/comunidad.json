@@ -1,64 +1,113 @@
 {
   "noticias": [
     {
-      "resumen": "Agradecemos a todas las familias que nos acompañaron en la hermosa liturgia y actuación de nuestras alumnas.",
-      "imagen": "images/banner1.webp",
+      "id": "reunion-comunidad-ib-2026",
+      "titulo": "Implementación y Avances del Programa PAI (IB)",
+      "fecha": "02 de Junio 2026",
+      "mes": "JUN",
+      "dia": "02",
+      "imagen": "images/ppt_image_6.webp",
+      "resumen": "Reporte informativo sobre los logros de nuestras estudiantes en la evaluación internacional del Bachillerato PAI.",
+      "contenido": "Estimada comunidad de Mater Admirabilis, nos complace compartir el reporte de avances en el Programa de los Años Intermedios (PAI) del Bachillerato Internacional. Nuestras alumnas de Secundaria han demostrado un alto desempeño en pensamiento crítico, indagación y proyectos comunitarios. Agradecemos el constante apoyo de las familias y la dedicación de nuestro personal docente certificado internacionalmente para guiar a las líderes católicas del futuro.",
       "galeria": [
-        "images/banner1.webp",
-        "images/banner2.webp",
-        "images/banner3.webp",
-        "images/banner4.webp"
+        "images/ppt_image_6.webp",
+        "images/ppt_image_10.webp"
       ],
-      "contenido": "El Colegio Mater Admirabilis celebró el Día de la Madre con una emotiva liturgia y actuaciones especiales preparadas por nuestras estudiantes de Inicial, Primaria y Secundaria. Las madres de familia disfrutaron de bailes, canciones y poemas en un ambiente lleno de amor y gratitud. La rectoría agradece la masiva participación y el apoyo incondicional de los comités de aula.",
-      "titulo": "Día de la Madre en Mater Admirabilis",
-      "id": "dia-madre-2027",
-      "mes": "MAY",
-      "dia": "25",
-      "fecha": "25 Mayo 2027"
+      "tipo": "noticia",
+      "dirigido_a": "Toda la Comunidad",
+      "categoria": "Académico"
     },
     {
-      "resumen": "Se recuerda a los padres de familia actualizar sus credenciales para la revisión de libretas del 1er Bimestre.",
-      "imagen": "images/banner2.webp",
-      "galeria": [],
-      "contenido": "Estimados padres de familia, se les recuerda que a partir de esta semana se encuentra disponible el reporte de calificaciones del Primer Bimestre en la plataforma virtual SIE. Solicitamos actualizar sus credenciales de acceso para asegurar la revisión oportuna de las libretas de notas. Si presenta problemas con su cuenta, contactar con soporte técnico escribiendo al correo soporte@maternet.edu.pe.",
-      "titulo": "Circular 012: Uso de Plataforma SIE",
-      "id": "circular-012-sie",
-      "mes": "MAY",
-      "dia": "18",
-      "fecha": "18 Mayo 2027"
-    },
-    {
-      "resumen": "asdasdadasdadassa",
-      "imagen": "images/BOTON-ADMISION-2018.png",
+      "id": "circular-017-dia-padre",
+      "titulo": "Circular 017: Celebración del Día del Padre",
+      "fecha": "10 de Junio 2026",
+      "mes": "JUN",
+      "dia": "10",
+      "imagen": "images/ppt_image_22.webp",
+      "resumen": "Invitación y cronograma de actividades por el Día del Padre en los niveles de Inicial y Primaria.",
+      "contenido": "Queridas familias, las invitamos a celebrar juntos el Día del Padre el próximo viernes 19 de junio a partir de las 8:30 a.m. Tendremos una misa de acción de gracias en el coliseo institucional seguida de números artísticos y talleres preparados con mucho amor por nuestras alumnas. Les pedimos revisar las recomendaciones de ingreso y vestimenta adjuntas en la intranet escolar.",
       "galeria": [
-        "images/ib_servicio_accion_danza.jpg"
+        "images/ppt_image_22.webp",
+        "images/ppt_image_23.webp"
       ],
-      "contenido": "asdadadasdasd",
-      "titulo": "asd",
-      "id": "sda",
-      "mes": "asd",
-      "dia": "ad",
-      "fecha": "asda"
+      "tipo": "circular",
+      "dirigido_a": "Padres de Familia",
+      "categoria": "Institucional"
     },
     {
-      "id": "232313",
-      "titulo": "123231",
-      "fecha": "13213",
-      "mes": "1232131",
-      "dia": "2313",
-      "imagen": "images/banner1.webp",
-      "resumen": "3213131131",
-      "contenido": "131232112313"
+      "id": "campeonato-adecore-pastoral",
+      "titulo": "Destacada participación en ADECORE y Jornadas de Confirmación",
+      "fecha": "15 de Junio 2026",
+      "mes": "JUN",
+      "dia": "15",
+      "imagen": "images/taller_deporte_voley.jpg",
+      "resumen": "Logros de nuestra selección escolar de Vóley y detalles de las jornadas espirituales de preparación católica.",
+      "contenido": "Felicitamos a nuestra selección de Vóleibol por clasificar a la ronda final del campeonato ADECORE 2026, demostrando garra, disciplina y juego limpio en cada set. Asimismo, informamos que este fin de semana se llevaron a cabo con gran éxito las Jornadas Espirituales de Confirmación para nuestras alumnas de 4to de Secundaria, reafirmando su compromiso con la fe católica y el carisma de nuestra orden.",
+      "galeria": [
+        "images/taller_deporte_voley.jpg",
+        "images/ppt_image_30.webp"
+      ],
+      "tipo": "noticia",
+      "dirigido_a": "Estudiantes y Padres",
+      "categoria": "Deportes y Pastoral"
+    },
+    {
+      "id": "circular-018-evaluaciones-bimestre",
+      "titulo": "Circular 018: Rol de Exámenes Bimestrales y Entrega de Libretas",
+      "fecha": "22 de Junio 2026",
+      "mes": "JUN",
+      "dia": "22",
+      "imagen": "images/ppt_image_10.webp",
+      "resumen": "Cronograma oficial de evaluaciones escritas y entrega de libretas de calificaciones correspondientes al II Bimestre.",
+      "contenido": "Les informamos que las evaluaciones bimestrales correspondientes al II Bimestre se realizarán del 29 de junio al 07 de julio. Los roles de exámenes específicos para Inicial, Primaria y Secundaria ya se encuentran disponibles en la sección Documentos de la intranet. Recomendamos organizar el tiempo de estudio en casa y asegurar el descanso adecuado de nuestras estudiantes.",
+      "galeria": [
+        "images/ppt_image_10.webp"
+      ],
+      "tipo": "circular",
+      "dirigido_a": "Padres de Familia",
+      "categoria": "Académico"
     }
   ],
   "actividades": [
     {
-      "id": "asd",
-      "titulo": "asd",
-      "fecha_display": "asd",
+      "id": "act-dia-campesino-2026",
+      "titulo": "Feria Gastronómica e Identidad por el Día del Campesino",
+      "fecha_display": "Miércoles 24 de Junio, 09:00 AM",
       "tipo": "Presencial",
-      "resumen": "asdasa",
-      "contenido": "asdaa"
+      "resumen": "Exposición cultural de platos típicos de las regiones del Perú organizada por Primaria.",
+      "contenido": "Celebrando el Día del Campesino y valorando la riqueza agrícola de nuestra patria, las estudiantes de Primaria presentarán estands informativos y degustaciones culinarias. Los padres están invitados a asistir respetando los turnos de ingreso asignados por grado.",
+      "lugar": "Patio Central de Primaria",
+      "organizador": "Coordinación de Primaria"
+    },
+    {
+      "id": "act-misa-sampedro-2026",
+      "titulo": "Misa Solemne de San Pedro y San Pablo",
+      "fecha_display": "Lunes 29 de Junio, 08:30 AM",
+      "tipo": "Presencial",
+      "resumen": "Liturgia comunitaria en honor a los santos apóstoles y oración por el Papa.",
+      "contenido": "Toda la comunidad educativa se unirá en oración en nuestra capilla principal para conmemorar la solemnidad de San Pedro y San Pablo. La misa será transmitida en vivo a través de nuestra página de Facebook oficial para las familias que no puedan asistir.",
+      "lugar": "Capilla del Colegio",
+      "organizador": "Equipo de Pastoral"
+    },
+    {
+      "id": "act-taller-psicopedagogico-julio",
+      "titulo": "Taller de Prevención del Ciberbullying y Uso Seguro de Redes",
+      "fecha_display": "Jueves 02 de Julio, 06:00 PM",
+      "tipo": "Virtual",
+      "resumen": "Charla formativa para padres de familia dictada por el Departamento Psicopedagógico.",
+      "contenido": "Una sesión interactiva vía Teams diseñada para brindar pautas y herramientas prácticas a los padres sobre cómo supervisar y orientar el uso responsable de dispositivos digitales y redes sociales en sus hijas.",
+      "lugar": "Plataforma Microsoft Teams",
+      "organizador": "Departamento Psicopedagógico"
+    },
+    {
+      "id": "act-fiestas-patrias-2026",
+      "titulo": "Acto Cívico y Desfile Interno de Fiestas Patrias",
+      "fecha_display": "Viernes 24 de Julio, 08:00 AM",
+      "tipo": "Presencial",
+      "resumen": "Homenaje a la Patria con desfile de escoltas, danzas típicas y proclamación de la Independencia.",
+      "contenido": "Celebramos el aniversario patrio con el tradicional desfile escolar interno y la presentación artística de folclore peruano por parte del elenco del colegio. Las estudiantes asistirán con el uniforme de gala oficial.",
+      "lugar": "Coliseo Deportivo del Colegio",
+      "organizador": "Área de Ciencias Sociales"
     }
   ]
 }

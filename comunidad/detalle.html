@@ -109,7 +109,7 @@
     }
 </style>
 
-<div class="bg-white shadow-xl rounded-2xl overflow-hidden border border-gray-100 max-w-4xl mx-auto relative z-10" data-aos="fade-up">
+<div class="bg-white/10 backdrop-blur-md shadow-2xl rounded-2xl overflow-hidden border border-principal/20 max-w-4xl mx-auto relative z-10" data-aos="fade-up">
     <!-- Banner de Cabecera Dinámico -->
     <div class="relative w-full aspect-[4/3] md:aspect-[21/9] md:max-h-[380px] overflow-hidden bg-principal">
         <!-- Imagen de fondo difuminada decorativa -->
@@ -139,32 +139,53 @@
             </div>
 
             <!-- Columna lateral informativa -->
-            <div class="w-full lg:w-1/3 bg-gray-50 border border-gray-100 p-6 rounded-2xl shadow-sm">
-                <h4 class="text-principal font-bold text-lg mb-4 pb-2 border-b border-gray-200/60">Ficha Informativa</h4>
+            <div class="w-full lg:w-1/3 bg-white/10 backdrop-blur-md border border-principal/20 p-6 rounded-2xl shadow-sm">
+                <h4 class="text-principal font-bold text-lg mb-4 pb-2 border-b border-principal/20/60">Ficha Informativa</h4>
                 <ul class="space-y-4 text-xs md:text-sm">
                     <li class="flex items-start">
                         <i class="fas fa-bookmark mt-1 mr-3 text-oro"></i>
                         <div>
                             <strong class="block text-texto">Categoría</strong>
-                            <span id="ficha-categoria" class="text-gray-500 font-medium">Comunidad Mater</span>
+                            <span id="ficha-categoria" class="text-gray-700 font-semibold font-medium">Comunidad Mater</span>
                         </div>
                     </li>
                     <li class="flex items-start">
                         <i class="fas fa-calendar-day mt-1 mr-3 text-oro"></i>
                         <div>
                             <strong class="block text-texto">Fecha</strong>
-                            <span id="ficha-fecha" class="text-gray-500 font-medium">-- -- ----</span>
+                            <span id="ficha-fecha" class="text-gray-700 font-semibold font-medium">-- -- ----</span>
                         </div>
                     </li>
                     <li id="ficha-modalidad-item" class="flex items-start">
                         <i class="fas fa-laptop-house mt-1 mr-3 text-oro"></i>
                         <div>
                             <strong class="block text-texto">Modalidad</strong>
-                            <span id="ficha-modalidad" class="text-gray-500 font-medium">Presencial / Virtual</span>
+                            <span id="ficha-modalidad" class="text-gray-700 font-semibold font-medium">Presencial / Virtual</span>
+                        </div>
+                    </li>
+                    <li id="ficha-dirigido-item" class="flex items-start">
+                        <i class="fas fa-users mt-1 mr-3 text-oro"></i>
+                        <div>
+                            <strong class="block text-texto">Dirigido a</strong>
+                            <span id="ficha-dirigido" class="text-gray-700 font-semibold font-medium">--</span>
+                        </div>
+                    </li>
+                    <li id="ficha-lugar-item" class="flex items-start">
+                        <i class="fas fa-map-marker-alt mt-1 mr-3 text-oro"></i>
+                        <div>
+                            <strong class="block text-texto">Lugar</strong>
+                            <span id="ficha-lugar" class="text-gray-700 font-semibold font-medium">--</span>
+                        </div>
+                    </li>
+                    <li id="ficha-organizador-item" class="flex items-start">
+                        <i class="fas fa-user-tie mt-1 mr-3 text-oro"></i>
+                        <div>
+                            <strong class="block text-texto">Organizador</strong>
+                            <span id="ficha-organizador" class="text-gray-700 font-semibold font-medium">--</span>
                         </div>
                     </li>
                 </ul>
-                <div class="mt-6 pt-6 border-t border-gray-200/60 flex flex-col gap-2">
+                <div class="mt-6 pt-6 border-t border-principal/20/60 flex flex-col gap-2">
                     <button onclick="window.print()" class="w-full bg-principal hover:bg-green-800 text-white font-bold text-xs py-2.5 px-4 rounded-xl shadow transition-all duration-300 flex items-center justify-center gap-2">
                         <i class="fas fa-print"></i> Imprimir Boletín
                     </button>
@@ -176,7 +197,7 @@
         </div>
 
         <!-- Sección Galería de Fotos (Inyectado si existe) -->
-        <div id="detalle-galeria-seccion" class="hidden mt-12 pt-10 border-t border-gray-150">
+        <div id="detalle-galeria-seccion" class="hidden mt-12 pt-10 border-t border-principal/20">
             <h3 class="text-2xl font-bold text-principal mb-6 flex items-center gap-2">
                 <i class="fas fa-images text-oro"></i> Galería del Evento
             </h3>
@@ -264,9 +285,15 @@
                 document.getElementById('detalle-banner-img').src = item.imagen;
                 document.getElementById('detalle-banner-img').classList.remove('opacity-30');
                 document.getElementById('detalle-banner-img').classList.add('opacity-45');
-                document.getElementById('ficha-categoria').innerText = "Noticia Institucional";
+                document.getElementById('ficha-categoria').innerText = item.categoria || "Noticia Institucional";
                 document.getElementById('ficha-fecha').innerText = item.fecha;
                 document.getElementById('ficha-modalidad-item').classList.add('hidden'); // No aplica modalidad a noticias
+                
+                // Campos adicionales
+                document.getElementById('ficha-dirigido-item').classList.remove('hidden');
+                document.getElementById('ficha-dirigido').innerText = item.dirigido_a || "Toda la Comunidad";
+                document.getElementById('ficha-lugar-item').classList.add('hidden');
+                document.getElementById('ficha-organizador-item').classList.add('hidden');
                 
                 // Formatear Markdown básico
                 document.getElementById('detalle-contenido').innerHTML = formatMarkdownText(item.contenido);
@@ -295,7 +322,15 @@
                 document.getElementById('detalle-banner-img').src = "images/banner2.webp"; // Default
                 document.getElementById('ficha-categoria').innerText = "Actividad / Agenda";
                 document.getElementById('ficha-fecha').innerText = item.fecha_display.split(',')[0];
+                document.getElementById('ficha-modalidad-item').classList.remove('hidden');
                 document.getElementById('ficha-modalidad').innerText = item.tipo;
+                
+                // Campos adicionales
+                document.getElementById('ficha-dirigido-item').classList.add('hidden');
+                document.getElementById('ficha-lugar-item').classList.remove('hidden');
+                document.getElementById('ficha-lugar').innerText = item.lugar || "Instalaciones del Colegio";
+                document.getElementById('ficha-organizador-item').classList.remove('hidden');
+                document.getElementById('ficha-organizador').innerText = item.organizador || "Dirección Académica";
                 
                 // Formatear Markdown básico
                 document.getElementById('detalle-contenido').innerHTML = formatMarkdownText(item.contenido);
@@ -319,10 +354,11 @@
         return `<p class="mb-4">${formatted}</p>`;
     }
 
-    // Lightbox modal functions
-    function openLightbox(src) {
+    // Lightbox modal functions on window for SPA inline compatibility
+    window.openLightbox = function(src) {
         const modal = document.getElementById('lightbox-modal');
         const img = document.getElementById('lightbox-img');
+        if(!modal || !img) return;
         img.src = src;
         modal.classList.remove('hidden');
         setTimeout(() => {
@@ -331,11 +367,12 @@
             img.classList.remove('scale-95');
             img.classList.add('scale-100');
         }, 50);
-    }
+    };
 
-    function closeLightbox() {
+    window.closeLightbox = function() {
         const modal = document.getElementById('lightbox-modal');
         const img = document.getElementById('lightbox-img');
+        if(!modal || !img) return;
         modal.classList.remove('opacity-100');
         modal.classList.add('opacity-0');
         img.classList.remove('scale-100');
@@ -343,5 +380,31 @@
         setTimeout(() => {
             modal.classList.add('hidden');
         }, 300);
+    };
+
+    // Close when clicking backdrop
+    const modalEl = document.getElementById('lightbox-modal');
+    if (modalEl) {
+        modalEl.addEventListener('click', (e) => {
+            if (e.target === modalEl) {
+                window.closeLightbox();
+            }
+        });
     }
+
+    // Close on ESC key press
+    const escHandler = (e) => {
+        if (e.key === 'Escape') {
+            window.closeLightbox();
+        }
+    };
+    document.addEventListener('keydown', escHandler);
+
+    // Register cleanup for SPA navigation
+    window.spaCleanups = window.spaCleanups || [];
+    window.spaCleanups.push(() => {
+        document.removeEventListener('keydown', escHandler);
+        delete window.openLightbox;
+        delete window.closeLightbox;
+    });
 </script>

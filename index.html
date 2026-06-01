@@ -25,8 +25,9 @@
     <!-- jQuery and dFlip JS (Global for SPA) -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@dearhive/dearflip-jquery-flipbook@1.7.3/dflip/js/dflip.min.js"></script>
-    <!-- Anime.js for micro-interactions -->
+    <!-- Anime.js and GSAP for micro-interactions and animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
 
 
@@ -88,166 +89,271 @@
             .animate-blob-2 {
                 animation: float-blob-2 26s infinite alternate ease-in-out;
             }
+            
+            /* Animaciones para Nebulosas / Auroras de Fondo */
+            @keyframes float-cloud-1 {
+                0% { transform: translate(0px, 0px) scale(1); }
+                50% { transform: translate(80px, 50px) scale(1.15); }
+                100% { transform: translate(0px, 0px) scale(1); }
+            }
+            @keyframes float-cloud-2 {
+                0% { transform: translate(0px, 0px) scale(1.1); }
+                50% { transform: translate(-60px, -80px) scale(0.9); }
+                100% { transform: translate(0px, 0px) scale(1.1); }
+            }
+            @keyframes float-cloud-3 {
+                0% { transform: translate(0px, 0px) scale(0.9); }
+                50% { transform: translate(50px, -70px) scale(1.2); }
+                100% { transform: translate(0px, 0px) scale(0.9); }
+            }
+            .animate-cloud-1 {
+                animation: float-cloud-1 35s infinite alternate ease-in-out;
+            }
+            .animate-cloud-2 {
+                animation: float-cloud-2 40s infinite alternate ease-in-out;
+            }
+            .animate-cloud-3 {
+                animation: float-cloud-3 45s infinite alternate ease-in-out;
+            }
+            
+            /* Efecto de subrayado dinámico en hover y active */
+            .nav-item-btn {
+                border-bottom: 2px solid transparent !important;
+                transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
+            }
+            .nav-item-btn.active-nav {
+                border-bottom-color: #EBB300 !important; /* oro */
+            }
+            .nav-item-btn:hover {
+                border-bottom-color: #EBB300 !important; /* oro */
+            }
+            /* Si pasamos el mouse sobre el menú, ocultamos el subrayado del botón activo
+               siempre y cuando el cursor no esté encima del propio botón activo */
+            .nav-container:hover .nav-item-btn.active-nav:not(:hover) {
+                border-bottom-color: transparent !important;
+            }
+        }
+        @layer base {
+            body {
+                position: relative;
+                min-height: 100vh;
+                background-color: #ffffff;
+            }
         }
     </style>
 </head>
-<body class="font-sans text-texto bg-fondo antialiased">
+<body class="font-sans text-texto antialiased bg-white">
     
-    <!-- Top Bar: Accesos Rápidos -->
-    <div class="bg-principal border-b border-white/10 text-white/90 text-sm py-2 relative z-50">
-        <div class="container mx-auto px-4 flex justify-between items-center">
-            <div class="hidden md:flex space-x-4">
-                <span class="flex items-center"><i class="fas fa-phone-alt mr-2 text-oro text-xs"></i>(01) 123-4567</span>
-                <span class="flex items-center"><i class="fas fa-envelope mr-2 text-oro text-xs"></i>informes@maternet.edu.pe</span>
-            </div>
-            <div class="flex space-x-5 ml-auto font-medium">
-                <a href="#" class="hover:text-oro transition-colors flex items-center"><i class="fas fa-laptop mr-1"></i> Intranet</a>
-                <a href="#" class="hover:text-oro transition-colors flex items-center"><i class="fas fa-envelope-open mr-1"></i> Correo</a>
-                <a href="#" class="hover:text-oro transition-colors flex items-center"><i class="fab fa-microsoft mr-1"></i> Teams</a>
-            </div>
-        </div>
+    <!-- Fondo Artístico: Nubes y Galaxias Verdes/Oro (Nebulosa Mesh) -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <!-- Nube Principal Verde (Arriba Izquierda) -->
+        <div class="absolute top-[-5%] left-[-15vw] w-[70vw] h-[70vw] rounded-full bg-principal/[0.10] blur-[140px] animate-cloud-1"></div>
+        <!-- Nube Principal Dorada/Amarilla (Arriba Derecha, detrás de la barra superior) -->
+        <div class="absolute top-[-10%] right-[-10vw] w-[60vw] h-[60vw] rounded-full bg-oro/[0.10] blur-[120px] animate-cloud-2"></div>
+        <!-- Nube Intermedia Verde (Centro Izquierda) -->
+        <div class="absolute top-[30%] left-[5vw] w-[65vw] h-[65vw] rounded-full bg-principal/[0.10] blur-[150px] animate-cloud-3"></div>
+        <!-- Nube Intermedia Dorada/Amarilla (Centro Derecha) -->
+        <div class="absolute top-[50%] right-[-5vw] w-[55vw] h-[55vw] rounded-full bg-oro/[0.10] blur-[130px] animate-cloud-2"></div>
+        <!-- Nube Inferior Dorada/Amarilla (Abajo Derecha) -->
+        <div class="absolute bottom-[2%] right-[-12vw] w-[60vw] h-[60vw] rounded-full bg-oro/[0.10] blur-[130px] animate-cloud-1"></div>
     </div>
 
-    <!-- Main Navigation (Navbar) -->
-    <nav class="bg-principal shadow-md sticky top-0 z-40 transition-all duration-300">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center py-4">
-                <!-- Logo -->
-                <a href="inicio.html" class="spa-link flex items-center gap-1.5 group">
-                    <img src="images/logovertical1.webp" alt="Logo Mater Admirabilis" class="h-20 md:h-24 w-auto object-contain" onerror="this.src='https://via.placeholder.com/80'">
-                    <div class="flex flex-col items-center">
-                        <span class="text-white font-extrabold text-2xl md:text-3xl tracking-wider group-hover:text-oro transition-colors leading-none">Mater Admirabilis</span>
-                        <span class="text-white/80 font-medium text-[10px] md:text-xs uppercase tracking-widest mt-0.5 group-hover:text-white transition-colors">Colegio Inglés de Mujeres</span>
-                    </div>
-                </a>
-
-                <!-- Botón Menú Móvil -->
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-white hover:text-oro focus:outline-none transition-colors">
-                        <i class="fas fa-bars text-3xl"></i>
-                    </button>
+        <!-- Top Bar: Accesos Rápidos (Fondo Transparente y Letras Verdes) -->
+        <div class="bg-transparent text-principal text-sm py-2 relative z-30">
+            <div class="container mx-auto px-4 flex justify-between items-center">
+                <div class="hidden md:flex space-x-4">
+                    <span class="flex items-center"><i class="fas fa-phone-alt mr-2 text-oro text-xs"></i>(01) 123-4567</span>
+                    <span class="flex items-center"><i class="fas fa-envelope mr-2 text-oro text-xs"></i>informes@maternet.edu.pe</span>
                 </div>
+                <div class="flex space-x-5 ml-auto font-medium">
+                    <a href="https://mater.sieweb.com.pe/sistema/login" target="_blank" rel="noopener noreferrer" class="hover:text-oro text-principal transition-colors flex items-center"><i class="fas fa-laptop mr-1"></i> Intranet</a>
+                    <a href="https://webmail.maternet.edu.pe/" target="_blank" rel="noopener noreferrer" class="hover:text-oro text-principal transition-colors flex items-center"><i class="fas fa-envelope-open mr-1"></i> Correo</a>
+                    <a href="https://login.microsoftonline.com/" target="_blank" rel="noopener noreferrer" class="hover:text-oro text-principal transition-colors flex items-center"><i class="fab fa-microsoft mr-1"></i> Teams</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation (Navbar: Fondo Vidrio Esmerilado, Letras Verdes y Loguito2) -->
+        <nav class="bg-white/15 backdrop-blur-md sticky top-0 z-40 shadow-sm transition-all duration-300">
+            <div class="container mx-auto px-4">
+                <div class="flex justify-between items-center py-2.5">
+                    <!-- Logo -->
+                    <a href="inicio.html" class="spa-link flex items-center gap-1.5 group">
+                        <img src="images/logovertica2.png" alt="Logo Mater Admirabilis" class="h-14 md:h-16 w-auto object-contain" onerror="this.src='https://via.placeholder.com/80'">
+                        <div class="flex flex-col items-center">
+                            <span class="text-principal font-extrabold text-lg md:text-xl tracking-wider group-hover:text-oro transition-colors leading-none">Mater Admirabilis</span>
+                            <span class="text-gray-500 font-medium text-[9px] md:text-[10px] uppercase tracking-widest mt-0.5 group-hover:text-principal transition-colors">Colegio Inglés de Mujeres</span>
+                        </div>
+                    </a>
+
+                    <!-- Botón Menú Móvil -->
+                    <div class="md:hidden">
+                        <button id="mobile-menu-btn" class="text-principal hover:text-oro focus:outline-none transition-colors">
+                            <i class="fas fa-bars text-3xl"></i>
+                        </button>
+                    </div>
 
                 <!-- Menú Desktop -->
-                <div class="hidden md:flex space-x-8 items-center font-medium text-white">
-                    <a href="inicio.html" class="spa-link text-oro border-b-2 border-oro pb-1">Inicio</a>
+                <div class="hidden md:flex space-x-6 items-center text-sm font-semibold tracking-wide nav-container">
+                    <a href="inicio.html" class="spa-link nav-item-btn py-1 text-principal transition-all duration-300">Inicio</a>
                     
                     <!-- Institucional Dropdown -->
                     <div class="relative group dropdown">
-                        <a href="inicio.html#institucional-block" class="spa-link hover:text-oro py-2 flex items-center transition-colors">
-                            Institucional <i class="fas fa-chevron-down ml-2 text-[10px]"></i>
+                        <a href="inicio.html#institucional-block" class="spa-link nav-item-btn text-principal hover:text-principal py-1 transition-all duration-300 flex items-center">
+                            Institucional <i class="fas fa-chevron-down ml-1.5 text-[9px]"></i>
                         </a>
-                        <div class="absolute left-0 mt-0 w-56 bg-white text-texto border-t-4 border-oro shadow-xl rounded-b-lg hidden dropdown-menu z-50">
-                            <a href="institucional/presentacion.html" class="spa-link block px-5 py-3 text-sm hover:bg-principal hover:text-white transition-colors border-b border-gray-100">Presentación</a>
-                            <a href="institucional/mision-vision.html" class="spa-link block px-5 py-3 text-sm hover:bg-principal hover:text-white transition-colors border-b border-gray-100">Misión y Visión</a>
-                            <a href="institucional/ib-myp.html" class="spa-link block px-5 py-3 text-sm hover:bg-principal hover:text-white transition-colors border-b border-gray-100">IB - MYP</a>
-                            <a href="institucional/historia.html" class="spa-link block px-5 py-3 text-sm hover:bg-principal hover:text-white transition-colors">Historia</a>
+                        <div class="absolute left-0 mt-0 pt-2 w-56 hidden dropdown-menu z-50">
+                            <div class="relative bg-white/80 backdrop-blur-xl border border-white/40 shadow-2xl rounded-xl overflow-hidden p-1.5">
+                                <!-- Inner blurred cloud background for the dropdown -->
+                                <div class="absolute inset-0 pointer-events-none overflow-hidden rounded-xl z-0">
+                                    <div class="absolute -top-10 -left-10 w-28 h-28 rounded-full bg-principal/[0.10] blur-xl"></div>
+                                    <div class="absolute -bottom-10 -right-10 w-28 h-28 rounded-full bg-oro/[0.10] blur-xl"></div>
+                                </div>
+                                <div class="relative z-10 flex flex-col gap-0.5">
+                                    <a href="institucional/presentacion.html" class="spa-link block px-5 py-3 text-sm text-principal hover:bg-principal/5 hover:text-principal border-l-4 border-transparent hover:border-oro pl-4 transition-all duration-200">Presentación</a>
+                                    <a href="institucional/mision-vision.html" class="spa-link block px-5 py-3 text-sm text-principal hover:bg-principal/5 hover:text-principal border-l-4 border-transparent hover:border-oro pl-4 transition-all duration-200">Misión y Visión</a>
+                                    <a href="institucional/ib-myp.html" class="spa-link block px-5 py-3 text-sm text-principal hover:bg-principal/5 hover:text-principal border-l-4 border-transparent hover:border-oro pl-4 transition-all duration-200">IB - MYP</a>
+                                    <a href="institucional/historia.html" class="spa-link block px-5 py-3 text-sm text-principal hover:bg-principal/5 hover:text-principal border-l-4 border-transparent hover:border-oro pl-4 transition-all duration-200">Historia</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
+ 
                     <!-- Niveles Dropdown -->
                     <div class="relative group dropdown">
-                        <a href="inicio.html#niveles-block" class="spa-link hover:text-oro py-2 flex items-center transition-colors">
-                            Niveles <i class="fas fa-chevron-down ml-2 text-[10px]"></i>
+                        <a href="inicio.html#niveles-block" class="spa-link nav-item-btn text-principal hover:text-principal py-1 transition-all duration-300 flex items-center">
+                            Niveles <i class="fas fa-chevron-down ml-1.5 text-[9px]"></i>
                         </a>
-                        <div class="absolute left-0 mt-0 w-56 bg-white text-texto border-t-4 border-oro shadow-xl rounded-b-lg hidden dropdown-menu z-50">
-                            <a href="niveles/inicial.html" class="spa-link block px-5 py-3 text-sm hover:bg-principal hover:text-white transition-colors border-b border-gray-100">Inicial</a>
-                            <a href="niveles/primaria.html" class="spa-link block px-5 py-3 text-sm hover:bg-principal hover:text-white transition-colors border-b border-gray-100">Primaria</a>
-                            <a href="niveles/secundaria.html" class="spa-link block px-5 py-3 text-sm hover:bg-principal hover:text-white transition-colors">Secundaria</a>
+                        <div class="absolute left-0 mt-0 pt-2 w-56 hidden dropdown-menu z-50">
+                            <div class="relative bg-white/80 backdrop-blur-xl border border-white/40 shadow-2xl rounded-xl overflow-hidden p-1.5">
+                                <!-- Inner blurred cloud background for the dropdown -->
+                                <div class="absolute inset-0 pointer-events-none overflow-hidden rounded-xl z-0">
+                                    <div class="absolute -top-10 -left-10 w-28 h-28 rounded-full bg-principal/[0.10] blur-xl"></div>
+                                    <div class="absolute -bottom-10 -right-10 w-28 h-28 rounded-full bg-oro/[0.10] blur-xl"></div>
+                                </div>
+                                <div class="relative z-10 flex flex-col gap-0.5">
+                                    <a href="niveles/inicial.html" class="spa-link block px-5 py-3 text-sm text-principal hover:bg-principal/5 hover:text-principal border-l-4 border-transparent hover:border-oro pl-4 transition-all duration-200">Inicial</a>
+                                    <a href="niveles/primaria.html" class="spa-link block px-5 py-3 text-sm text-principal hover:bg-principal/5 hover:text-principal border-l-4 border-transparent hover:border-oro pl-4 transition-all duration-200">Primaria</a>
+                                    <a href="niveles/secundaria.html" class="spa-link block px-5 py-3 text-sm text-principal hover:bg-principal/5 hover:text-principal border-l-4 border-transparent hover:border-oro pl-4 transition-all duration-200">Secundaria</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
+ 
                     <!-- Convenios Dropdown -->
                     <div class="relative group dropdown">
-                        <a href="inicio.html#convenios-block" class="spa-link hover:text-oro py-2 flex items-center transition-colors">
-                            Convenios <i class="fas fa-chevron-down ml-2 text-[10px]"></i>
+                        <a href="inicio.html#convenios-block" class="spa-link nav-item-btn text-principal hover:text-principal py-1 transition-all duration-300 flex items-center">
+                            Convenios <i class="fas fa-chevron-down ml-1.5 text-[9px]"></i>
                         </a>
-                        <div class="absolute left-0 mt-0 w-56 bg-white text-texto border-t-4 border-oro shadow-xl rounded-b-lg hidden dropdown-menu z-50">
-                            <a href="convenios/academicos.html" class="spa-link block px-5 py-3 text-sm hover:bg-principal hover:text-white transition-colors border-b border-gray-100">Académicos</a>
-                            <a href="convenios/alianza.html" class="spa-link block px-5 py-3 text-sm hover:bg-principal hover:text-white transition-colors border-b border-gray-100">Alianza Francesa</a>
-                            <a href="convenios/cambridge.html" class="spa-link block px-5 py-3 text-sm hover:bg-principal hover:text-white transition-colors">Cambridge</a>
+                        <div class="absolute left-0 mt-0 pt-2 w-56 hidden dropdown-menu z-50">
+                            <div class="relative bg-white/80 backdrop-blur-xl border border-white/40 shadow-2xl rounded-xl overflow-hidden p-1.5">
+                                <!-- Inner blurred cloud background for the dropdown -->
+                                <div class="absolute inset-0 pointer-events-none overflow-hidden rounded-xl z-0">
+                                    <div class="absolute -top-10 -left-10 w-28 h-28 rounded-full bg-principal/[0.10] blur-xl"></div>
+                                    <div class="absolute -bottom-10 -right-10 w-28 h-28 rounded-full bg-oro/[0.10] blur-xl"></div>
+                                </div>
+                                <div class="relative z-10 flex flex-col gap-0.5">
+                                    <a href="convenios/academicos.html" class="spa-link block px-5 py-3 text-sm text-principal hover:bg-principal/5 hover:text-principal border-l-4 border-transparent hover:border-oro pl-4 transition-all duration-200">Académicos</a>
+                                    <a href="convenios/cambridge.html" class="spa-link block px-5 py-3 text-sm text-principal hover:bg-principal/5 hover:text-principal border-l-4 border-transparent hover:border-oro pl-4 transition-all duration-200">Cambridge</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
+ 
                     <!-- Servicios Dropdown -->
                     <div class="relative group dropdown">
-                        <a href="inicio.html#servicios-block" class="spa-link hover:text-oro py-2 flex items-center transition-colors">
-                            Servicios <i class="fas fa-chevron-down ml-2 text-[10px]"></i>
+                        <a href="inicio.html#servicios-block" class="spa-link nav-item-btn text-principal hover:text-principal py-1 transition-all duration-300 flex items-center">
+                            Servicios <i class="fas fa-chevron-down ml-1.5 text-[9px]"></i>
                         </a>
-                        <div class="absolute left-0 mt-0 w-56 bg-white text-texto border-t-4 border-oro shadow-xl rounded-b-lg hidden dropdown-menu z-50">
-                            <a href="servicios/psicopedagogico.html" class="spa-link block px-5 py-3 text-sm hover:bg-principal hover:text-white transition-colors border-b border-gray-100">Psicopedagógico</a>
-                            <a href="servicios/escuela-padres.html" class="spa-link block px-5 py-3 text-sm hover:bg-principal hover:text-white transition-colors border-b border-gray-100">Escuela para padres</a>
-                            <a href="servicios/comedor.html" class="spa-link block px-5 py-3 text-sm hover:bg-principal hover:text-white transition-colors">Comedor</a>
+                        <div class="absolute left-0 mt-0 pt-2 w-56 hidden dropdown-menu z-50">
+                            <div class="relative bg-white/80 backdrop-blur-xl border border-white/40 shadow-2xl rounded-xl overflow-hidden p-1.5">
+                                <!-- Inner blurred cloud background for the dropdown -->
+                                <div class="absolute inset-0 pointer-events-none overflow-hidden rounded-xl z-0">
+                                    <div class="absolute -top-10 -left-10 w-28 h-28 rounded-full bg-principal/[0.10] blur-xl"></div>
+                                    <div class="absolute -bottom-10 -right-10 w-28 h-28 rounded-full bg-oro/[0.10] blur-xl"></div>
+                                </div>
+                                <div class="relative z-10 flex flex-col gap-0.5">
+                                    <a href="servicios/psicopedagogico.html" class="spa-link block px-5 py-3 text-sm text-principal hover:bg-principal/5 hover:text-principal border-l-4 border-transparent hover:border-oro pl-4 transition-all duration-200">Psicopedagógico</a>
+                                    <a href="servicios/escuela-padres.html" class="spa-link block px-5 py-3 text-sm text-principal hover:bg-principal/5 hover:text-principal border-l-4 border-transparent hover:border-oro pl-4 transition-all duration-200">Escuela para padres</a>
+                                    <a href="servicios/comedor.html" class="spa-link block px-5 py-3 text-sm text-principal hover:bg-principal/5 hover:text-principal border-l-4 border-transparent hover:border-oro pl-4 transition-all duration-200">Comedor</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-                    <a href="admision.html" class="spa-link hover:text-oro py-2 transition-colors">Admisión</a>
-                    <a href="contacto.html" class="spa-link hover:text-oro py-2 transition-colors">Contacto</a>
-                </div>
-            </div>
-            
-            <!-- Menú Móvil Desplegable (Acordeón) -->
-            <div id="mobile-menu" class="md:hidden hidden border-t border-white/20 pt-2 pb-4 max-h-[70vh] overflow-y-auto">
-                <a href="inicio.html" class="spa-link block py-3 px-4 text-oro font-medium bg-black/10 rounded">Inicio</a>
-                
-                <!-- Institucional -->
-                <div>
-                    <button class="w-full text-left py-3 px-4 text-white hover:text-oro flex justify-between items-center transition-colors" onclick="toggleMobileSubmenu('mob-institucional')">
-                        Institucional <i class="fas fa-chevron-down text-xs"></i>
-                    </button>
-                    <div id="mob-institucional" class="hidden bg-black/10 pl-6 border-l-2 border-oro ml-4 my-1">
-                        <a href="inicio.html#institucional-block" class="spa-link block py-2 text-oro font-semibold">Ver todo Institucional</a>
-                        <a href="institucional/presentacion.html" class="spa-link block py-2 text-gray-300 hover:text-white">Presentación</a>
-                        <a href="institucional/mision-vision.html" class="spa-link block py-2 text-gray-300 hover:text-white">Misión y Visión</a>
-                        <a href="institucional/ib-myp.html" class="spa-link block py-2 text-gray-300 hover:text-white">IB - MYP</a>
-                        <a href="institucional/historia.html" class="spa-link block py-2 text-gray-300 hover:text-white">Historia</a>
-                    </div>
-                </div>
-
-                <!-- Niveles -->
-                <div>
-                    <button class="w-full text-left py-3 px-4 text-white hover:text-oro flex justify-between items-center transition-colors" onclick="toggleMobileSubmenu('mob-niveles')">
-                        Niveles <i class="fas fa-chevron-down text-xs"></i>
-                    </button>
-                    <div id="mob-niveles" class="hidden bg-black/10 pl-6 border-l-2 border-oro ml-4 my-1">
-                        <a href="inicio.html#niveles-block" class="spa-link block py-2 text-oro font-semibold">Ver todo Niveles</a>
-                        <a href="niveles/inicial.html" class="spa-link block py-2 text-gray-300 hover:text-white">Inicial</a>
-                        <a href="niveles/primaria.html" class="spa-link block py-2 text-gray-300 hover:text-white">Primaria</a>
-                        <a href="niveles/secundaria.html" class="spa-link block py-2 text-gray-300 hover:text-white">Secundaria</a>
-                    </div>
-                </div>
-
-                <!-- Convenios -->
-                <div>
-                    <button class="w-full text-left py-3 px-4 text-white hover:text-oro flex justify-between items-center transition-colors" onclick="toggleMobileSubmenu('mob-convenios')">
-                        Convenios <i class="fas fa-chevron-down text-xs"></i>
-                    </button>
-                    <div id="mob-convenios" class="hidden bg-black/10 pl-6 border-l-2 border-oro ml-4 my-1">
-                        <a href="inicio.html#convenios-block" class="spa-link block py-2 text-oro font-semibold">Ver todo Convenios</a>
-                        <a href="convenios/academicos.html" class="spa-link block py-2 text-gray-300 hover:text-white">Académicos</a>
-                        <a href="convenios/alianza.html" class="spa-link block py-2 text-gray-300 hover:text-white">Alianza Francesa</a>
-                        <a href="convenios/cambridge.html" class="spa-link block py-2 text-gray-300 hover:text-white">Cambridge</a>
-                    </div>
-                </div>
-
-                <!-- Servicios -->
-                <div>
-                    <button class="w-full text-left py-3 px-4 text-white hover:text-oro flex justify-between items-center transition-colors" onclick="toggleMobileSubmenu('mob-servicios')">
-                        Servicios <i class="fas fa-chevron-down text-xs"></i>
-                    </button>
-                    <div id="mob-servicios" class="hidden bg-black/10 pl-6 border-l-2 border-oro ml-4 my-1">
-                        <a href="inicio.html#servicios-block" class="spa-link block py-2 text-oro font-semibold">Ver todo Servicios</a>
-                        <a href="servicios/psicopedagogico.html" class="spa-link block py-2 text-gray-300 hover:text-white">Psicopedagógico</a>
-                        <a href="servicios/escuela-padres.html" class="spa-link block py-2 text-gray-300 hover:text-white">Escuela para padres</a>
-                        <a href="servicios/comedor.html" class="spa-link block py-2 text-gray-300 hover:text-white">Comedor</a>
-                    </div>
-                </div>
-
-                <a href="admision.html" class="spa-link block py-3 px-4 text-white hover:bg-black/10 hover:text-oro transition-colors">Admisión</a>
-                <a href="contacto.html" class="spa-link block py-3 px-4 text-white hover:bg-black/10 hover:text-oro transition-colors">Contacto</a>
-            </div>
-        </div>
-    </nav>
+ 
+                     <a href="admision.html" class="spa-link nav-item-btn text-principal hover:text-principal py-1 transition-all duration-300">Admisión</a>
+                     <a href="contacto.html" class="spa-link nav-item-btn text-principal hover:text-principal py-1 transition-all duration-300">Contacto</a>
+                 </div>
+             </div>
+             </div>
+             
+             <!-- Menú Móvil Desplegable (Acordeón) -->
+             <div id="mobile-menu" class="md:hidden hidden pt-2 pb-4 max-h-[70vh] overflow-y-auto bg-white/80 backdrop-blur-xl text-principal border-t border-white/20 shadow-lg relative">
+                 <!-- Inner blurred cloud background for the mobile menu -->
+                 <div class="absolute inset-0 pointer-events-none overflow-hidden z-0">
+                     <div class="absolute top-10 left-5 w-40 h-40 rounded-full bg-principal/[0.10] blur-3xl animate-pulse"></div>
+                     <div class="absolute bottom-10 right-5 w-40 h-40 rounded-full bg-oro/[0.10] blur-3xl animate-pulse"></div>
+                 </div>
+                 <div class="relative z-10">
+                     <a href="inicio.html" class="spa-link block py-3 px-4 text-oro font-bold bg-principal/5 rounded">Inicio</a>
+                     
+                     <!-- Institucional -->
+                     <div>
+                         <button class="w-full text-left py-3 px-4 text-principal hover:text-oro flex justify-between items-center transition-colors font-bold" onclick="toggleMobileSubmenu('mob-institucional')">
+                             Institucional <i class="fas fa-chevron-down text-xs"></i>
+                         </button>
+                         <div id="mob-institucional" class="hidden bg-principal/5 pl-6 border-l-2 border-oro ml-4 my-1">
+                             <a href="inicio.html#institucional-block" class="spa-link block py-2 text-oro font-semibold">Ver todo Institucional</a>
+                             <a href="institucional/presentacion.html" class="spa-link block py-2 text-principal/80 hover:text-oro transition-colors font-medium">Presentación</a>
+                             <a href="institucional/mision-vision.html" class="spa-link block py-2 text-principal/80 hover:text-oro transition-colors font-medium">Misión y Visión</a>
+                             <a href="institucional/ib-myp.html" class="spa-link block py-2 text-principal/80 hover:text-oro transition-colors font-medium">IB - MYP</a>
+                             <a href="institucional/historia.html" class="spa-link block py-2 text-principal/80 hover:text-oro transition-colors font-medium">Historia</a>
+                         </div>
+                     </div>
+ 
+                     <!-- Niveles -->
+                     <div>
+                         <button class="w-full text-left py-3 px-4 text-principal hover:text-oro flex justify-between items-center transition-colors font-bold" onclick="toggleMobileSubmenu('mob-niveles')">
+                             Niveles <i class="fas fa-chevron-down text-xs"></i>
+                         </button>
+                         <div id="mob-niveles" class="hidden bg-principal/5 pl-6 border-l-2 border-oro ml-4 my-1">
+                             <a href="inicio.html#niveles-block" class="spa-link block py-2 text-oro font-semibold">Ver todo Niveles</a>
+                             <a href="niveles/inicial.html" class="spa-link block py-2 text-principal/80 hover:text-oro transition-colors font-medium">Inicial</a>
+                             <a href="niveles/primaria.html" class="spa-link block py-2 text-principal/80 hover:text-oro transition-colors font-medium">Primaria</a>
+                             <a href="niveles/secundaria.html" class="spa-link block py-2 text-principal/80 hover:text-oro transition-colors font-medium">Secundaria</a>
+                         </div>
+                     </div>
+ 
+                     <!-- Convenios -->
+                     <div>
+                         <button class="w-full text-left py-3 px-4 text-principal hover:text-oro flex justify-between items-center transition-colors font-bold" onclick="toggleMobileSubmenu('mob-convenios')">
+                             Convenios <i class="fas fa-chevron-down text-xs"></i>
+                         </button>
+                         <div id="mob-convenios" class="hidden bg-principal/5 pl-6 border-l-2 border-oro ml-4 my-1">
+                             <a href="inicio.html#convenios-block" class="spa-link block py-2 text-oro font-semibold">Ver todo Convenios</a>
+                             <a href="convenios/academicos.html" class="spa-link block py-2 text-principal/80 hover:text-oro transition-colors font-medium">Académicos</a>
+                             <a href="convenios/cambridge.html" class="spa-link block py-2 text-principal/80 hover:text-oro transition-colors font-medium">Cambridge</a>
+                         </div>
+                     </div>
+ 
+                     <!-- Servicios -->
+                     <div>
+                         <button class="w-full text-left py-3 px-4 text-principal hover:text-oro flex justify-between items-center transition-colors font-bold" onclick="toggleMobileSubmenu('mob-servicios')">
+                             Servicios <i class="fas fa-chevron-down text-xs"></i>
+                         </button>
+                         <div id="mob-servicios" class="hidden bg-principal/5 pl-6 border-l-2 border-oro ml-4 my-1">
+                             <a href="inicio.html#servicios-block" class="spa-link block py-2 text-oro font-semibold">Ver todo Servicios</a>
+                             <a href="servicios/psicopedagogico.html" class="spa-link block py-2 text-principal/80 hover:text-oro transition-colors font-medium">Psicopedagógico</a>
+                             <a href="servicios/escuela-padres.html" class="spa-link block py-2 text-principal/80 hover:text-oro transition-colors font-medium">Escuela para padres</a>
+                             <a href="servicios/comedor.html" class="spa-link block py-2 text-principal/80 hover:text-oro transition-colors font-medium">Comedor</a>
+                         </div>
+                     </div>
+ 
+                     <a href="admision.html" class="spa-link block py-3 px-4 text-principal hover:bg-principal/5 hover:text-oro transition-colors font-bold">Admisión</a>
+                     <a href="contacto.html" class="spa-link block py-3 px-4 text-principal hover:bg-principal/5 hover:text-oro transition-colors font-bold">Contacto</a>
+                 </div>
+             </div>
+        </nav>
 
     
     <!-- MAIN CONTENT SPA ROUTER -->
@@ -259,69 +365,53 @@
     
 
     <!-- Footer Institucional -->
-    <footer class="bg-principal text-white pt-12 pb-6 border-t-8 border-oro relative overflow-hidden" data-aos="fade-up">
-        <!-- Decoración de fondo suave -->
-        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-48 h-48 rounded-full bg-white opacity-5"></div>
-        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-60 h-60 rounded-full bg-oro opacity-5"></div>
+    <footer class="bg-transparent text-gray-600 pt-12 pb-6 border-t-2 border-oro relative overflow-hidden" data-aos="fade-up">
         
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-                <!-- Info Colegio -->
-                <div class="md:col-span-1">
-                    <div class="flex items-center gap-1.5 mb-4">
-                        <img src="images/logovertical1.webp" alt="Logo Mater Admirabilis" class="h-16 w-auto object-contain" onerror="this.src='https://via.placeholder.com/60'">
-                        <div class="flex flex-col items-center">
-                            <span class="text-white font-bold text-base md:text-lg tracking-wide leading-none">Mater Admirabilis</span>
-                            <span class="text-white/70 font-medium text-[8px] md:text-[9px] uppercase tracking-widest mt-0.5">Colegio Inglés de Mujeres</span>
-                        </div>
-                    </div>
-                    <p class="text-gray-300 text-xs leading-relaxed mb-4">
-                        Formando mujeres líderes de fe, con mentalidad internacional y compromiso social.
-                    </p>
-                </div>
+        <div class="max-w-5xl mx-auto px-4 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
 
                 <!-- Contacto -->
-                <div class="md:col-span-1">
-                    <h4 class="text-base font-bold text-oro mb-4">Contacto</h4>
-                    <ul class="space-y-2 text-xs text-gray-300">
-                        <li class="flex items-start">
-                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-oro text-sm"></i>
+                <div class="md:col-span-1 flex flex-col items-center">
+                    <h4 class="text-base font-bold text-principal mb-4 text-center">Contacto</h4>
+                    <ul class="space-y-3 text-xs text-gray-600 flex flex-col items-start">
+                        <li class="flex items-start gap-3 text-left">
+                            <i class="fas fa-map-marker-alt text-oro text-sm mt-0.5"></i>
                             <span>Av. Arica 898, San Miguel<br>Lima, Perú</span>
                         </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-phone mr-3 text-oro text-sm"></i>
+                        <li class="flex items-center gap-3 text-left">
+                            <i class="fas fa-phone text-oro text-sm"></i>
                             <span>460-7600 / 460-8306</span>
                         </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-envelope mr-3 text-oro text-sm"></i>
+                        <li class="flex items-center gap-3 text-left">
+                            <i class="fas fa-envelope text-oro text-sm"></i>
                             <span>admision@maternet.edu.pe</span>
                         </li>
                     </ul>
                 </div>
 
                 <!-- Enlaces Rápidos -->
-                <div class="md:col-span-1">
-                    <h4 class="text-base font-bold text-oro mb-4">Enlaces Rápidos</h4>
-                    <ul class="space-y-2 text-xs">
-                        <li><a href="admision.html" class="spa-link text-gray-300 hover:text-white hover:pl-1.5 transition-all flex items-center"><i class="fas fa-angle-right mr-1.5 text-oro"></i> Proceso de Admisión</a></li>
-                        <li><a href="institucional/presentacion.html" class="spa-link text-gray-300 hover:text-white hover:pl-1.5 transition-all flex items-center"><i class="fas fa-angle-right mr-1.5 text-oro"></i> Proyecto Educativo</a></li>
-                        <li><a href="institucional/mision-vision.html" class="spa-link text-gray-300 hover:text-white hover:pl-1.5 transition-all flex items-center"><i class="fas fa-angle-right mr-1.5 text-oro"></i> Misión y Visión</a></li>
-                        <li><a href="convenios/academicos.html" class="spa-link text-gray-300 hover:text-white hover:pl-1.5 transition-all flex items-center"><i class="fas fa-angle-right mr-1.5 text-oro"></i> Convenios Académicos</a></li>
+                <div class="md:col-span-1 flex flex-col items-center">
+                    <h4 class="text-base font-bold text-principal mb-4 text-center">Enlaces Rápidos</h4>
+                    <ul class="space-y-2 text-xs flex flex-col items-start">
+                        <li><a href="admision.html" class="spa-link text-gray-600 hover:text-principal transition-all flex items-center gap-2 text-left"><i class="fas fa-angle-right text-oro"></i> Proceso de Admisión</a></li>
+                        <li><a href="institucional/presentacion.html" class="spa-link text-gray-600 hover:text-principal transition-all flex items-center gap-2 text-left"><i class="fas fa-angle-right text-oro"></i> Proyecto Educativo</a></li>
+                        <li><a href="institucional/mision-vision.html" class="spa-link text-gray-600 hover:text-principal transition-all flex items-center gap-2 text-left"><i class="fas fa-angle-right text-oro"></i> Misión y Visión</a></li>
+                        <li><a href="convenios/academicos.html" class="spa-link text-gray-600 hover:text-principal transition-all flex items-center gap-2 text-left"><i class="fas fa-angle-right text-oro"></i> Convenios Académicos</a></li>
                     </ul>
                 </div>
 
                 <!-- Redes Sociales -->
-                <div class="md:col-span-1">
-                    <h4 class="text-base font-bold text-oro mb-4">Síguenos</h4>
-                    <p class="text-gray-300 text-xs mb-4">Conéctate con nuestra comunidad digital.</p>
-                    <div class="flex space-x-3">
-                        <a href="https://www.facebook.com/colegiodemujeresmateradmirabilis" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-oro hover:text-principal transition-all duration-300 shadow-md" title="Facebook">
+                <div class="md:col-span-1 flex flex-col items-center text-center">
+                    <h4 class="text-base font-bold text-principal mb-4">Síguenos</h4>
+                    <p class="text-gray-600 text-xs mb-4">Conéctate con nuestra comunidad digital.</p>
+                    <div class="flex space-x-3 justify-center">
+                        <a href="https://www.facebook.com/colegiodemujeresmateradmirabilis" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-principal/10 text-principal flex items-center justify-center hover:bg-oro hover:text-principal transition-all duration-300 shadow-sm" title="Facebook">
                             <i class="fab fa-facebook-f text-sm"></i>
                         </a>
-                        <a href="https://www.instagram.com/colegiomateradmirabilismujeres/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-oro hover:text-principal transition-all duration-300 shadow-md" title="Instagram">
+                        <a href="https://www.instagram.com/colegiomateradmirabilismujeres/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-principal/10 text-principal flex items-center justify-center hover:bg-oro hover:text-principal transition-all duration-300 shadow-sm" title="Instagram">
                             <i class="fab fa-instagram text-sm"></i>
                         </a>
-                        <a href="https://www.tiktok.com/@colegiomateradmirabilis" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-oro hover:text-principal transition-all duration-300 shadow-md" title="TikTok">
+                        <a href="https://www.tiktok.com/@colegiomateradmirabilis" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-principal/10 text-principal flex items-center justify-center hover:bg-oro hover:text-principal transition-all duration-300 shadow-sm" title="TikTok">
                             <i class="fab fa-tiktok text-sm"></i>
                         </a>
                     </div>
@@ -329,13 +419,8 @@
             </div>
 
             <!-- Copyright -->
-            <div class="border-t border-white/20 pt-8 text-center text-gray-400 text-sm flex flex-col md:flex-row justify-between items-center">
+            <div class="border-t border-gray-150 pt-8 text-center text-gray-500 text-sm">
                 <p>&copy; 2027 Colegio Mater Admirabilis. Todos los derechos reservados.</p>
-                <div class="mt-4 md:mt-0 space-x-4">
-                    <a href="#" class="hover:text-white transition-colors">Políticas de Privacidad</a>
-                    <span>|</span>
-                    <a href="#" class="hover:text-white transition-colors">Términos de Uso</a>
-                </div>
             </div>
         </div>
     </footer>
@@ -351,7 +436,7 @@
     <!-- AOS Animation Script -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 800, once: true, offset: 100 });
+        AOS.init({ duration: 400, once: true, offset: 50 });
 
         // Scroll to Top Logic
         const scrollTopBtn = document.getElementById('scrollTopBtn');
@@ -390,6 +475,20 @@
         const mainContainer = document.getElementById('contenido-principal');
         let currentPageUrl = 'inicio.html';
 
+        // Función para desplazamiento suave con compensación exacta de la cabecera fija
+        function scrollToTarget(targetEl) {
+            if (!targetEl) return;
+            const nav = document.querySelector('nav');
+            const headerHeight = nav ? nav.offsetHeight : 76;
+            const elementPosition = targetEl.getBoundingClientRect().top + window.scrollY;
+            const offsetPosition = elementPosition - headerHeight;
+            
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+
         async function loadPage(url, pushHistory = true) {
             try {
                 // Limpiar intervalos y listeners de la página anterior
@@ -413,7 +512,7 @@
                 if (baseUrl === currentPageUrl && hash) {
                     const targetEl = document.getElementById(hash);
                     if (targetEl) {
-                        targetEl.scrollIntoView({ behavior: 'smooth' });
+                        scrollToTarget(targetEl);
                         if (pushHistory) {
                             history.pushState({ url: url }, "", baseUrl === 'inicio.html' ? 'index.html#' + hash : "?" + baseUrl + '#' + hash);
                         }
@@ -422,15 +521,15 @@
                     }
                 }
 
-                // Iniciar transición
-                mainContainer.style.opacity = 0;
+                // Iniciar transición con GSAP
+                gsap.to(mainContainer, { opacity: 0, y: -12, duration: 0.2, ease: "power1.in" });
                 
                 // Fetch del contenido con cache-buster para asegurar carga en tiempo real de los cambios
                 const response = await fetch(baseUrl + (baseUrl.includes('?') ? '&' : '?') + 'v=' + new Date().getTime());
                 if (!response.ok) throw new Error("Página no encontrada");
                 const htmlContent = await response.text();
                 
-                // Esperar a que termine el fade-out (300ms)
+                // Esperar a que termine el fade-out
                 setTimeout(() => {
                     window.flipBookInstance = null; // reset dflip
                     mainContainer.innerHTML = htmlContent;
@@ -457,7 +556,7 @@
                         setTimeout(() => {
                             const targetEl = document.getElementById(hash);
                             if (targetEl) {
-                                targetEl.scrollIntoView({ behavior: 'smooth' });
+                                scrollToTarget(targetEl);
                             } else {
                                 window.scrollTo(0,0);
                             }
@@ -468,13 +567,14 @@
 
                     setTimeout(() => {
                         AOS.refreshHard();
-                        mainContainer.style.opacity = 1;
+                        gsap.fromTo(mainContainer, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" });
                         initMicroInteractions();
+                        updateActiveNavigation(url);
                     }, 100);
                     
                     document.getElementById('mobile-menu').classList.add('hidden');
                     
-                }, 300);
+                }, 220);
             } catch (e) {
                 console.error("Error loading page:", e);
                 mainContainer.innerHTML = '<div class="py-20 text-center text-red-500"><h2 class="text-3xl font-bold">Error</h2><p>No se pudo cargar la página.</p></div>';
@@ -509,6 +609,108 @@
                     });
                 });
             });
+
+            // 2. Micro-interacción de Estrellas Fugaces en Círculo al pasar por el menú
+            const menuBtns = document.querySelectorAll('.nav-item-btn');
+            menuBtns.forEach(btn => {
+                btn.addEventListener('mouseenter', () => {
+                    if (!window.gsap) return;
+                    
+                    // Crear 8 estrellitas amarillas (oro)
+                    for (let i = 0; i < 8; i++) {
+                        const star = document.createElement('i');
+                        star.className = 'fas fa-star absolute pointer-events-none text-[8px] z-50';
+                        star.style.color = '#EBB300';
+                        document.body.appendChild(star);
+                        
+                        // Obtener coordenadas de origen (centro del botón)
+                        const rect = btn.getBoundingClientRect();
+                        const btnCenterX = rect.left + rect.width / 2 + window.scrollX;
+                        const btnCenterY = rect.top + rect.height / 2 + window.scrollY;
+                        
+                        gsap.set(star, {
+                            x: btnCenterX,
+                            y: btnCenterY,
+                            scale: 0,
+                            opacity: 1
+                        });
+                        
+                        // Ángulo exacto distribuido en círculo para el anillo de estrellas fugaces
+                        const angle = (i / 8) * Math.PI * 2 + (Math.random() * 0.3 - 0.15);
+                        const radius = 28 + Math.random() * 15;
+                        const destX = btnCenterX + Math.cos(angle) * radius;
+                        const destY = btnCenterY + Math.sin(angle) * radius;
+                        
+                        gsap.to(star, {
+                            x: destX,
+                            y: destY,
+                            scale: Math.random() * 1.2 + 0.5,
+                            rotation: Math.random() * 270,
+                            opacity: 0,
+                            duration: 0.6 + Math.random() * 0.3,
+                            ease: 'power2.out',
+                            onComplete: () => star.remove()
+                        });
+                    }
+                });
+            });
+        }
+
+        // ---------------------------------------------------------
+        // ACTIVACIÓN DINÁMICA DE SUBRAYADOS DE MENÚ Y SUBMENÚ
+        // ---------------------------------------------------------
+        function updateActiveNavigation(url) {
+            const menuBtns = document.querySelectorAll('.nav-item-btn');
+            const submenuLinks = document.querySelectorAll('.dropdown-menu a');
+            
+            menuBtns.forEach(btn => {
+                btn.classList.remove('border-b-2', 'border-oro', 'font-bold');
+            });
+            
+            submenuLinks.forEach(link => {
+                link.classList.remove('border-b-2', 'border-oro', 'font-bold');
+            });
+
+            let cleanUrl = url.split('?')[0];
+            if (cleanUrl === '' || cleanUrl.startsWith('#')) {
+                cleanUrl = 'inicio.html' + cleanUrl;
+            }
+
+            let matchedLink = null;
+
+            // 1. Buscar en submenús
+            submenuLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href && (cleanUrl === href || cleanUrl.endsWith(href))) {
+                    matchedLink = link;
+                }
+            });
+
+            if (matchedLink) {
+                matchedLink.classList.add('border-b-2', 'border-oro', 'font-bold');
+                const parentDropdown = matchedLink.closest('.dropdown');
+                if (parentDropdown) {
+                    const parentBtn = parentDropdown.querySelector('.nav-item-btn');
+                    if (parentBtn) {
+                        parentBtn.classList.add('border-b-2', 'border-oro', 'font-bold');
+                    }
+                }
+                return;
+            }
+
+            // 2. Buscar en botones principales
+            menuBtns.forEach(btn => {
+                const href = btn.getAttribute('href');
+                if (href) {
+                    if (cleanUrl === href || (href === 'inicio.html' && cleanUrl === 'index.html') || cleanUrl.includes(href)) {
+                        matchedLink = btn;
+                    }
+                }
+            });
+
+            if (matchedLink) {
+                matchedLink.classList.add('border-b-2', 'border-oro', 'font-bold');
+            }
         }
 
         // Parallax interactivo para los Blobs (Global para movimientos de mouse)

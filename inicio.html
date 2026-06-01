@@ -1,198 +1,226 @@
     <!-- Banner Principal (Mosaico + Texto) -->
-    <div class="bg-gradient-to-br from-principal/10 via-white to-oro/15 border-b border-gray-200">
-        <div class="container mx-auto px-4 md:px-8 py-16 md:py-24">
-            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+    <div class="bg-transparent text-texto">
+        <div class="container mx-auto px-4 md:px-8 py-8 md:py-12">
+            <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-14">
                 
                 <!-- Lado Izquierdo: Textos y Botones -->
                 <div class="w-full lg:w-1/2 flex flex-col justify-center order-2 lg:order-1" data-aos="fade-right">
-                    <div class="w-20 h-1.5 bg-oro mb-6 rounded-full" data-aos="zoom-in" data-aos-delay="200"></div>
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-principal mb-6 leading-tight">
-                        Inspirando el éxito y la felicidad de las líderes del mañana.
+                    <div class="w-16 h-1 bg-oro mb-4 rounded-full" data-aos="zoom-in" data-aos-delay="200"></div>
+                    <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-principal mb-4 leading-tight">
+                        Inspirando el <span class="text-oro">éxito</span> y la <span class="text-oro">felicidad</span> de las líderes del mañana.
                     </h1>
-                    <p class="text-lg md:text-xl text-gray-600 mb-10 leading-relaxed font-medium">
+                    <p class="text-base md:text-lg text-gray-600 mb-6 leading-relaxed font-medium">
                         Formación moderna, dominio intensivo del inglés y tecnología de vanguardia.
                     </p>
                     
-                    <div class="flex flex-col sm:flex-row gap-5" data-aos="fade-up" data-aos-delay="300">
-                        <a href="institucional/presentacion.html" class="spa-link group inline-flex items-center justify-center bg-principal text-white font-bold text-lg py-4 px-8 rounded-xl shadow-lg hover:-translate-y-1 hover:shadow-xl hover:bg-green-800 transition-all duration-300">
+                    <div class="flex flex-col sm:flex-row gap-4" data-aos="fade-up" data-aos-delay="300">
+                        <a href="institucional/presentacion.html" class="spa-link group inline-flex items-center justify-center bg-principal text-white font-bold text-base py-3.5 px-6 rounded-xl shadow-lg hover:-translate-y-1 hover:shadow-xl hover:bg-principal/90 transition-all duration-300">
                             Conoce nuestra propuesta
                         </a>
-                        <a href="admision.html" class="spa-link group inline-flex items-center justify-center bg-oro text-texto font-bold text-lg py-4 px-8 rounded-xl shadow-lg hover:-translate-y-1 hover:shadow-xl hover:bg-yellow-400 transition-all duration-300 border border-oro/50">
+                        <a href="admision.html" class="spa-link group inline-flex items-center justify-center bg-oro text-principal font-bold text-base py-3.5 px-6 rounded-xl shadow-lg hover:-translate-y-1 hover:shadow-xl hover:bg-yellow-400 transition-all duration-300 border border-oro/50">
                             Admisiones 2027
                         </a>
                     </div>
                 </div>
 
                 <!-- Lado Derecho: Mosaico de 6 a 8 imágenes dinámico -->
-                <div id="mosaico-container" class="w-full lg:w-1/2 grid grid-cols-2 gap-4 order-1 lg:order-2">
-                    <!-- Cargado dinámicamente desde data/inicio.json -->
-                    <div class="space-y-4 pt-10" id="mosaico-col-1"></div>
-                    <div class="space-y-4" id="mosaico-col-2"></div>
+                <div class="w-full lg:w-1/2 order-1 lg:order-2" data-aos="fade-left">
+                    <div id="mosaico-container" class="grid grid-cols-2 gap-4">
+                        <!-- Cargado dinámicamente desde data/inicio.json -->
+                        <div class="space-y-4 pt-4" id="mosaico-col-1"></div>
+                        <div class="space-y-4" id="mosaico-col-2"></div>
+                    </div>
                 </div>
 
             </div>
         </div>
     </div>
 
-    <section id="institucional-block" class="py-24 bg-white relative overflow-hidden scroll-mt-28">
+    <!-- Logros y Estadísticas (Barra de Impacto Centrada) -->
+    <div class="max-w-5xl mx-auto px-4 relative z-30 -mt-10 mb-6">
+        <div class="bg-white/10 backdrop-blur-md rounded-3xl border border-principal/20 p-6 md:p-8 shadow-lg" data-aos="zoom-in">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 divide-y-0 divide-x-0 lg:divide-x divide-gray-200/50">
+                <!-- Logro 1 -->
+                <div class="text-center py-2 lg:py-0">
+                    <div class="w-12 h-12 bg-principal/10 text-principal rounded-xl flex items-center justify-center text-xl mx-auto mb-3">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <span class="block text-3xl md:text-4xl font-black text-principal mb-1"><span class="counter-value" data-target="75">0</span> Años</span>
+                    <span class="text-gray-500 font-bold uppercase tracking-wider text-[10px]">Trayectoria Educativa</span>
+                </div>
+                <!-- Logro 2 -->
+                <div class="text-center py-2 lg:py-0">
+                    <div class="w-12 h-12 bg-oro/20 text-oro rounded-xl flex items-center justify-center text-xl mx-auto mb-3">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <span class="block text-3xl md:text-4xl font-black text-principal mb-1"><span class="counter-value" data-target="100">0</span>%</span>
+                    <span class="text-gray-500 font-bold uppercase tracking-wider text-[10px]">Ingreso Directo Preferencial</span>
+                </div>
+                <!-- Logro 3 -->
+                <div class="text-center py-2 lg:py-0">
+                    <div class="w-12 h-12 bg-principal/10 text-principal rounded-xl flex items-center justify-center text-xl mx-auto mb-3">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <span class="block text-3xl md:text-4xl font-black text-principal mb-1"><span class="counter-value" data-target="15">0</span>+</span>
+                    <span class="text-gray-500 font-bold uppercase tracking-wider text-[10px]">Talleres Formativos</span>
+                </div>
+                <!-- Logro 4 -->
+                <div class="text-center py-2 lg:py-0">
+                    <div class="w-12 h-12 bg-oro/20 text-oro rounded-xl flex items-center justify-center text-xl mx-auto mb-3">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <span class="block text-3xl md:text-4xl font-black text-principal mb-1"><span class="counter-value" data-target="3">0</span></span>
+                    <span class="text-gray-500 font-bold uppercase tracking-wider text-[10px]">Idiomas Integrados</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección Institucional y Niveles Integrados -->
+    <section class="py-12 bg-transparent relative overflow-hidden" style="background: radial-gradient(circle at 80% 20%, rgba(235, 179, 0, 0.03) 0%, transparent 50%), radial-gradient(circle at 20% 80%, rgba(0, 89, 49, 0.02) 0%, transparent 50%);">
         <!-- Decoración lateral sutil animada (Blobs Aurora) -->
         <div class="absolute top-1/2 left-0 -translate-y-1/2 -ml-20 w-80 h-80 rounded-full bg-principal/5 blur-3xl animate-blob-1 pointer-events-none z-0"></div>
         <div class="absolute top-10 right-0 -mr-20 w-80 h-80 rounded-full bg-oro/5 blur-3xl animate-blob-2 pointer-events-none z-0"></div>
 
         <div class="container mx-auto px-4 relative z-10">
-            <!-- Título de Sección -->
-            <div class="text-center mb-16" data-aos="fade-up">
-                <span class="text-oro font-bold tracking-widest uppercase text-sm mb-2 block">Identidad y Excelencia</span>
-                <h2 class="text-4xl font-bold text-principal inline-block relative pb-4">
-                    Proyecto Institucional
-                    <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1.5 bg-oro rounded-full"></span>
-                </h2>
-                <p class="text-gray-600 mt-6 max-w-2xl mx-auto text-lg">
-                    Conoce los pilares éticos, pedagógicos e históricos que fundamentan la formación integral católica de nuestras estudiantes.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Tarjeta 1: Presentación -->
-                <div class="bg-gray-50 p-8 rounded-3xl border border-gray-100 hover:shadow-xl transition-all duration-300 group flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
-                    <div>
-                        <div class="w-14 h-14 bg-principal/10 text-principal rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fas fa-school"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-principal mb-3">Nuestra Propuesta</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-6">
-                            Educación católica y laica con un enfoque intensivo en inglés y preparación moderna para el liderazgo del mañana.
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+                <!-- Columna Izquierda: Proyecto Institucional -->
+                <div id="institucional-block" class="lg:col-span-6 flex flex-col justify-between scroll-mt-[90px]" data-aos="fade-right">
+                    <div class="mb-6">
+                        <span class="text-oro font-bold tracking-widest uppercase text-xs mb-2 block">Identidad y Excelencia</span>
+                        <h2 class="text-3xl font-bold text-principal inline-block relative pb-3">
+                            Proyecto Institucional
+                            <span class="absolute bottom-0 left-0 w-16 h-1 bg-oro rounded-full"></span>
+                        </h2>
+                        <p class="text-gray-600 mt-4 text-sm leading-relaxed">
+                            Conoce los pilares éticos, pedagógicos e históricos que fundamentan la formación integral católica de nuestras estudiantes.
                         </p>
                     </div>
-                    <a href="institucional/presentacion.html" class="spa-link inline-flex items-center text-principal font-bold hover:text-oro transition-colors text-sm">
-                        Ver propuesta <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform duration-300"></i>
-                    </a>
-                </div>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 flex-grow">
+                        <!-- Tarjeta 1: Presentación -->
+                        <a href="institucional/presentacion.html" class="spa-link animate-card bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-principal/20 hover:shadow-lg hover:border-principal/30 transition-all duration-300 hover:-translate-y-1.5 group flex flex-col justify-between">
+                            <div>
+                                <div class="w-12 h-12 bg-principal/10 text-principal rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-105 transition-transform">
+                                    <i class="fas fa-school"></i>
+                                </div>
+                                <h3 class="text-base font-bold text-principal mb-2">Nuestra Propuesta</h3>
+                                <p class="text-gray-500 text-xs leading-relaxed">
+                                    Educación católica y laica con un enfoque intensivo en inglés y preparación para el liderazgo.
+                                </p>
+                            </div>
+                        </a>
 
-                <!-- Tarjeta 2: Misión y Visión -->
-                <div class="bg-gray-50 p-8 rounded-3xl border border-gray-100 hover:shadow-xl transition-all duration-300 group flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
-                    <div>
-                        <div class="w-14 h-14 bg-oro/20 text-oro rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fas fa-bullseye"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-principal mb-3">Misión y Visión</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-6">
-                            Formamos mujeres líderes, íntegras y competitivas, capaces de transformar su entorno con valores cristianos y ética.
-                        </p>
-                    </div>
-                    <a href="institucional/mision-vision.html" class="spa-link inline-flex items-center text-principal font-bold hover:text-oro transition-colors text-sm">
-                        Ver visión <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform duration-300"></i>
-                    </a>
-                </div>
+                        <!-- Tarjeta 2: Misión y Visión -->
+                        <a href="institucional/mision-vision.html" class="spa-link animate-card bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-principal/20 hover:shadow-lg hover:border-principal/30 transition-all duration-300 hover:-translate-y-1.5 group flex flex-col justify-between">
+                            <div>
+                                <div class="w-12 h-12 bg-oro/20 text-oro rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-105 transition-transform">
+                                    <i class="fas fa-bullseye"></i>
+                                </div>
+                                <h3 class="text-base font-bold text-principal mb-2">Misión y Visión</h3>
+                                <p class="text-gray-500 text-xs leading-relaxed">
+                                    Formamos mujeres líderes, íntegras y competitivas con profundos valores cristianos y ética.
+                                </p>
+                            </div>
+                        </a>
 
-                <!-- Tarjeta 3: IB - MYP -->
-                <div class="bg-gray-50 p-8 rounded-3xl border border-gray-100 hover:shadow-xl transition-all duration-300 group flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
-                    <div>
-                        <div class="w-14 h-14 bg-principal/10 text-principal rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fas fa-globe"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-principal mb-3">Bachillerato PAI</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-6">
-                            Brindamos el Programa de los Años Intermedios (PAI) del IB, promoviendo el rigor académico y una mentalidad global.
-                        </p>
-                    </div>
-                    <a href="institucional/ib-myp.html" class="spa-link inline-flex items-center text-principal font-bold hover:text-oro transition-colors text-sm">
-                        Ver programa PAI <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform duration-300"></i>
-                    </a>
-                </div>
+                        <!-- Tarjeta 3: IB - MYP -->
+                        <a href="institucional/ib-myp.html" class="spa-link animate-card bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-principal/20 hover:shadow-lg hover:border-principal/30 transition-all duration-300 hover:-translate-y-1.5 group flex flex-col justify-between">
+                            <div>
+                                <div class="w-12 h-12 bg-principal/10 text-principal rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-105 transition-transform">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                                <h3 class="text-base font-bold text-principal mb-2">Bachillerato PAI</h3>
+                                <p class="text-gray-500 text-xs leading-relaxed">
+                                    Brindamos el Programa de los Años Intermedios (PAI) del IB, promoviendo el rigor académico global.
+                                </p>
+                            </div>
+                        </a>
 
-                <!-- Tarjeta 4: Historia -->
-                <div class="bg-gray-50 p-8 rounded-3xl border border-gray-100 hover:shadow-xl transition-all duration-300 group flex flex-col justify-between" data-aos="fade-up" data-aos-delay="400">
-                    <div>
-                        <div class="w-14 h-14 bg-oro/20 text-oro rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fas fa-history"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-principal mb-3">Nuestra Historia</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-6">
-                            Fundado en 1950, mantenemos una impecable trayectoria de Bodas de Brillante formando con amor, fe y excelencia.
-                        </p>
-                    </div>
-                    <a href="institucional/historia.html" class="spa-link inline-flex items-center text-principal font-bold hover:text-oro transition-colors text-sm">
-                        Ver historia <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform duration-300"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="niveles-block" class="py-24 bg-fondo relative overflow-hidden scroll-mt-28">
-        <!-- Blobs de fondo Aurora -->
-        <div class="absolute top-20 right-10 w-96 h-96 rounded-full bg-principal/5 blur-3xl animate-blob-2 pointer-events-none z-0"></div>
-        <div class="absolute bottom-20 left-10 w-96 h-96 rounded-full bg-oro/5 blur-3xl animate-blob-1 pointer-events-none z-0"></div>
-        <div class="container mx-auto px-4 relative z-10">
-            <!-- Título de Sección -->
-            <div class="text-center mb-20" data-aos="fade-up">
-                <h2 class="text-4xl font-bold text-principal inline-block relative pb-4">
-                    Nuestros Niveles Educativos
-                    <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1.5 bg-oro rounded-full"></span>
-                </h2>
-                <p class="text-gray-600 mt-6 max-w-2xl mx-auto text-lg">
-                    Acompañamos el desarrollo de tus hijas en cada etapa, construyendo juntos su camino hacia la universidad y el mundo.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <!-- Tarjeta: Nivel Inicial -->
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 flex flex-col h-full border border-gray-100" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="relative w-full aspect-[4/3] overflow-hidden">
-                        <img id="nivel-inicial-img" src="images/inicial1.webp" alt="Nivel Inicial" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-principal/90 via-principal/30 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="absolute bottom-0 left-0 w-full p-6">
-                            <span class="bg-oro text-principal text-xs font-bold uppercase tracking-wider py-1 px-3 rounded-full mb-3 inline-block">3 a 5 años</span>
-                            <h3 class="text-3xl font-bold text-white">Nivel Inicial</h3>
-                        </div>
-                    </div>
-                    <div class="p-8 flex-grow flex flex-col">
-                        <p id="nivel-inicial-text" class="text-gray-600 mb-8 flex-grow leading-relaxed">
-                            Estimulamos la curiosidad natural en un entorno lúdico y seguro. Fomentamos el desarrollo motor, social and emocional con metodologías activas centradas en el juego.
-                        </p>
-                        <a href="niveles/inicial.html" class="spa-link inline-flex items-center text-principal font-bold group-hover:text-oro transition-colors text-lg">
-                            Explorar Nivel Inicial <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform duration-300"></i>
+                        <!-- Tarjeta 4: Historia -->
+                        <a href="institucional/historia.html" class="spa-link animate-card bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-principal/20 hover:shadow-lg hover:border-principal/30 transition-all duration-300 hover:-translate-y-1.5 group flex flex-col justify-between">
+                            <div>
+                                <div class="w-12 h-12 bg-oro/20 text-oro rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-105 transition-transform">
+                                    <i class="fas fa-history"></i>
+                                </div>
+                                <h3 class="text-base font-bold text-principal mb-2">Nuestra Historia</h3>
+                                <p class="text-gray-500 text-xs leading-relaxed">
+                                    Fundado en 1950, mantenemos una impecable trayectoria formando con amor, fe y excelencia.
+                                </p>
+                            </div>
                         </a>
                     </div>
                 </div>
-
-                <!-- Tarjeta: Nivel Primaria -->
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 flex flex-col h-full border border-gray-100" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="relative w-full aspect-[4/3] overflow-hidden">
-                        <img id="nivel-primaria-img" src="images/primaria1.webp" alt="Nivel Primaria" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-principal/90 via-principal/30 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="absolute bottom-0 left-0 w-full p-6">
-                            <span class="bg-oro text-principal text-xs font-bold uppercase tracking-wider py-1 px-3 rounded-full mb-3 inline-block">1ro a 6to Grado</span>
-                            <h3 class="text-3xl font-bold text-white">Nivel Primaria</h3>
-                        </div>
-                    </div>
-                    <div class="p-8 flex-grow flex flex-col">
-                        <p id="nivel-primaria-text" class="text-gray-600 mb-8 flex-grow leading-relaxed">
-                            Consolidamos las bases del aprendizaje a través de la investigación guiada. Integramos tecnología, bilingüismo y profundos valores católicos en cada paso.
+                
+                <!-- Columna Derecha: Nuestros Niveles Educativos -->
+                <div id="niveles-block" class="lg:col-span-6 flex flex-col justify-between scroll-mt-[90px]" data-aos="fade-left">
+                    <div class="mb-6">
+                        <span class="text-oro font-bold tracking-widest uppercase text-xs mb-2 block">Etapas de Crecimiento</span>
+                        <h2 class="text-3xl font-bold text-principal inline-block relative pb-3">
+                            Niveles Educativos
+                            <span class="absolute bottom-0 left-0 w-16 h-1 bg-oro rounded-full"></span>
+                        </h2>
+                        <p class="text-gray-600 mt-4 text-sm leading-relaxed">
+                            Acompañamos el desarrollo de tus hijas en cada etapa, construyendo juntos su camino hacia la universidad y el mundo.
                         </p>
-                        <a href="niveles/primaria.html" class="spa-link inline-flex items-center text-principal font-bold group-hover:text-oro transition-colors text-lg">
-                            Explorar Nivel Primaria <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform duration-300"></i>
+                    </div>
+                    
+                    <div class="space-y-4 flex-grow flex flex-col justify-end">
+                        <!-- Tarjeta: Nivel Inicial -->
+                        <a href="niveles/inicial.html" class="spa-link animate-card bg-white/10 backdrop-blur-md rounded-2xl border border-principal/20 overflow-hidden hover:shadow-lg hover:border-principal/20 hover:-translate-y-1.5 transition-all duration-300 flex items-stretch h-32">
+                            <div class="w-1/3 shrink-0 relative overflow-hidden">
+                                <img id="nivel-inicial-img" src="images/inicial1.webp" alt="Nivel Inicial" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-r from-transparent to-black/10"></div>
+                            </div>
+                            <div class="p-4 flex flex-col justify-center w-2/3">
+                                <div>
+                                    <div class="flex justify-between items-start gap-2">
+                                        <h3 class="font-bold text-principal text-sm">Nivel Inicial</h3>
+                                        <span class="bg-oro text-principal text-[8px] font-extrabold uppercase py-0.5 px-2 rounded-full shrink-0">3 a 5 años</span>
+                                    </div>
+                                    <p id="nivel-inicial-text" class="text-gray-500 text-[10px] leading-snug mt-1 line-clamp-2">
+                                        Estimulamos la curiosidad natural en un entorno lúdico y seguro. Fomentamos el desarrollo motor y socioemocional.
+                                    </p>
+                                </div>
+                            </div>
                         </a>
-                    </div>
-                </div>
 
-                <!-- Tarjeta: Nivel Secundaria -->
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 flex flex-col h-full border border-gray-100" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="relative w-full aspect-[4/3] overflow-hidden">
-                        <img id="nivel-secundaria-img" src="images/secundaria1.webp" alt="Nivel Secundaria" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-principal/90 via-principal/30 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="absolute bottom-0 left-0 w-full p-6">
-                            <span class="bg-oro text-principal text-xs font-bold uppercase tracking-wider py-1 px-3 rounded-full mb-3 inline-block">1er a 5to Año (PAI)</span>
-                            <h3 class="text-3xl font-bold text-white">Nivel Secundaria</h3>
-                        </div>
-                    </div>
-                    <div class="p-8 flex-grow flex flex-col">
-                        <p id="nivel-secundaria-text" class="text-gray-600 mb-8 flex-grow leading-relaxed">
-                            Preparamos a nuestras estudiantes con el rigor internacional del Programa de Años Intermedios, formando líderes analíticas y ciudadanas del mundo.
-                        </p>
-                        <a href="niveles/secundaria.html" class="spa-link inline-flex items-center text-principal font-bold group-hover:text-oro transition-colors text-lg">
-                            Explorar Nivel Secundaria <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform duration-300"></i>
+                        <!-- Tarjeta: Nivel Primaria -->
+                        <a href="niveles/primaria.html" class="spa-link animate-card bg-white/10 backdrop-blur-md rounded-2xl border border-principal/20 overflow-hidden hover:shadow-lg hover:border-principal/20 hover:-translate-y-1.5 transition-all duration-300 flex items-stretch h-32">
+                            <div class="w-1/3 shrink-0 relative overflow-hidden">
+                                <img id="nivel-primaria-img" src="images/primaria1.webp" alt="Nivel Primaria" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-r from-transparent to-black/10"></div>
+                            </div>
+                            <div class="p-4 flex flex-col justify-center w-2/3">
+                                <div>
+                                    <div class="flex justify-between items-start gap-2">
+                                        <h3 class="font-bold text-principal text-sm">Nivel Primaria</h3>
+                                        <span class="bg-oro text-principal text-[8px] font-extrabold uppercase py-0.5 px-2 rounded-full shrink-0">1ro a 6to Grado</span>
+                                    </div>
+                                    <p id="nivel-primaria-text" class="text-gray-500 text-[10px] leading-snug mt-1 line-clamp-2">
+                                        Consolidamos las bases del aprendizaje a través de investigación guiada, bilingüismo y profundos valores.
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Tarjeta: Nivel Secundaria -->
+                        <a href="niveles/secundaria.html" class="spa-link animate-card bg-white/10 backdrop-blur-md rounded-2xl border border-principal/20 overflow-hidden hover:shadow-lg hover:border-principal/20 hover:-translate-y-1.5 transition-all duration-300 flex items-stretch h-32">
+                            <div class="w-1/3 shrink-0 relative overflow-hidden">
+                                <img id="nivel-secundaria-img" src="images/secundaria1.webp" alt="Nivel Secundaria" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-r from-transparent to-black/10"></div>
+                            </div>
+                            <div class="p-4 flex flex-col justify-center w-2/3">
+                                <div>
+                                    <div class="flex justify-between items-start gap-2">
+                                        <h3 class="font-bold text-principal text-sm">Nivel Secundaria</h3>
+                                        <span class="bg-oro text-principal text-[8px] font-extrabold uppercase py-0.5 px-2 rounded-full shrink-0">PAI (1er a 5to)</span>
+                                    </div>
+                                    <p id="nivel-secundaria-text" class="text-gray-500 text-[10px] leading-snug mt-1 line-clamp-2">
+                                        Preparamos a nuestras estudiantes con el rigor internacional del Programa de Años Intermedios del IB.
+                                    </p>
+                                </div>
+                            </div>
                         </a>
                     </div>
                 </div>
@@ -200,408 +228,518 @@
         </div>
     </section>
 
-    <section id="convenios-block" class="py-24 bg-white relative overflow-hidden border-t border-gray-150 scroll-mt-28">
+
+
+    <!-- Sección Convenios y Servicios Integrados -->
+    <section class="py-16 bg-transparent relative overflow-hidden" style="background: radial-gradient(circle at 15% 15%, rgba(0, 89, 49, 0.03) 0%, transparent 60%), radial-gradient(circle at 85% 85%, rgba(235, 179, 0, 0.03) 0%, transparent 60%);">
         <!-- Blobs de fondo Aurora -->
         <div class="absolute top-10 left-10 w-80 h-80 rounded-full bg-principal/5 blur-3xl animate-blob-1 pointer-events-none z-0"></div>
         <div class="absolute bottom-10 right-10 w-80 h-80 rounded-full bg-oro/5 blur-3xl animate-blob-2 pointer-events-none z-0"></div>
+        
         <div class="container mx-auto px-4 relative z-10">
-            <!-- Título de Sección -->
-            <div class="text-center mb-16" data-aos="fade-up">
-                <span class="text-oro font-bold tracking-widest uppercase text-sm mb-2 block">Puertas al Futuro</span>
-                <h2 class="text-4xl font-bold text-principal inline-block relative pb-4">
-                    Convenios y Alianzas
-                    <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1.5 bg-oro rounded-full"></span>
-                </h2>
-                <p class="text-gray-600 mt-6 max-w-2xl mx-auto text-lg">
-                    Impulsamos el desarrollo de nuestras estudiantes mediante acreditaciones globales y ventajas académicas exclusivas.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Convenios Académicos -->
-                <div class="bg-gray-50 p-8 rounded-3xl border border-gray-100 hover:shadow-xl transition-all duration-300 group flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
-                    <div>
-                        <div class="w-14 h-14 bg-principal/10 text-principal rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fas fa-university"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-principal mb-3">Convenios Académicos</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-6">
-                            Ingreso directo preferencial y de Tercio Superior en universidades líderes como la PUCP y la Universidad del Pacífico.
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+                <!-- Columna Izquierda: Convenios y Alianzas -->
+                <div id="convenios-block" class="lg:col-span-5 flex flex-col justify-between scroll-mt-[90px]" data-aos="fade-right">
+                    <div class="mb-6">
+                        <span class="text-oro font-bold tracking-widest uppercase text-xs mb-2 block">Puertas al Futuro</span>
+                        <h2 class="text-3xl font-bold text-principal inline-block relative pb-3">
+                            Convenios y Alianzas
+                            <span class="absolute bottom-0 left-0 w-16 h-1 bg-oro rounded-full"></span>
+                        </h2>
+                        <p class="text-gray-600 mt-4 text-sm leading-relaxed">
+                            Impulsamos el desarrollo de nuestras estudiantes mediante acreditaciones globales y ventajas académicas exclusivas.
                         </p>
                     </div>
-                    <a href="convenios/academicos.html" class="spa-link inline-flex items-center text-principal font-bold hover:text-oro transition-colors text-sm">
-                        Ver convenios universitarios <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform duration-300"></i>
-                    </a>
+                    
+                    <div class="space-y-5 flex-grow flex flex-col justify-end">
+                        <!-- Convenios Académicos -->
+                        <a href="convenios/academicos.html" class="spa-link animate-card bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-principal/20 hover:shadow-lg hover:border-principal/20 hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between">
+                            <div>
+                                <div class="w-12 h-12 bg-principal/10 text-principal rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-105 transition-transform">
+                                    <i class="fas fa-university"></i>
+                                </div>
+                                <h3 class="text-lg font-bold text-principal mb-2">Convenios Académicos</h3>
+                                <p class="text-gray-500 text-xs leading-relaxed">
+                                    Ingreso directo preferencial y de Tercio Superior en universidades líderes como la PUCP and la Universidad del Pacífico.
+                                </p>
+                            </div>
+                        </a>
+                        
+                        <!-- Cambridge English -->
+                        <a href="convenios/cambridge.html" class="spa-link animate-card bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-principal/20 hover:shadow-lg hover:border-principal/20 hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between">
+                            <div>
+                                <div class="w-12 h-12 bg-principal/10 text-principal rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-105 transition-transform">
+                                    <i class="fas fa-certificate"></i>
+                                </div>
+                                <h3 class="text-lg font-bold text-principal mb-2">Certificación Cambridge</h3>
+                                <p class="text-gray-500 text-xs leading-relaxed">
+                                    Programa de inglés intensivo avalado por certificaciones internacionales que aseguran la excelencia bilingüe de nuestras egresadas.
+                                </p>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-
-                <!-- Alianza Francesa -->
-                <div class="bg-gray-50 p-8 rounded-3xl border border-gray-100 hover:shadow-xl transition-all duration-300 group flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
-                    <div>
-                        <div class="w-14 h-14 bg-oro/20 text-oro rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fas fa-language"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-principal mb-3">Alianza Francesa</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-6">
-                            Enseñanza del francés como tercer idioma con preparación y acreditación oficial para exámenes internacionales DELF.
+                
+                <!-- Columna Derecha: Servicios de la Comunidad -->
+                <div id="servicios-block" class="lg:col-span-7 flex flex-col justify-between scroll-mt-[90px]" data-aos="fade-left">
+                    <div class="mb-6">
+                        <span class="text-oro font-bold tracking-widest uppercase text-xs mb-2 block">Bienestar y Soporte</span>
+                        <h2 class="text-3xl font-bold text-principal inline-block relative pb-3">
+                            Servicios de la Comunidad
+                            <span class="absolute bottom-0 left-0 w-16 h-1 bg-oro rounded-full"></span>
+                        </h2>
+                        <p class="text-gray-600 mt-4 text-sm leading-relaxed">
+                            Brindamos soporte integral y acompañamiento emocional, familiar y nutricional para toda la comunidad escolar.
                         </p>
                     </div>
-                    <a href="convenios/alianza.html" class="spa-link inline-flex items-center text-principal font-bold hover:text-oro transition-colors text-sm">
-                        Ver convenio francés <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform duration-300"></i>
-                    </a>
-                </div>
-
-                <!-- Cambridge English -->
-                <div class="bg-gray-50 p-8 rounded-3xl border border-gray-100 hover:shadow-xl transition-all duration-300 group flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
-                    <div>
-                        <div class="w-14 h-14 bg-principal/10 text-principal rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fas fa-certificate"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-principal mb-3">Certificación Cambridge</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-6">
-                            Programa de inglés intensivo avalado por certificaciones internacionales que aseguran la excelencia bilingüe de nuestras egresadas.
-                        </p>
+                    
+                    <div class="space-y-5 flex-grow flex flex-col justify-end">
+                        <!-- Departamento Psicopedagógico -->
+                        <a href="servicios/psicopedagogico.html" class="spa-link animate-card bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-principal/20 hover:shadow-lg hover:border-principal/20 hover:-translate-y-1.5 transition-all duration-300 group flex items-start gap-4">
+                            <div class="w-12 h-12 bg-principal/10 text-principal rounded-xl flex items-center justify-center text-xl shrink-0 group-hover:scale-105 transition-transform">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="text-base font-bold text-principal mb-1">Psicopedagógico</h3>
+                                <p class="text-gray-500 text-xs leading-relaxed">
+                                    Acompañamiento socioemocional por niveles y un riguroso programa de orientación vocacional para secundaria.
+                                </p>
+                            </div>
+                        </a>
+                        
+                        <!-- Escuela para Padres -->
+                        <a href="servicios/escuela-padres.html" class="spa-link animate-card bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-principal/20 hover:shadow-lg hover:border-principal/20 hover:-translate-y-1.5 transition-all duration-300 group flex items-start gap-4">
+                            <div class="w-12 h-12 bg-oro/20 text-oro rounded-xl flex items-center justify-center text-xl shrink-0 group-hover:scale-105 transition-transform">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="text-base font-bold text-principal mb-1">Escuela para Padres</h3>
+                                <p class="text-gray-500 text-xs leading-relaxed">
+                                    Charlas de formación activa y soporte continuo para potenciar la crianza positiva en los hogares.
+                                </p>
+                            </div>
+                        </a>
+                        
+                        <!-- Comedor -->
+                        <a href="servicios/comedor.html" class="spa-link animate-card bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-principal/20 hover:shadow-lg hover:border-principal/20 hover:-translate-y-1.5 transition-all duration-300 group flex items-start gap-4">
+                            <div class="w-12 h-12 bg-principal/10 text-principal rounded-xl flex items-center justify-center text-xl shrink-0 group-hover:scale-105 transition-transform">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="text-base font-bold text-principal mb-1">Comedor Escolar</h3>
+                                <p class="text-gray-500 text-xs leading-relaxed">
+                                    Menús balanceados e información nutricional a cargo de un concesionario de alimentos calificado.
+                                </p>
+                            </div>
+                        </a>
                     </div>
-                    <a href="convenios/cambridge.html" class="spa-link inline-flex items-center text-principal font-bold hover:text-oro transition-colors text-sm">
-                        Ver convenio Cambridge <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform duration-300"></i>
-                    </a>
                 </div>
             </div>
         </div>
     </section>
-
-    <section id="servicios-block" class="py-24 bg-fondo relative overflow-hidden border-t border-gray-150 scroll-mt-28">
-        <!-- Blobs de fondo Aurora -->
-        <div class="absolute top-20 right-10 w-80 h-80 rounded-full bg-principal/5 blur-3xl animate-blob-2 pointer-events-none z-0"></div>
-        <div class="absolute bottom-20 left-10 w-80 h-80 rounded-full bg-oro/5 blur-3xl animate-blob-1 pointer-events-none z-0"></div>
-        <div class="container mx-auto px-4 relative z-10">
-            <!-- Título de Sección -->
-            <div class="text-center mb-16" data-aos="fade-up">
-                <span class="text-oro font-bold tracking-widest uppercase text-sm mb-2 block">Bienestar y Soporte</span>
-                <h2 class="text-4xl font-bold text-principal inline-block relative pb-4">
-                    Servicios de la Comunidad
-                    <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1.5 bg-oro rounded-full"></span>
-                </h2>
-                <p class="text-gray-600 mt-6 max-w-2xl mx-auto text-lg">
-                    Brindamos soporte integral y acompañamiento emocional, familiar y nutricional para toda la comunidad escolar.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Departamento Psicopedagógico -->
-                <div class="bg-white p-8 rounded-3xl border border-gray-100 hover:shadow-xl transition-all duration-300 group flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
-                    <div>
-                        <div class="w-14 h-14 bg-principal/10 text-principal rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fas fa-heartbeat"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-principal mb-3">Psicopedagógico</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-6 font-medium">
-                            Acompañamiento socioemocional por niveles y un riguroso programa de orientación vocacional para secundaria.
-                        </p>
-                    </div>
-                    <a href="servicios/psicopedagogico.html" class="spa-link inline-flex items-center text-principal font-bold hover:text-oro transition-colors text-sm">
-                        Ver psicopedagógico <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform duration-300"></i>
-                    </a>
-                </div>
-
-                <!-- Escuela para Padres -->
-                <div class="bg-white p-8 rounded-3xl border border-gray-100 hover:shadow-xl transition-all duration-300 group flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
-                    <div>
-                        <div class="w-14 h-14 bg-oro/20 text-oro rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-principal mb-3">Escuela para Padres</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-6 font-medium">
-                            Charlas de formación activa y soporte continuo para potenciar la crianza positiva en los hogares.
-                        </p>
-                    </div>
-                    <a href="servicios/escuela-padres.html" class="spa-link inline-flex items-center text-principal font-bold hover:text-oro transition-colors text-sm">
-                        Ver escuela para padres <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform duration-300"></i>
-                    </a>
-                </div>
-
-                <!-- Comedor y Cafetería -->
-                <div class="bg-white p-8 rounded-3xl border border-gray-100 hover:shadow-xl transition-all duration-300 group flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
-                    <div>
-                        <div class="w-14 h-14 bg-principal/10 text-principal rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fas fa-utensils"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-principal mb-3">Comedor Escolar</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-6 font-medium">
-                            Menús balanceados e información nutricional a cargo de un concesionario de alimentos calificado.
-                        </p>
-                    </div>
-                    <a href="servicios/comedor.html" class="spa-link inline-flex items-center text-principal font-bold hover:text-oro transition-colors text-sm">
-                        Ver comedor y menú <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform duration-300"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="comunidad-block" class="py-24 bg-white relative overflow-hidden scroll-mt-28">
+    <section id="comunidad-block" class="py-16 bg-transparent relative overflow-hidden scroll-mt-[76px]" style="background: radial-gradient(circle at 50% 10%, rgba(0, 89, 49, 0.02) 0%, transparent 50%);">
         <!-- Blobs de fondo Aurora -->
         <div class="absolute top-10 left-10 w-96 h-96 rounded-full bg-principal/5 blur-3xl animate-blob-1 pointer-events-none z-0"></div>
         <div class="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-oro/5 blur-3xl animate-blob-2 pointer-events-none z-0"></div>
         <div class="container mx-auto px-4 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-                
-                <!-- Columna Izquierda: Comunidad y Eventos -->
-                <div data-aos="fade-right">
-                    <div class="flex items-center mb-10">
-                        <div class="w-12 h-1.5 bg-oro mr-5 rounded-full"></div>
-                        <h2 class="text-3xl lg:text-4xl font-bold text-principal tracking-tight">Comunidad y Eventos</h2>
-                    </div>
+            <!-- Título de Sección -->
+            <div class="flex items-center mb-12" data-aos="fade-up">
+                <div class="w-12 h-1.5 bg-oro mr-5 rounded-full"></div>
+                <h2 class="text-3xl lg:text-4xl font-bold text-principal tracking-tight">Comunidad y Eventos</h2>
+            </div>
 
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Columna Izquierda: Boletines e Información -->
+                <div class="lg:col-span-7" data-aos="fade-right">
                     <!-- Bloque A: Últimas Noticias Dinámicas -->
                     <div class="mb-12">
-                        <h3 class="text-2xl font-semibold text-texto mb-6 flex items-center">
-                            <i class="fas fa-newspaper text-oro mr-3 text-2xl"></i> Últimas Noticias y Boletines
-                        </h3>
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                            <h3 class="text-2xl font-semibold text-texto flex items-center mb-0">
+                                <i class="fas fa-newspaper text-oro mr-3 text-2xl"></i> Boletines e Información
+                            </h3>
+                            <!-- Buscador Rápido -->
+                            <div class="relative max-w-xs w-full">
+                                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                                    <i class="fas fa-search text-gray-400 text-xs"></i>
+                                </div>
+                                <input type="text" id="boletin-search" placeholder="Buscar boletín..." class="w-full bg-white/10 border border-principal/20 rounded-xl py-2.5 pl-9 pr-4 text-xs text-texto font-medium focus:outline-none focus:ring-2 focus:ring-oro transition-all">
+                            </div>
+                        </div>
+
+                        <!-- Filtros (Pills) -->
+                        <div class="flex gap-2 mb-6 overflow-x-auto pb-2 scrollbar-none">
+                            <button class="boletin-filter-btn px-4 py-1.5 rounded-full font-bold text-xs bg-principal text-white shadow-sm transition-colors focus:outline-none" data-category="todos">Todos</button>
+                            <button class="boletin-filter-btn px-4 py-1.5 rounded-full font-bold text-xs bg-gray-100 text-gray-500 hover:bg-principal hover:text-white transition-colors focus:outline-none" data-category="noticia">Noticias</button>
+                            <button class="boletin-filter-btn px-4 py-1.5 rounded-full font-bold text-xs bg-gray-100 text-gray-500 hover:bg-principal hover:text-white transition-colors focus:outline-none" data-category="circular">Circulares</button>
+                            <button class="boletin-filter-btn px-4 py-1.5 rounded-full font-bold text-xs bg-gray-100 text-gray-500 hover:bg-principal hover:text-white transition-colors focus:outline-none" data-category="evento">Agenda</button>
+                        </div>
+
                         <div id="comunidad-noticias-container" class="space-y-5">
                             <p class="text-sm text-gray-500 italic">Cargando boletines oficiales...</p>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Bloque B: Próximas Actividades Dinámicas -->
+                <!-- Columna Derecha: Próximas Actividades Dinámicas -->
+                <div class="lg:col-span-5" data-aos="fade-left">
                     <div class="mb-8">
                         <h3 class="text-2xl font-semibold text-texto mb-6 flex items-center">
                             <i class="fas fa-calendar-alt text-oro mr-3 text-2xl"></i> Próximas Actividades
                         </h3>
-                        <div class="bg-fondo rounded-2xl border border-gray-100 p-2 shadow-sm">
-                            <ul id="comunidad-actividades-container" class="divide-y divide-gray-200">
+                        <div class="bg-white/10 backdrop-blur-md rounded-2xl border border-principal/20 p-2 shadow-lg">
+                            <ul id="comunidad-actividades-container" class="divide-y divide-principal/10">
                                 <li class="p-5 text-sm text-gray-500 italic text-center">Cargando próximas actividades...</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
-                <!-- Script del Bloque Comunidad Dinámica (Netlify CMS Integrado) -->
-                <script>
-                    (function() {
-                        async function cargarComunidad() {
-                            try {
-                                const res = await fetch('data/comunidad.json?v=' + new Date().getTime());
-                                if(!res.ok) throw new Error("Error de red");
-                                const db = await res.json();
-                                
-                                // 1. Inyectar Noticias (Últimas agregadas primero)
-                                const notiContainer = document.getElementById('comunidad-noticias-container');
-                                if(notiContainer && db.noticias) {
-                                    notiContainer.innerHTML = "";
-                                    const noticiasOrdenadas = [...db.noticias].reverse();
-                                    noticiasOrdenadas.slice(0, 2).forEach(noticia => {
-                                        const card = document.createElement('a');
-                                        card.href = `comunidad/detalle.html?id=${noticia.id}`;
-                                        card.className = "spa-link group block bg-fondo p-5 rounded-2xl border border-gray-100 hover:border-oro transition-colors hover:shadow-lg";
-                                        card.innerHTML = `
-                                            <div class="flex items-start gap-5">
-                                                <div class="bg-principal text-white rounded-xl p-3 text-center min-w-[75px] shadow-sm">
-                                                    <span class="block text-xs font-bold uppercase tracking-wider opacity-90">${noticia.mes}</span>
-                                                    <span class="block text-2xl font-black">${noticia.dia}</span>
-                                                </div>
-                                                <div>
-                                                    <h4 class="font-bold text-principal group-hover:text-oro transition-colors text-lg mb-2">${noticia.titulo}</h4>
-                                                    <p class="text-gray-600 text-sm leading-relaxed">${noticia.resumen}</p>
-                                                </div>
-                                            </div>
-                                        `;
-                                        notiContainer.appendChild(card);
-                                    });
-                                }
+            </div>
 
-                                // 2. Inyectar Actividades (Últimas agregadas primero)
-                                const actContainer = document.getElementById('comunidad-actividades-container');
-                                if(actContainer && db.actividades) {
-                                    actContainer.innerHTML = "";
-                                    const actividadesOrdenadas = [...db.actividades].reverse();
-                                    actividadesOrdenadas.slice(0, 3).forEach(act => {
-                                        const li = document.createElement('li');
-                                        li.className = "p-5 flex items-center hover:bg-white transition-colors rounded-xl cursor-pointer";
-                                        li.setAttribute("onclick", `loadPage('comunidad/detalle.html?id=${act.id}')`);
-                                        
-                                        let bulletColor = "bg-oro";
-                                        if(act.tipo === "Presencial") bulletColor = "bg-principal";
-                                        
-                                        li.innerHTML = `
-                                            <div class="w-3 h-3 rounded-full ${bulletColor} mr-5 flex-shrink-0"></div>
-                                            <div class="flex-grow">
-                                                <h4 class="font-bold text-texto text-base mb-1">${act.titulo}</h4>
-                                                <span class="text-sm text-gray-500 font-medium"><i class="far fa-clock mr-1"></i> ${act.fecha_display}</span>
-                                            </div>
-                                            <span class="bg-principal/10 text-principal text-xs px-4 py-1.5 rounded-full font-bold tracking-wide ml-4 hidden sm:inline-block">${act.tipo}</span>
-                                        `;
-                                        actContainer.appendChild(li);
-                                    });
-                                }
-                            } catch (e) {
-                                console.error("Error al inyectar comunidad:", e);
-                            }
+            <!-- Botón de Admisión 2027 -->
+            <div class="mt-16 text-center" data-aos="fade-up">
+                <a href="admision.html" class="spa-link inline-flex items-center justify-center bg-oro hover:bg-yellow-400 text-texto font-bold text-base py-4 px-10 rounded-xl shadow-lg hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 gap-2 border border-oro/50">
+                    <i class="fas fa-graduation-cap"></i> Proceso de Admisión 2027 <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+            </div>
+
+            <!-- Script del Bloque Comunidad Dinámica -->
+            <script>
+                (function() {
+                    let cacheComunidadDb = null;
+                    let activeCategory = 'todos';
+                    let searchQuery = '';
+
+                    // 1. Cargar y Renderizar Comunidad (Buscador y Filtro)
+                    async function cargarComunidad() {
+                        try {
+                            const res = await fetch('data/comunidad.json?v=' + new Date().getTime());
+                            if(!res.ok) throw new Error("Error de red");
+                            cacheComunidadDb = await res.json();
+                            renderBoletines();
+                            renderActividades();
+                        } catch (e) {
+                            console.error("Error al inyectar comunidad:", e);
                         }
+                    }
 
-                        async function cargarInicio() {
-                            try {
-                                const res = await fetch('data/inicio.json?v=' + new Date().getTime());
-                                if(!res.ok) throw new Error("Error de red al cargar inicio.json");
-                                const db = await res.json();
+                    function renderBoletines() {
+                        const notiContainer = document.getElementById('comunidad-noticias-container');
+                        if(!notiContainer || !cacheComunidadDb || !cacheComunidadDb.noticias) return;
 
-                                // 1. Inyectar Mosaico de Portada (6 a 8 imágenes)
-                                const col1 = document.getElementById('mosaico-col-1');
-                                const col2 = document.getElementById('mosaico-col-2');
-                                if(col1 && col2 && db.mosaico) {
-                                    col1.innerHTML = "";
-                                    col2.innerHTML = "";
-                                    
-                                    db.mosaico.forEach((item, index) => {
-                                        const img = document.createElement('img');
-                                        img.src = item.path;
-                                        img.alt = `Imagen de Portada ${index + 1}`;
-                                        
-                                        // Alturas y efectos de borde alternados para mantener el mosaico asimétrico dinámico
-                                        let heightClass = "h-40 md:h-48";
-                                        let borderColor = "hover:border-oro hover:shadow-[0_10px_30px_rgba(235,179,0,0.4)]";
-                                        
-                                        if (index % 3 === 1) {
-                                            heightClass = "h-32 md:h-40";
-                                            borderColor = "hover:border-principal hover:shadow-[0_10px_30px_rgba(0,89,49,0.4)]";
-                                        }
-                                        
-                                        img.className = `rounded-2xl shadow-lg w-full ${heightClass} object-cover border-2 border-transparent ${borderColor} transition-all duration-300`;
-                                        
-                                        // Distribuir de forma alternada en las columnas del grid
-                                        if (index % 2 === 0) {
-                                            col1.appendChild(img);
-                                        } else {
-                                            col2.appendChild(img);
-                                        }
-                                    });
-                                }
-
-                                // 2. Inyectar Niveles Educativos (Imágenes y Descripciones)
-                                if(db.nivel_inicial) {
-                                    const img = document.getElementById('nivel-inicial-img');
-                                    const txt = document.getElementById('nivel-inicial-text');
-                                    if(img) img.src = db.nivel_inicial.imagen;
-                                    if(txt) txt.innerText = db.nivel_inicial.descripcion;
-                                }
-                                if(db.nivel_primaria) {
-                                    const img = document.getElementById('nivel-primaria-img');
-                                    const txt = document.getElementById('nivel-primaria-text');
-                                    if(img) img.src = db.nivel_primaria.imagen;
-                                    if(txt) txt.innerText = db.nivel_primaria.descripcion;
-                                }
-                                if(db.nivel_secundaria) {
-                                    const img = document.getElementById('nivel-secundaria-img');
-                                    const txt = document.getElementById('nivel-secundaria-text');
-                                    if(img) img.src = db.nivel_secundaria.imagen;
-                                    if(txt) txt.innerText = db.nivel_secundaria.descripcion;
-                                }
-
-                            } catch (e) {
-                                console.error("Error al inyectar recursos de inicio.json:", e);
-                            }
-                        }
-
-                        // Carga inicial
-                        cargarComunidad();
-                        cargarInicio();
-
-                        // Polling cada 30 segundos en segundo plano
-                        const intervalComunidad = setInterval(cargarComunidad, 30000);
-                        const intervalInicio = setInterval(cargarInicio, 30000);
-                        
-                        window.spaIntervals = window.spaIntervals || [];
-                        window.spaIntervals.push(intervalComunidad, intervalInicio);
-
-                        // Detectar cuando la pestaña vuelve a tener foco (el usuario regresa de la pestaña del CMS)
-                        const visibilityHandler = () => {
-                            if (document.visibilityState === 'visible') {
-                                cargarComunidad();
-                                cargarInicio();
-                            }
-                        };
-                        document.addEventListener('visibilitychange', visibilityHandler);
-                        window.spaCleanups = window.spaCleanups || [];
-                        window.spaCleanups.push(() => {
-                            document.removeEventListener('visibilitychange', visibilityHandler);
+                        notiContainer.innerHTML = "";
+                        // Filtrar por categoría y texto
+                        const filtrados = cacheComunidadDb.noticias.filter(noticia => {
+                            const matchesCategory = activeCategory === 'todos' || noticia.tipo === activeCategory;
+                            const matchesSearch = noticia.titulo.toLowerCase().includes(searchQuery) || 
+                                                  noticia.resumen.toLowerCase().includes(searchQuery);
+                            return matchesCategory && matchesSearch;
                         });
-                    })();
-                </script>
 
-                <!-- Columna Derecha: Admisión 2027 -->
-                <div data-aos="fade-left" data-aos-delay="200" class="flex flex-col justify-center">
-                    <div class="bg-gradient-to-br from-principal to-[#003d21] rounded-[2rem] p-8 md:p-10 shadow-2xl relative overflow-hidden border border-principal/50">
-                        <!-- Decoraciones Fondo -->
-                        <div class="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 rounded-full bg-white opacity-5 mix-blend-overlay"></div>
-                        <div class="absolute bottom-0 left-0 -ml-16 -mb-16 w-64 h-64 rounded-full bg-oro opacity-10 mix-blend-overlay"></div>
-                        
-                        <div class="relative z-10">
-                            <span class="inline-block bg-oro text-principal font-bold tracking-widest uppercase text-xs px-4 py-1.5 rounded-full mb-6 shadow-md">Postulaciones Abiertas</span>
-                            <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">Admisión 2027</h2>
-                            <p class="text-white/80 mb-10 leading-relaxed text-lg font-medium">
-                                Únete a la familia Mater Admirabilis. Déjanos tus datos y nuestro equipo de admisiones se pondrá en contacto contigo para guiarte en el proceso.
-                            </p>
+                        if(filtrados.length === 0) {
+                            notiContainer.innerHTML = '<p class="text-sm text-gray-500 italic text-center py-6">No se encontraron boletines con los filtros aplicados.</p>';
+                            return;
+                        }
 
-                            <!-- Formulario de Contacto -->
-                            <form name="admision-rapida" method="POST" data-netlify="true" class="space-y-4 relative z-20">
-                                <div>
-                                    <label class="sr-only">Nombre y Apellido del Padre/Madre</label>
-                                    <div class="relative">
-                                        <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
-                                            <i class="fas fa-user text-gray-400 text-sm"></i>
-                                        </div>
-                                        <input type="text" name="nombre" placeholder="Nombre y Apellido del Apoderado" class="w-full bg-white/95 backdrop-blur-sm rounded-xl py-3 pl-10 pr-4 text-texto text-sm placeholder:text-gray-400/90 placeholder:text-xs focus:outline-none focus:ring-4 focus:ring-oro/50 transition-all shadow-inner" required>
+                        // Mostrar los boletines filtrados ordenados por los últimos agregados primero
+                        const filtradosOrdenados = [...filtrados].reverse();
+                        filtradosOrdenados.slice(0, 3).forEach(noticia => {
+                            const card = document.createElement('a');
+                            card.href = `comunidad/detalle.html?id=${noticia.id}`;
+                            card.className = "spa-link group block bg-white/10 backdrop-blur-md p-5 rounded-2xl border border-principal/20 hover:border-oro transition-all duration-300 hover:shadow-lg";
+                            card.innerHTML = `
+                                <div class="flex items-start gap-5">
+                                    <div class="bg-principal text-white rounded-xl p-3 text-center min-w-[75px] shadow-sm">
+                                        <span class="block text-xs font-bold uppercase tracking-wider opacity-90">${noticia.mes}</span>
+                                        <span class="block text-2xl font-black">${noticia.dia}</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-principal group-hover:text-oro transition-colors text-lg mb-2">${noticia.titulo}</h4>
+                                        <p class="text-gray-600 text-sm leading-relaxed">${noticia.resumen}</p>
                                     </div>
                                 </div>
+                            `;
+                            notiContainer.appendChild(card);
+                        });
+                    }
 
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div class="relative">
-                                        <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
-                                            <i class="fas fa-envelope text-gray-400 text-sm"></i>
-                                        </div>
-                                        <input type="email" name="email" placeholder="Correo Electrónico" class="w-full bg-white/95 backdrop-blur-sm rounded-xl py-3 pl-10 pr-4 text-texto text-sm placeholder:text-gray-400/90 placeholder:text-xs focus:outline-none focus:ring-4 focus:ring-oro/50 transition-all shadow-inner" required>
-                                    </div>
-                                    <div class="relative">
-                                        <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
-                                            <i class="fas fa-phone text-gray-400 text-sm"></i>
-                                        </div>
-                                        <input type="tel" name="telefono" placeholder="Teléfono / Celular" class="w-full bg-white/95 backdrop-blur-sm rounded-xl py-3 pl-10 pr-4 text-texto text-sm placeholder:text-gray-400/90 placeholder:text-xs focus:outline-none focus:ring-4 focus:ring-oro/50 transition-all shadow-inner" required>
-                                    </div>
+                    function renderActividades() {
+                        const actContainer = document.getElementById('comunidad-actividades-container');
+                        if(!actContainer || !cacheComunidadDb || !cacheComunidadDb.actividades) return;
+
+                        actContainer.innerHTML = "";
+                        const actividadesOrdenadas = [...cacheComunidadDb.actividades].reverse();
+                        actividadesOrdenadas.slice(0, 4).forEach(act => {
+                            const li = document.createElement('li');
+                            li.className = "p-5 flex items-center hover:bg-white/15 transition-colors rounded-xl cursor-pointer border border-transparent hover:border-principal/10";
+                            li.setAttribute("onclick", `loadPage('comunidad/detalle.html?id=${act.id}')`);
+                            
+                            let bulletColor = "bg-oro";
+                            if(act.tipo === "Presencial") bulletColor = "bg-principal";
+                            
+                            li.innerHTML = `
+                                <div class="w-3 h-3 rounded-full ${bulletColor} mr-5 flex-shrink-0"></div>
+                                <div class="flex-grow">
+                                    <h4 class="font-bold text-texto text-base mb-1">${act.titulo}</h4>
+                                    <span class="text-sm text-gray-500 font-medium"><i class="far fa-clock mr-1"></i> ${act.fecha_display}</span>
                                 </div>
+                                <span class="bg-principal/10 text-principal text-xs px-4 py-1.5 rounded-full font-bold tracking-wide ml-4 hidden sm:inline-block">${act.tipo}</span>
+                            `;
+                            actContainer.appendChild(li);
+                        });
+                    }
 
-                                <div class="relative">
-                                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none z-10">
-                                        <i class="fas fa-graduation-cap text-gray-400 text-sm"></i>
-                                    </div>
-                                    <select name="grado" class="w-full bg-white/95 backdrop-blur-sm rounded-xl py-3 pl-10 pr-10 text-texto text-sm placeholder:text-gray-400/90 placeholder:text-xs focus:outline-none focus:ring-4 focus:ring-oro/50 transition-all appearance-none cursor-pointer shadow-inner relative z-0" required>
-                                        <option value="" disabled selected class="text-xs">Grado al que postula...</option>
-                                        <option value="inicial" class="text-sm">Nivel Inicial</option>
-                                        <option value="primaria" class="text-sm">Nivel Primaria</option>
-                                        <option value="secundaria" class="text-sm">Nivel Secundaria</option>
-                                    </select>
-                                    <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none z-10">
-                                        <i class="fas fa-chevron-down text-gray-400 text-xs"></i>
-                                    </div>
-                                </div>
+                    // Configurar Buscador e Interfaz de Filtros de Boletines
+                    const searchInput = document.getElementById('boletin-search');
+                    if (searchInput) {
+                        searchInput.addEventListener('input', (e) => {
+                            searchQuery = e.target.value.toLowerCase().trim();
+                            renderBoletines();
+                        });
+                    }
 
-                                <div class="relative">
-                                    <div class="absolute top-3 left-3.5 pointer-events-none">
-                                        <i class="fas fa-comment-dots text-gray-400 text-sm"></i>
-                                    </div>
-                                    <textarea name="mensaje" placeholder="Déjanos un mensaje o consulta breve..." rows="3" class="w-full bg-white/95 backdrop-blur-sm rounded-xl py-3 pl-10 pr-4 text-texto text-sm placeholder:text-gray-400/90 placeholder:text-xs focus:outline-none focus:ring-4 focus:ring-oro/50 transition-all resize-none shadow-inner"></textarea>
-                                </div>
+                    const filterBtns = document.querySelectorAll('.boletin-filter-btn');
+                    filterBtns.forEach(btn => {
+                        btn.addEventListener('click', function() {
+                            filterBtns.forEach(b => {
+                                b.classList.remove('bg-principal', 'text-white', 'shadow-sm');
+                                b.classList.add('bg-gray-100', 'text-gray-500');
+                            });
+                            this.classList.remove('bg-gray-100', 'text-gray-500');
+                            this.classList.add('bg-principal', 'text-white', 'shadow-sm');
+                            
+                            activeCategory = this.getAttribute('data-category');
+                            renderBoletines();
+                        });
+                    });
 
-                                <button type="submit" class="w-full bg-oro hover:bg-yellow-400 text-texto font-bold text-base py-3 rounded-xl shadow-lg transition-all transform hover:-translate-y-1 hover:shadow-2xl mt-2 border border-oro/50 flex items-center justify-center">
-                                    Iniciar Postulación <i class="fas fa-paper-plane ml-2.5 text-sm"></i>
-                                </button>
+
+                    // 2. Cargar y Renderizar Inicio
+                    async function cargarInicio() {
+                        try {
+                            const res = await fetch('data/inicio.json?v=' + new Date().getTime());
+                            if(!res.ok) throw new Error("Error de red al cargar inicio.json");
+                            const db = await res.json();
+
+                            // Inyectar Mosaico de Portada (4 imágenes en grilla simétrica)
+                            const col1 = document.getElementById('mosaico-col-1');
+                            const col2 = document.getElementById('mosaico-col-2');
+                            if(col1 && col2 && db.mosaico) {
+                                col1.innerHTML = "";
+                                col2.innerHTML = "";
                                 
-                                <!-- Opción A: Enlace al Proceso Completo -->
-                                <div class="text-center mt-4 border-t border-white/10 pt-4">
-                                    <a href="admision.html" class="spa-link text-white/80 hover:text-white text-xs underline transition-colors">
-                                        Ver requisitos, vacantes y calendario de admisión completo
-                                    </a>
+                                // Tomar solo las primeras 4 imágenes para una cuadrícula 2x2 perfecta
+                                db.mosaico.slice(0, 4).forEach((item, index) => {
+                                    const img = document.createElement('img');
+                                    img.src = item.path;
+                                    img.alt = `Imagen de Portada ${index + 1}`;
+                                    
+                                    // Altura idéntica para cuadrícula simétrica
+                                    let heightClass = "h-36 md:h-44";
+                                    
+                                    img.className = `rounded-2xl shadow-md hover:shadow-2xl w-full ${heightClass} object-cover border border-white/20 hover:border-oro hover:scale-[1.03] transition-all duration-500 ease-out`;
+                                    
+                                    if (index % 2 === 0) {
+                                        col1.appendChild(img);
+                                    } else {
+                                        col2.appendChild(img);
+                                    }
+                                });
+                            }
+
+                            // Inyectar Niveles Educativos
+                            if(db.nivel_inicial) {
+                                const img = document.getElementById('nivel-inicial-img');
+                                const txt = document.getElementById('nivel-inicial-text');
+                                if(img) img.src = db.nivel_inicial.imagen;
+                                if(txt) txt.innerText = db.nivel_inicial.descripcion;
+                            }
+                            if(db.nivel_primaria) {
+                                const img = document.getElementById('nivel-primaria-img');
+                                const txt = document.getElementById('nivel-primaria-text');
+                                if(img) img.src = db.nivel_primaria.imagen;
+                                if(txt) txt.innerText = db.nivel_primaria.descripcion;
+                            }
+                            if(db.nivel_secundaria) {
+                                const img = document.getElementById('nivel-secundaria-img');
+                                const txt = document.getElementById('nivel-secundaria-text');
+                                if(img) img.src = db.nivel_secundaria.imagen;
+                                if(txt) txt.innerText = db.nivel_secundaria.descripcion;
+                            }
+
+                        } catch (e) {
+                            console.error("Error al inyectar recursos de inicio.json:", e);
+                        }
+                    }
+
+
+                    // 3. Contadores Dinámicos de Logros
+                    function iniciarContadores() {
+                        const counters = document.querySelectorAll('.counter-value');
+                        if (counters.length === 0) return;
+
+                        const observer = new IntersectionObserver((entries) => {
+                            entries.forEach(entry => {
+                                if (entry.isIntersecting) {
+                                    const el = entry.target;
+                                    const target = parseInt(el.getAttribute('data-target'), 10);
+                                    const duration = 1800; // duration in ms
+                                    const stepTime = Math.max(Math.floor(duration / target), 15);
+                                    let current = 0;
+                                    
+                                    const timer = setInterval(() => {
+                                        current += Math.ceil(target / (duration / 30));
+                                        if (current >= target) {
+                                            el.innerText = target;
+                                            clearInterval(timer);
+                                        } else {
+                                            el.innerText = current;
+                                        }
+                                    }, 30);
+                                    observer.unobserve(el);
+                                }
+                            });
+                        }, { threshold: 0.2 });
+                        counters.forEach(c => observer.observe(c));
+                    }
+
+
+                    // 4. Galería Multimedia Enriquecida
+                    const galeriaItems = [
+                        { src: 'images/banner1.webp', category: 'infraestructura', caption: 'Ingreso Principal e Infraestructura Histórica' },
+                        { src: 'images/ppt_image_10.webp', category: 'infraestructura', caption: 'Aulas y Laboratorios de Ciencias' },
+                        { src: 'images/taller_deporte_voley.jpg', category: 'deportes', caption: 'Taller Deportivo de Vóleibol Escolar' },
+                        { src: 'images/taller_danza_folclore.jpg', category: 'talleres', caption: 'Talleres de Expresión Artística y Danza' },
+                        { src: 'images/ppt_image_30.webp', category: 'pastoral', caption: 'Formación Espiritual y Jornadas de Fe' },
+                        { src: 'images/ppt_image_6.webp', category: 'talleres', caption: 'Proyectos Grupales y Liderazgo Femenino' },
+                        { src: 'images/ppt_image_22.webp', category: 'infraestructura', caption: 'Patios y Áreas Recreativas Modernas' },
+                        { src: 'images/ppt_image_23.webp', category: 'deportes', caption: 'Losa Multideportiva y Espacio Recreativo' }
+                    ];
+
+                    let activeGalCategory = 'todos';
+
+                    function renderGallery() {
+                        const grid = document.getElementById('galeria-grid');
+                        if(!grid) return;
+                        grid.innerHTML = "";
+
+                        const filtrados = galeriaItems.filter(item => {
+                            return activeGalCategory === 'todos' || item.category === activeGalCategory;
+                        });
+
+                        filtrados.forEach(item => {
+                            const card = document.createElement('div');
+                            card.className = "bg-white rounded-2xl overflow-hidden shadow-md border border-gray-150 cursor-pointer group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1";
+                            card.innerHTML = `
+                                <div class="relative overflow-hidden aspect-[4/3]">
+                                    <img src="${item.src}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="${item.caption}">
+                                    <div class="absolute inset-0 bg-principal/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                        <span class="w-12 h-12 rounded-full bg-white/90 text-principal flex items-center justify-center shadow-lg"><i class="fas fa-search-plus text-lg"></i></span>
+                                    </div>
                                 </div>
-                            </form>
-                        </div>
+                                <div class="p-4">
+                                    <p class="text-texto font-semibold text-sm truncate">${item.caption}</p>
+                                    <span class="text-[10px] uppercase font-bold text-oro tracking-wider mt-1 block">${item.category}</span>
+                                </div>
+                            `;
+                            card.addEventListener('click', () => abrirLightbox(item.src, item.caption));
+                            grid.appendChild(card);
+                        });
+                    }
+
+                    // Lightbox Modal Handlers
+                    const lightbox = document.getElementById('galeria-lightbox');
+                    const lightboxImg = document.getElementById('lightbox-img');
+                    const lightboxCap = document.getElementById('lightbox-caption');
+                    const lightboxClose = document.getElementById('lightbox-close');
+
+                    function abrirLightbox(src, caption) {
+                        if(!lightbox || !lightboxImg || !lightboxCap) return;
+                        lightboxImg.src = src;
+                        lightboxCap.innerText = caption;
+                        lightbox.classList.remove('hidden');
+                        setTimeout(() => {
+                            lightbox.classList.remove('opacity-0');
+                        }, 50);
+                    }
+
+                    function cerrarLightbox() {
+                        if(!lightbox) return;
+                        lightbox.classList.add('opacity-0');
+                        setTimeout(() => {
+                            lightbox.classList.add('hidden');
+                        }, 300);
+                    }
+
+                    if(lightboxClose) lightboxClose.addEventListener('click', cerrarLightbox);
+                    if(lightbox) {
+                        lightbox.addEventListener('click', (e) => {
+                            if(e.target === lightbox) cerrarLightbox();
+                        });
+                    }
+
+                    // Manejar botones de filtro de galería
+                    const galFilterBtns = document.querySelectorAll('.galeria-filter-btn');
+                    galFilterBtns.forEach(btn => {
+                        btn.addEventListener('click', function() {
+                            galFilterBtns.forEach(b => {
+                                b.classList.remove('bg-principal', 'text-white', 'shadow-md');
+                                b.classList.add('bg-white', 'text-gray-600', 'shadow-sm');
+                            });
+                            this.classList.remove('bg-white', 'text-gray-600', 'shadow-sm');
+                            this.classList.add('bg-principal', 'text-white', 'shadow-md');
+                            activeGalCategory = this.getAttribute('data-category');
+                            renderGallery();
+                        });
+                    });
+
+
+                    // Inicializaciones y Loops
+                    cargarComunidad();
+                    cargarInicio();
+                    iniciarContadores();
+                    renderGallery();
+                    
+                    // Animación de entrada escalonada para las tarjetas con GSAP
+                    setTimeout(() => {
+                        if (window.gsap) {
+                            gsap.fromTo('.animate-card', 
+                                { opacity: 0, y: 24 }, 
+                                { opacity: 1, y: 0, duration: 0.65, stagger: 0.05, ease: "power2.out" }
+                            );
+                        }
+                    }, 200);
+
+                    const intervalComunidad = setInterval(cargarComunidad, 30000);
+                    const intervalInicio = setInterval(cargarInicio, 30000);
+                    
+                    window.spaIntervals = window.spaIntervals || [];
+                    window.spaIntervals.push(intervalComunidad, intervalInicio);
+
+                    const visibilityHandler = () => {
+                        if (document.visibilityState === 'visible') {
+                            cargarComunidad();
+                            cargarInicio();
+                        }
+                    };
+                    document.addEventListener('visibilitychange', visibilityHandler);
+
+                    // Cerrar lightbox con tecla ESC
+                    const escHandler = (e) => {
+                        if(e.key === "Escape") cerrarLightbox();
+                    };
+                    document.addEventListener('keydown', escHandler);
+
+                    window.spaCleanups = window.spaCleanups || [];
+                    window.spaCleanups.push(() => {
+                        document.removeEventListener('visibilitychange', visibilityHandler);
+                        document.removeEventListener('keydown', escHandler);
+                    });
+                })();
+            </script>
+        </div>
+    </section>   </div>
                     </div>
                 </div>
 

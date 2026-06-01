@@ -8,23 +8,23 @@ CONTEXTO DEL SISTEMA - COLEGIO MATER ADMIRABILIS
 - Enrutamiento por Anclas Inteligente: El motor SPA (`loadPage`) soporta anclajes (`#id-seccion`). Si el usuario hace clic en un menú de la barra de navegación (como "Niveles"), la web hace un desplazamiento suave hacia el bloque correspondiente.
 - Estilo y Diseño Premium:
   * Paleta oficial: Verde principal (`#005931`), Oro (`#EBB300`), Fondo Neutro (`#f8f9fa`) y Texto Oscuro (`#1A252C`).
-  * Fondos "Aurora" Animados: Blobs difuminados flotantes (verde y oro al 5% con `blur-3xl`) que flotan dinámicamente mediante animaciones CSS optimizadas en cada sección.
+  * Imagen de Fondo Global: Eliminada por solicitud del usuario para restaurar un fondo blanco puro e higiénico en toda la web.
+  * Estilo Glassmorphism Generalizado: La cabecera fija, barra superior, menús desplegables (dropdowns), acordeón móvil y subpáginas utilizan fondos translúcidos y desenfoques por hardware (`backdrop-blur-md` y `backdrop-blur-sm` con 10% de opacidad). Las tarjetas informativas principales del Home y niveles reaccionan con un sutil e interactivo levantamiento y sombra al pasar el cursor manejados por hardware mediante CSS Transitions, eliminando bloqueos de JavaScript.
+  * Fondos "Aurora" Animados / Nebulosa: Focos de difuminado verde y oro translúcido de la marca (`bg-principal/[0.10]` y `bg-oro/[0.10]` con opacidad locked al 10%) fijos en el fondo para añadir profundidad estética e integración visual tridimensional.
   * Paralaje Interactivo (Anime.js): Los blobs del fondo reaccionan al movimiento físico del mouse desplazándose suavemente en 3D.
-  * Transiciones de Elevación y Sombra Nativas: Las tarjetas informativas principales del Home y niveles reaccionan con un sutil e interactivo levantamiento y sombra al pasar el cursor manejados por hardware mediante CSS Transitions, eliminando bloqueos de JavaScript.
   * Micro-interacción de Elementos Decorativos: Animación CSS `@keyframes float-soft` que añade un vaivén flotante constante a badges e íconos decorativos.
 - Coherencia Institucional de Género: Auditoría completa de textos. El lenguaje se adaptó al perfil del colegio (mujeres en Primaria y Secundaria: "alumnas", "hijas", "líderes analíticas y ciudadanas"). En Nivel Inicial (3 y 4 años) se especifica explícitamente la coeducación (niños y niñas), mientras que el aula de 5 años es exclusiva para niñas.
 
 2. MAPA DE ARCHIVOS Y COMPONENTES
 ----------------------------------------------------------------------
 Todos los archivos secundarios son parciales limpios que se inyectan en `<main>` de forma dinámica y reactiva:
-- index.html -> Contenedor principal, cabecera fija, barra superior, menú móvil tipo acordeón interactivo, pie de página maestro, motor SPA con cache-buster, y metaetiquetas SEO Open Graph para compartir enlaces.
+- index.html -> Contenedor principal, cabecera fija, barra superior, menú móvil tipo acordeón interactivo, pie de página maestro con un borde superior oro de 2px, fondo transparente y 3 columnas ordenadas (Contacto, Enlaces Rápidos y Síguenos) alineadas paralelamente, motor SPA con cache-buster, y metaetiquetas SEO Open Graph para compartir enlaces.
 - inicio.html -> Página de bienvenida en bloques anclados:
-  * Banner Mosaico (Carga dinámica de 6 a 8 imágenes WebP distribuidas asimétricamente)
-  * Proyecto Institucional (`#institucional-block` -> Enlaces a Presentación, Misión, IB e Historia)
-  * Nuestros Niveles Educativos (`#niveles-block` -> Inicial, Primaria, Secundaria en proporción aspect-[4/3])
-  * Convenios y Alianzas (`#convenios-block` -> Académicos, Alianza Francesa, Cambridge)
-  * Servicios de la Comunidad (`#servicios-block` -> Psicopedagógico, Escuela para padres, Comedor)
-  * Comunidad y Admisión (`#comunidad-block` -> Noticias y actividades reales conectadas a JSON, y admisión rápida con Netlify Forms).
+  * Banner Principal Compacto (Texto optimizado + Mosaico simétrico de 4 imágenes WebP en grilla 2x2 sin contenedor opaco).
+  * Barra de Impacto Glassmorphism (Logros y Estadísticas flotantes semi-translúcidos sobre el pie del Hero, visibles 100% above-the-fold).
+  * Propuesta y Niveles Integrados (`#institucional-block` y `#niveles-block` colocados lado a lado en grilla de 2 columnas).
+  * Convenios y Servicios Integrados (`#convenios-block` y `#servicios-block` colocados lado a lado en grilla de 2 columnas).
+  * Comunidad (`#comunidad-block` -> Noticias y actividades reales conectadas a JSON de forma transparente, y botón exclusivo de conversión de admisión).
 - niveles/inicial.html -> Detalle dinámico del Nivel Inicial conectado a `data/nivel_inicial.json`.
 - niveles/primaria.html -> Detalle dinámico de Primaria conectado a `data/nivel_primaria.json` (incluye sección especial de inglés).
 - niveles/secundaria.html -> Detalle dinámico de Secundaria conectado a `data/nivel_secundaria.json` (incluye tarjeta destacada con logotipo oficial de Bachillerato Internacional).
@@ -41,30 +41,59 @@ Los contenidos de la web se gestionan a través de archivos de datos que lee Jav
 - data/admision.json -> Contenido oficial del proceso de admisión.
 - data/nivel_inicial.json / nivel_primaria.json / nivel_secundaria.json -> Textos, mallas curriculares e imágenes de cada nivel educativo.
 - admin/config.yml -> Configuración del CMS Decap usando el backend directo de GitHub (`name: github`) enlazado a los endpoints de la API de Cloudflare.
-- admin/index.html -> Panel administrativo del CMS con estilos e Inter/Tailwind inyectados para previsualización.
+- admin/index.html -> Panel administrativo del CMS con estilos e Inyecciones de CSS para visualización.
 - functions/api/auth.js / callback.js -> Endpoints serverless creados para Cloudflare Pages para procesar la autorización del login mediante OAuth de GitHub de manera segura sin Netlify.
 
 4. HISTORIAL DE CAMBIOS Y VERSIONES (Log de Modificaciones)
 ----------------------------------------------------------------------
 - [Hito 1-5]: Estructuración de textos base, agenda/noticias en home, integración de historia/IB y revista 3D interactiva.
-- [Hito 6]: Migración de la web a sistema dinámico (SPA) con motor Fetch, menú móvil tipo acordeón y limpieza de HTML.
-- [Hito 7]: Actualización de Logotipos. Sustitución por el nuevo logo vertical transparente (`logovertical1.png`).
+- [Hito 6]: Migración de la web a SPA con motor Fetch, menú móvil tipo acordeón y limpieza de HTML.
+- [Hito 7]: Actualización de Logotipos. Sustitución por el nuevo logo vertical transparente.
 - [Hito 8]: Navegación por Anclas e Integración "Opción A". Reordenamiento de bloques del Home.
 - [Hito 9]: Efectos Visuales y Micro-interacciones. Carga de Anime.js en el core. Blobs flotantes y paralaje interactivo.
 - [Hito 10]: Auditoría de Género de Textos. Ajuste terminológico en el 100% de la web.
 - [Hito 11] (Mayo 2026): Optimización, CMS Completo y Animaciones:
-  * Digitalización y desacoplamiento de páginas del Home, Admisiones e Inicial/Primaria/Secundaria a JSONs dinámicos editables vía Decap CMS.
-  * Conversión de las 10 imágenes principales de la web a formato `.webp` de alto rendimiento y redimensionamiento inteligente mediante script en Python.
-  * Solución a conflictos de animación. Remoción de eventos JS de escala de tarjetas a favor de transiciones nativas por GPU en CSS (evitando congelamiento en hovers rápidos).
+  * Digitalización y desacoplamiento de páginas a JSONs dinámicos editables vía Decap CMS.
+  * Conversión de imágenes principales a formato `.webp` de alto rendimiento mediante script en Python.
+  * Solución a conflictos de animación. Remoción de eventos JS de escala de tarjetas a favor de transiciones nativas por GPU en CSS.
   * Inyección de animación `@keyframes float-soft` en CSS.
-  * Solución a race conditions del motor SPA mediante actualización de `pushState` previa a la ejecución de scripts.
-  * Creación de `404.html` personalizada e implementación de `@media print` en detalle de noticias para imprimir boletines limpios.
+  * Solución a race conditions del motor SPA.
+  * Creación de `404.html` y hoja de estilos de impresión en detalle de noticias.
   * Tarjeta e integración del logo de Bachillerato Internacional (`logoIB.png`) en Secundaria.
 - [Hito 12] (Mayo 2026): Migración de Hosting y Backend Serverless:
-  * Reconfiguración del backend de Decap CMS en `admin/config.yml` para desacoplarlo de Netlify y pasar al backend directo de GitHub (`name: github`).
-  * Creación de las Cloudflare Pages Functions (`functions/api/auth.js` y `functions/api/callback.js`) para desplegar un OAuth Gatekeeper Serverless propio e ilimitado en Cloudflare Pages, evitando el consumo de minutos de compilación de Netlify.
+  * Reconfiguración del backend de Decap CMS en `admin/config.yml` para desacoplarlo de Netlify y pasar al backend directo de GitHub.
+  * Creación de Cloudflare Pages Functions (`auth.js` y `callback.js`) para OAuth Gatekeeper.
+- [Hito 13] (Junio 2026): Interactividad y Enriquecimiento Visual de Interfaz:
+  * Historia: Línea de tiempo vertical animada con hitos interactivos (1950-2027) en `historia.html`.
+  * Logros: Sección interactiva de contadores numéricos dinámicos con conteo animado en `inicio.html`.
+  * Filtros de Boletines: Buscador rápido en tiempo real y selector de categoría por etiquetas (Pills) para noticias/circulares en la portada.
+  * Formulario de Admisión Stepper: Ficha de pre-registro guiada en 3 pasos con validación progresiva.
+  * Galería Enriquecida: Cuadrícula multimedia filtrable usando imágenes WebP optimizadas y un visor Lightbox integrado.
+  * Solución a Lightbox en Detalle.
+- [Hito 14] (Junio 2026): Actualización de Base de Datos y Rediseño de Inicio:
+  * Comunidad JSON: Reestructuración de boletines, circulares y agenda realistas.
+  * Simplificación de Admisiones: Remoción de la columna lateral verde en `inicio.html`.
+  * Botón Admisión 2027: Botón de conversión premium centrado.
+  * Pie de Página: Remoción de los enlaces de políticas/términos en `index.html` y centrado del copyright.
+  * Accesos Rápidos: Configuración de enlaces externos reales para Intranet, Correo y Teams.
+- [Hito 15] (Junio 2026): Optimización de Scroll, Compactado y Rediseño de Niveles:
+  * Menús y Cabecera: Reducción del logotipo (`h-14`) y padding de barra de navegación (`py-2.5`).
+  * Remoción de Francés: Eliminación del dropdown y enlaces móviles al convenio de Alianza Francesa.
+  * Rediseño de Niveles: Reconstrucción de `inicial.html`, `primaria.html` y `secundaria.html` con banners con gradientes y tarjetas dinámicas.
+  * Ajuste de Scroll Offset: Reemplazo de `scrollIntoView` en el motor SPA por una función personalizada `scrollToTarget` que calcula dinámicamente el offset de cabecera.
+  * Reestructuración del Home: Logros como tarjeta flotante, Hero Banner compacto y grilla 2x2.
+  * Cabecera y Top Bar Blancos con Texto Verde.
+  * Efecto de Estrellas Fugaces en el Menú (GSAP).
+  * Fondo Blanco con Difuminados Verdes por Partes: Spotlight verde de fondo translúcido.
+  * Integración de GSAP para Transiciones y Animaciones.
+  * Clickabilidad Completa de Tarjetas.
+  * Integración del Mosaico y Gradientes de Sección.
+- [Hito 16] (Junio 2026): Limpieza de Código y Rediseño Simétrico del Pie de Página:
+  * Eliminación de Archivos Huérfanos: Se eliminaron del repositorio los archivos `convenios/alianza.html` e `institucional/index.html` debido a que fueron descontinuados y no contaban con enlaces activos.
+  * Estructuración Simétrica y Centrada del Footer: El contenedor maestro se limitó a `max-w-5xl mx-auto px-4` para agrupar visualmente las tres columnas en la parte central del viewport en monitores ultra-anchos.
+  * Orden de Elementos en Paralelo: Se modificaron los bloques de **Contacto** y **Enlaces Rápidos** del pie de página para que muestren sus íconos a la izquierda y el texto de manera horizontal paralela a la derecha (`flex-row items-start/center`), manteniendo las listas alineadas verticalmente a la izquierda (`items-start`) dentro de cada bloque, el cual a su vez permanece centrado en su respectiva columna.
 
 5. PRÓXIMOS PASOS (Tareas Pendientes)
 ----------------------------------------------------------------------
-- [ ] Subir el repositorio modificado a GitHub y configurar el proyecto en Cloudflare Pages.
+- [ ] Configurar el proyecto en Cloudflare Pages.
 - [ ] Crear la App de OAuth en GitHub Developer Settings e inyectar el Client ID y Client Secret en las variables de entorno de Cloudflare.

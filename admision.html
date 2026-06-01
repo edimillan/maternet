@@ -1,26 +1,26 @@
-<div class="bg-white shadow-xl rounded-2xl p-8 md:p-16 border border-gray-100 max-w-5xl mx-auto" data-aos="fade-up">
+<div class="bg-white/10 backdrop-blur-md shadow-2xl rounded-2xl p-8 md:p-16 border border-principal/20 max-w-5xl mx-auto" data-aos="fade-up">
     <!-- Encabezado de la página -->
     <div class="mb-12 text-center">
         <span class="bg-oro/20 text-principal text-xs font-bold uppercase tracking-wider py-1.5 px-4 rounded-full mb-4 inline-block">Proceso de Postulación</span>
         <h2 id="admision-titulo" class="text-3xl font-bold text-principal mb-6">Cargando...</h2>
         <div class="w-24 h-1 bg-oro mx-auto mb-8 rounded-full"></div>
-        <p id="admision-descripcion" class="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
+        <p id="admision-descripcion" class="text-lg text-gray-800 font-medium leading-relaxed max-w-3xl mx-auto">
             Por favor espera un momento mientras cargamos la información de admisión...
         </p>
     </div>
 
     <!-- Charla Informativa Banner -->
-    <div id="charla-banner" class="bg-gray-50 border border-gray-150 rounded-3xl p-8 mb-12 flex flex-col md:flex-row gap-8 items-center hidden" data-aos="fade-up">
+    <div id="charla-banner" class="bg-white/10 backdrop-blur-md border border-principal/20 rounded-3xl p-8 mb-12 flex flex-col md:flex-row gap-8 items-center hidden" data-aos="fade-up">
         <div class="w-full md:w-1/2">
-            <div class="relative overflow-hidden rounded-2xl shadow-md border border-gray-200 group">
+            <div class="relative overflow-hidden rounded-2xl shadow-md border border-principal/20 group">
                 <img id="charla-img" src="" alt="Charla de Admisión" class="w-full object-cover rounded-2xl">
             </div>
         </div>
         <div class="w-full md:w-1/2">
             <span class="bg-oro text-principal text-xs font-bold uppercase tracking-wider py-1 px-3 rounded-full mb-3 inline-block">Charla Informativa</span>
             <h3 id="charla-titulo" class="text-2xl font-bold text-principal mb-4">--</h3>
-            <p id="charla-descripcion" class="text-gray-600 leading-relaxed mb-6">--</p>
-            <div class="bg-white p-4 rounded-xl border border-gray-150 shadow-sm space-y-2">
+            <p id="charla-descripcion" class="text-gray-800 font-medium leading-relaxed mb-6">--</p>
+            <div class="bg-white p-4 rounded-xl border border-principal/20 shadow-sm space-y-2">
                 <p class="text-gray-700 text-sm"><i class="fas fa-calendar-alt text-oro mr-2"></i> <strong>Fecha:</strong> <span id="charla-fecha">--</span></p>
                 <p class="text-gray-700 text-sm"><i class="fas fa-clock text-oro mr-2"></i> <strong>Hora:</strong> <span id="charla-hora">--</span></p>
                 <p class="text-gray-700 text-sm"><i class="fas fa-map-marker-alt text-oro mr-2"></i> <strong>Lugar:</strong> <span id="charla-lugar">--</span></p>
@@ -31,50 +31,149 @@
     <!-- Contenido Principal -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
         <!-- Requisitos Generales -->
-        <div class="p-8 rounded-2xl border border-gray-100 bg-gray-50 hover:shadow-lg transition-all group">
+        <div class="p-8 rounded-2xl border border-principal/20 bg-white/10 backdrop-blur-md hover:shadow-lg transition-all group">
             <div class="w-14 h-14 bg-principal/10 text-principal rounded-xl flex items-center justify-center text-2xl mb-6">
                 <i class="fas fa-calendar-check"></i>
             </div>
             <h3 id="requisitos-titulo" class="text-xl font-bold text-principal mb-3">Requisitos de Edad</h3>
-            <p id="requisitos-descripcion" class="text-gray-600 leading-relaxed mb-4">--</p>
-            <p id="requisitos-extra" class="text-gray-600 leading-relaxed font-medium">--</p>
+            <p id="requisitos-descripcion" class="text-gray-800 font-medium leading-relaxed mb-4">--</p>
+            <p id="requisitos-extra" class="text-gray-800 font-medium leading-relaxed font-medium">--</p>
         </div>
 
         <!-- Modalidades de Admisión -->
-        <div class="p-8 rounded-2xl border border-gray-100 bg-gray-50 hover:shadow-lg transition-all group">
+        <div class="p-8 rounded-2xl border border-principal/20 bg-white/10 backdrop-blur-md hover:shadow-lg transition-all group">
             <div class="w-14 h-14 bg-oro/20 text-oro rounded-xl flex items-center justify-center text-2xl mb-6">
                 <i class="fas fa-list-ol"></i>
             </div>
             <h3 id="modalidades-titulo" class="text-xl font-bold text-principal mb-3">Modalidades de Ingreso</h3>
-            <ul id="modalidades-lista" class="text-gray-600 space-y-4">
+            <ul id="modalidades-lista" class="text-gray-800 font-medium space-y-4">
                 <!-- Se inyecta dinámicamente -->
             </ul>
         </div>
     </div>
 
     <!-- Proceso de Traslados y Nivelación de Inglés -->
-    <div class="bg-gray-50 border border-gray-100 rounded-2xl p-8 mb-12" data-aos="fade-up">
+    <div class="bg-white/10 backdrop-blur-md border border-principal/20 rounded-2xl p-8 mb-12" data-aos="fade-up">
         <div class="flex items-center mb-6">
             <div class="w-12 h-12 bg-principal/10 text-principal rounded-xl flex items-center justify-center text-xl mr-4">
                 <i class="fas fa-exchange-alt"></i>
             </div>
             <h3 id="traslados-titulo" class="text-2xl font-bold text-principal">--</h3>
         </div>
-        <p id="traslados-descripcion" class="text-gray-600 leading-relaxed mb-6">--</p>
-        <div class="bg-white p-6 rounded-xl border border-gray-150 shadow-inner">
+        <p id="traslados-descripcion" class="text-gray-800 font-medium leading-relaxed mb-6">--</p>
+        <div class="bg-white p-6 rounded-xl border border-principal/20 shadow-inner">
             <h4 id="evaluacion-titulo" class="font-bold text-principal mb-2"><i class="fas fa-language text-oro mr-2"></i> --</h4>
-            <p id="evaluacion-descripcion" class="text-gray-600 text-sm leading-relaxed mb-4">--</p>
-            <p id="evaluacion-detalle" class="text-gray-600 text-sm leading-relaxed font-medium">--</p>
+            <p id="evaluacion-descripcion" class="text-gray-800 font-medium text-sm leading-relaxed mb-4">--</p>
+            <p id="evaluacion-detalle" class="text-gray-800 font-medium text-sm leading-relaxed font-medium">--</p>
         </div>
     </div>
 
+    <!-- Formulario de Admisión Stepper (Por Pasos) -->
+    <div class="bg-white/10 backdrop-blur-md border border-principal/20 rounded-3xl p-8 mb-12" data-aos="fade-up">
+        <h3 class="text-2xl font-bold text-principal mb-2 text-center"><i class="fas fa-file-signature text-oro mr-2"></i> Ficha de Admisión</h3>
+        <p class="text-gray-700 font-semibold text-sm text-center mb-8">Completa el formulario en 3 sencillos pasos para iniciar tu postulación.</p>
+
+        <!-- Barra de Progreso Stepper -->
+        <div class="flex items-center justify-center max-w-lg mx-auto mb-10">
+            <!-- Paso 1 indicator -->
+            <div id="step-ind-1" class="w-10 h-10 rounded-full bg-principal text-white flex items-center justify-center font-bold text-sm shadow-md transition-colors duration-300">1</div>
+            <div id="step-line-1" class="flex-1 h-1 bg-gray-200 transition-colors duration-300"></div>
+            <!-- Paso 2 indicator -->
+            <div id="step-ind-2" class="w-10 h-10 rounded-full bg-gray-200 text-gray-700 font-semibold flex items-center justify-center font-bold text-sm transition-colors duration-300">2</div>
+            <div id="step-line-2" class="flex-1 h-1 bg-gray-200 transition-colors duration-300"></div>
+            <!-- Paso 3 indicator -->
+            <div id="step-ind-3" class="w-10 h-10 rounded-full bg-gray-200 text-gray-700 font-semibold flex items-center justify-center font-bold text-sm transition-colors duration-300">3</div>
+        </div>
+
+        <form id="admission-stepper-form" class="max-w-xl mx-auto space-y-6" method="POST" data-netlify="true">
+            <!-- PASO 1: Datos Postulante -->
+            <div id="step-content-1" class="space-y-4">
+                <h4 class="font-bold text-principal text-lg border-b border-principal/20 pb-2">Paso 1: Datos de la Postulante</h4>
+                <div>
+                    <label class="block text-xs font-bold text-gray-800 font-medium uppercase mb-2">Nombre Completo de la Niña/Joven</label>
+                    <input type="text" id="postulante-nombre" class="w-full bg-white rounded-xl py-3 px-4 text-texto text-sm border border-principal/20 focus:outline-none focus:ring-2 focus:ring-oro" placeholder="Nombre y Apellidos" required>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-800 font-medium uppercase mb-2">Grado al que Postula</label>
+                        <select id="postulante-grado" class="w-full bg-white rounded-xl py-3 px-4 text-texto text-sm border border-principal/20 focus:outline-none focus:ring-2 focus:ring-oro" required>
+                            <option value="" disabled selected>Seleccione...</option>
+                            <option value="Inicial (3 años)">Inicial (3 años)</option>
+                            <option value="Inicial (4 años)">Inicial (4 años)</option>
+                            <option value="Inicial (5 años)">Inicial (5 años)</option>
+                            <option value="1ro Primaria">1ro Primaria</option>
+                            <option value="2do Primaria">2do Primaria</option>
+                            <option value="3ro Primaria">3ro Primaria</option>
+                            <option value="4to Primaria">4to Primaria</option>
+                            <option value="5to Primaria">5to Primaria</option>
+                            <option value="6to Primaria">6to Primaria</option>
+                            <option value="1ro Secundaria">1ro Secundaria</option>
+                            <option value="2do Secundaria">2do Secundaria</option>
+                            <option value="3ro Secundaria">3ro Secundaria</option>
+                            <option value="4to Secundaria">4to Secundaria</option>
+                            <option value="5to Secundaria">5to Secundaria</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-800 font-medium uppercase mb-2">Año de Ingreso</label>
+                        <select id="postulante-anio" class="w-full bg-white rounded-xl py-3 px-4 text-texto text-sm border border-principal/20 focus:outline-none focus:ring-2 focus:ring-oro" required>
+                            <option value="2027">2027 (Admisión Abierta)</option>
+                            <option value="2028">2028 (Traslado anticipado)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PASO 2: Datos Apoderado -->
+            <div id="step-content-2" class="space-y-4 hidden">
+                <h4 class="font-bold text-principal text-lg border-b border-principal/20 pb-2">Paso 2: Datos del Apoderado</h4>
+                <div>
+                    <label class="block text-xs font-bold text-gray-800 font-medium uppercase mb-2">Nombre Completo del Padre/Madre</label>
+                    <input type="text" id="apoderado-nombre" class="w-full bg-white rounded-xl py-3 px-4 text-texto text-sm border border-principal/20 focus:outline-none focus:ring-2 focus:ring-oro" placeholder="Nombre Completo del Apoderado" required>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-800 font-medium uppercase mb-2">Correo Electrónico</label>
+                        <input type="email" id="apoderado-email" class="w-full bg-white rounded-xl py-3 px-4 text-texto text-sm border border-principal/20 focus:outline-none focus:ring-2 focus:ring-oro" placeholder="ejemplo@correo.com" required>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-800 font-medium uppercase mb-2">Teléfono / Celular</label>
+                        <input type="tel" id="apoderado-telefono" class="w-full bg-white rounded-xl py-3 px-4 text-texto text-sm border border-principal/20 focus:outline-none focus:ring-2 focus:ring-oro" placeholder="999 999 999" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PASO 3: Confirmación -->
+            <div id="step-content-3" class="space-y-4 hidden">
+                <h4 class="font-bold text-principal text-lg border-b border-principal/20 pb-2">Paso 3: Observaciones y Envío</h4>
+                <div class="bg-white p-4 rounded-xl border border-principal/20 text-sm text-gray-800 font-medium space-y-2">
+                    <p><strong>Postulante:</strong> <span id="summary-postulante">--</span></p>
+                    <p><strong>Grado y Año:</strong> <span id="summary-grado-anio">--</span></p>
+                    <p><strong>Apoderado:</strong> <span id="summary-apoderado">--</span></p>
+                    <p><strong>Contacto:</strong> <span id="summary-contacto">--</span></p>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-800 font-medium uppercase mb-2">Mensaje Adicional o Comentario (Opcional)</label>
+                    <textarea id="apoderado-mensaje" rows="3" class="w-full bg-white rounded-xl py-3 px-4 text-texto text-sm border border-principal/20 focus:outline-none focus:ring-2 focus:ring-oro resize-none" placeholder="Escribe aquí tu consulta adicional..."></textarea>
+                </div>
+            </div>
+
+            <!-- Botones de Navegación -->
+            <div class="flex justify-between items-center pt-6 border-t border-principal/20">
+                <button type="button" id="stepper-prev" class="px-6 py-2.5 rounded-xl font-bold text-xs bg-gray-100 text-gray-700 font-semibold hover:bg-gray-200 transition-colors focus:outline-none hidden">Anterior</button>
+                <button type="button" id="stepper-next" class="px-6 py-2.5 rounded-xl font-bold text-xs bg-principal text-white hover:bg-green-800 transition-colors focus:outline-none ml-auto">Siguiente</button>
+                <button type="submit" id="stepper-submit" class="px-6 py-2.5 rounded-xl font-bold text-xs bg-oro text-texto hover:bg-yellow-400 transition-colors focus:outline-none ml-auto hidden">Enviar Solicitud <i class="fas fa-paper-plane ml-2"></i></button>
+            </div>
+        </form>
+    </div>
+
     <!-- Contacto del Expediente de Admisión -->
-    <div class="p-8 rounded-2xl border border-gray-150 bg-white shadow-md text-center max-w-xl mx-auto" data-aos="zoom-in">
+    <div class="p-8 rounded-2xl border border-principal/20 bg-white shadow-md text-center max-w-xl mx-auto" data-aos="zoom-in">
         <div class="text-principal text-3xl mb-4">
             <i class="fas fa-file-invoice"></i>
         </div>
         <h3 class="text-2xl font-bold text-principal mb-3">Expediente de Admisión</h3>
-        <p class="text-gray-600 mb-6 leading-relaxed">
+        <p class="text-gray-800 font-medium mb-6 leading-relaxed">
             Las familias interesadas en iniciar el proceso pueden solicitar el envío digital del **"File del Postulante"** o agendar una consulta a través de nuestros canales directos de atención.
         </p>
         <div class="flex flex-col space-y-3 sm:flex-row sm:space-y-0 sm:space-x-4 justify-center">
@@ -132,6 +231,99 @@
             document.getElementById('evaluacion-descripcion').innerText = data.traslados.evaluacion_descripcion;
             document.getElementById('evaluacion-detalle').innerText = data.traslados.evaluacion_detalle;
 
+            // 6. Configurar Stepper Form
+            let currentStep = 1;
+            const btnPrev = document.getElementById('stepper-prev');
+            const btnNext = document.getElementById('stepper-next');
+            const btnSubmit = document.getElementById('stepper-submit');
+
+            const content1 = document.getElementById('step-content-1');
+            const content2 = document.getElementById('step-content-2');
+            const content3 = document.getElementById('step-content-3');
+
+            const ind1 = document.getElementById('step-ind-1');
+            const ind2 = document.getElementById('step-ind-2');
+            const ind3 = document.getElementById('step-ind-3');
+
+            const line1 = document.getElementById('step-line-1');
+            const line2 = document.getElementById('step-line-2');
+
+            function updateStepperUI() {
+                content1.classList.add('hidden');
+                content2.classList.add('hidden');
+                content3.classList.add('hidden');
+
+                if (currentStep === 1) {
+                    content1.classList.remove('hidden');
+                    btnPrev.classList.add('hidden');
+                    btnNext.classList.remove('hidden');
+                    btnSubmit.classList.add('hidden');
+
+                    ind2.classList.replace('bg-principal', 'bg-gray-200');
+                    ind2.classList.replace('text-white', 'text-gray-700 font-semibold');
+                    line1.classList.replace('bg-principal', 'bg-gray-200');
+                } else if (currentStep === 2) {
+                    content2.classList.remove('hidden');
+                    btnPrev.classList.remove('hidden');
+                    btnNext.classList.remove('hidden');
+                    btnSubmit.classList.add('hidden');
+
+                    ind2.classList.replace('bg-gray-200', 'bg-principal');
+                    ind2.classList.replace('text-gray-700 font-semibold', 'text-white');
+                    line1.classList.replace('bg-gray-200', 'bg-principal');
+
+                    ind3.classList.replace('bg-principal', 'bg-gray-200');
+                    ind3.classList.replace('text-white', 'text-gray-700 font-semibold');
+                    line2.classList.replace('bg-principal', 'bg-gray-200');
+                } else if (currentStep === 3) {
+                    content3.classList.remove('hidden');
+                    btnPrev.classList.remove('hidden');
+                    btnNext.classList.add('hidden');
+                    btnSubmit.classList.remove('hidden');
+
+                    ind3.classList.replace('bg-gray-200', 'bg-principal');
+                    ind3.classList.replace('text-gray-700 font-semibold', 'text-white');
+                    line2.classList.replace('bg-gray-200', 'bg-principal');
+
+                    document.getElementById('summary-postulante').innerText = document.getElementById('postulante-nombre').value || '--';
+                    document.getElementById('summary-grado-anio').innerText = (document.getElementById('postulante-grado').value || '--') + ' (' + (document.getElementById('postulante-anio').value || '--') + ')';
+                    document.getElementById('summary-apoderado').innerText = document.getElementById('apoderado-nombre').value || '--';
+                    document.getElementById('summary-contacto').innerText = (document.getElementById('apoderado-email').value || '--') + ' / ' + (document.getElementById('apoderado-telefono').value || '--');
+                }
+            }
+
+            if(btnNext) {
+                btnNext.addEventListener('click', () => {
+                    if (currentStep === 1) {
+                        const name = document.getElementById('postulante-nombre');
+                        const grade = document.getElementById('postulante-grado');
+                        if(!name.checkValidity() || !grade.checkValidity()) {
+                            name.reportValidity();
+                            grade.reportValidity();
+                            return;
+                        }
+                    } else if (currentStep === 2) {
+                        const parent = document.getElementById('apoderado-nombre');
+                        const email = document.getElementById('apoderado-email');
+                        const phone = document.getElementById('apoderado-telefono');
+                        if(!parent.checkValidity() || !email.checkValidity() || !phone.checkValidity()) {
+                            parent.reportValidity();
+                            email.reportValidity();
+                            phone.reportValidity();
+                            return;
+                        }
+                    }
+                    currentStep++;
+                    updateStepperUI();
+                });
+            }
+
+            if(btnPrev) {
+                btnPrev.addEventListener('click', () => {
+                    currentStep--;
+                    updateStepperUI();
+                });
+            }
         } catch (e) {
             console.error("Error al inyectar contenido dinámico de Admisión:", e);
         }

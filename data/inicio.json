@@ -2,10 +2,8 @@
   "mosaico": [
     { "path": "images/banner1.webp" },
     { "path": "images/banner2.webp" },
-    { "path": "images/banner5.webp" },
     { "path": "images/banner3.webp" },
-    { "path": "images/banner4.webp" },
-    { "path": "images/banner6.webp" }
+    { "path": "images/banner4.webp" }
   ],
   "nivel_inicial": {
     "imagen": "images/inicial1.webp",

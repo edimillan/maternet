@@ -1,6 +1,6 @@
 {
   "lema": "\"Brindamos una educación diferenciada con sólidos valores éticos, dominio intensivo del idioma inglés y una rigurosa preparación para los retos del mundo globalizado.\"",
-  "imagen": "images/secundaria_estudiantes.jpg",
+  "imagen": "images/ppt_image_10.webp",
   "secciones": [
     {
       "icon": "fas fa-university",
@@ -17,5 +17,6 @@
     "imagen": "images/logoIB.png",
     "titulo": "Rigor Internacional (PAI - IB)",
     "descripcion": "De sexto de primaria a cuarto año de secundaria, nuestras estudiantes avanzan con el prestigioso Programa de Años Intermedios (PAI) de Bachillerato Internacional, promoviendo una mentalidad analítica y abierta."
-  }
+  },
+  "horario": "images/ppt_image_23.webp"
 }

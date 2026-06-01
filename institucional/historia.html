@@ -1,4 +1,4 @@
-<div class="bg-gradient-to-br from-principal/10 via-white to-oro/15 border-y border-gray-200 shadow-lg">
+<div class="bg-gradient-to-br from-principal/10 via-white to-oro/15 border-y border-principal/20 shadow-lg">
             <div class="container mx-auto px-4 md:px-8 py-16 md:py-24">
                 <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
                     
@@ -11,7 +11,7 @@
                         <p class="text-xl text-gray-700 mb-8 leading-relaxed font-semibold">
                             El Colegio Mater Admirabilis fue fundado en 1950 y es la institución pionera en San Miguel en la enseñanza del idioma inglés, teniendo la categoría oficial de 'Colegio Inglés'.
                         </p>
-                        <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        <p class="text-lg text-gray-800 font-medium mb-8 leading-relaxed">
                             Gracias a esta exigente formación moral y académica bajo la guía de nuestra patrona, la Madre Admirable, nuestras cientos de egresadas ocupan puestos muy importantes en la sociedad, los negocios y el campo profesional.
                         </p>
                         <div class="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border-l-4 border-oro shadow-sm inline-block">
@@ -19,47 +19,85 @@
                         </div>
                     </div>
 
-                    <!-- Lado Derecho: Hitos -->
+                    <!-- Lado Derecho: Línea de Tiempo Interactiva -->
                     <div class="w-full lg:w-1/2 relative" data-aos="fade-left">
                         <div class="absolute inset-0 bg-principal/5 rounded-[3rem] -m-6 -z-10" data-aos="zoom-in" data-aos-delay="100"></div>
-                        <h3 class="text-3xl font-bold text-principal mb-8">Hitos Importantes</h3>
+                        <h3 class="text-3xl font-bold text-principal mb-8">Nuestra Trayectoria Histórica</h3>
                         
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                            <!-- Hito 1 -->
-                            <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:-translate-y-1 transition-transform group">
-                                <div class="w-12 h-12 bg-oro/20 text-oro rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
-                                    <i class="fas fa-certificate"></i>
-                                </div>
-                                <h4 class="font-bold text-principal mb-2">Certificación Cambridge</h4>
-                                <p class="text-gray-600 text-sm">Alumnas rinden exámenes certificados por la Universidad de Cambridge (Inglaterra) para asegurar su dominio del inglés.</p>
-                            </div>
+                        <!-- Contenedor Timeline -->
+                        <div class="relative border-l-2 border-oro/30 ml-4 pl-8 space-y-8 my-4">
                             
-                            <!-- Hito 2 -->
-                            <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:-translate-y-1 transition-transform group">
-                                <div class="w-12 h-12 bg-principal/10 text-principal rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
-                                    <i class="fas fa-desktop"></i>
+                            <!-- Hito 1: 1950 -->
+                            <div class="relative group" data-aos="fade-left" data-aos-delay="100">
+                                <!-- Punto de la línea -->
+                                <div class="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-white bg-oro shadow-md group-hover:bg-principal transition-colors"></div>
+                                <div class="bg-white p-5 rounded-2xl shadow-md border border-principal/20 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <span class="text-oro font-bold text-lg bg-oro/10 px-3 py-0.5 rounded-full">1950</span>
+                                        <h4 class="font-bold text-principal text-base">Fundación del Colegio</h4>
+                                    </div>
+                                    <p class="text-gray-800 font-medium text-xs md:text-sm">
+                                        Fundado en San Miguel como "Colegio Inglés", pionero en la enseñanza de este idioma en el distrito.
+                                    </p>
                                 </div>
-                                <h4 class="font-bold text-principal mb-2">Convenio InfoPUC</h4>
-                                <p class="text-gray-600 text-sm">Alianza con el Instituto de Informática de la PUCP para dar clases avanzadas de computación y tecnología.</p>
                             </div>
 
-                            <!-- Hito 3 -->
-                            <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:-translate-y-1 transition-transform group">
-                                <div class="w-12 h-12 bg-oro/20 text-oro rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
-                                    <i class="fas fa-language"></i>
+                            <!-- Hito 2: 1975 -->
+                            <div class="relative group" data-aos="fade-left" data-aos-delay="200">
+                                <div class="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-white bg-oro shadow-md group-hover:bg-principal transition-colors"></div>
+                                <div class="bg-white p-5 rounded-2xl shadow-md border border-principal/20 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <span class="text-oro font-bold text-lg bg-oro/10 px-3 py-0.5 rounded-full">1975</span>
+                                        <h4 class="font-bold text-principal text-base">Consolidación y Devoción</h4>
+                                    </div>
+                                    <p class="text-gray-800 font-medium text-xs md:text-sm">
+                                        Crecimiento de la comunidad estudiantil y arraigo espiritual mariano bajo la advocación de la Madre Admirable.
+                                    </p>
                                 </div>
-                                <h4 class="font-bold text-principal mb-2">Alianza Francesa</h4>
-                                <p class="text-gray-600 text-sm">Convenio firmado para que nuestras alumnas aprendan y dominen el francés como un segundo idioma extranjero.</p>
                             </div>
 
-                            <!-- Hito 4 -->
-                            <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:-translate-y-1 transition-transform group">
-                                <div class="w-12 h-12 bg-principal/10 text-principal rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
-                                    <i class="fas fa-palette"></i>
+                            <!-- Hito 3: 2010 -->
+                            <div class="relative group" data-aos="fade-left" data-aos-delay="300">
+                                <div class="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-white bg-oro shadow-md group-hover:bg-principal transition-colors"></div>
+                                <div class="bg-white p-5 rounded-2xl shadow-md border border-principal/20 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <span class="text-oro font-bold text-lg bg-oro/10 px-3 py-0.5 rounded-full">2010</span>
+                                        <h4 class="font-bold text-principal text-base">Convenios Estratégicos</h4>
+                                    </div>
+                                    <p class="text-gray-800 font-medium text-xs md:text-sm">
+                                        Alianzas con la Alianza Francesa (incorporación del francés) e InfoPUC (informática y tecnología avanzada).
+                                    </p>
                                 </div>
-                                <h4 class="font-bold text-principal mb-2">Talleres y Más</h4>
-                                <p class="text-gray-600 text-sm">Ofrecemos actividades extracurriculares como música, pintura, folklore, cine, deportes y gestión empresarial.</p>
                             </div>
+
+                            <!-- Hito 4: 2020 -->
+                            <div class="relative group" data-aos="fade-left" data-aos-delay="400">
+                                <div class="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-white bg-oro shadow-md group-hover:bg-principal transition-colors"></div>
+                                <div class="bg-white p-5 rounded-2xl shadow-md border border-principal/20 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <span class="text-oro font-bold text-lg bg-oro/10 px-3 py-0.5 rounded-full">2020</span>
+                                        <h4 class="font-bold text-principal text-base">Bachillerato Internacional (IB)</h4>
+                                    </div>
+                                    <p class="text-gray-800 font-medium text-xs md:text-sm">
+                                        Acreditación e implementación del Programa de los Años Intermedios (PAI) del IB y certificación de inglés Cambridge.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Hito 5: 2027 -->
+                            <div class="relative group" data-aos="fade-left" data-aos-delay="500">
+                                <div class="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-white bg-oro shadow-md group-hover:bg-principal transition-colors"></div>
+                                <div class="bg-white p-5 rounded-2xl shadow-md border border-principal/20 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <span class="text-oro font-bold text-lg bg-oro/10 px-3 py-0.5 rounded-full">2027</span>
+                                        <h4 class="font-bold text-principal text-base">Propuesta Pedagógica 2027</h4>
+                                    </div>
+                                    <p class="text-gray-800 font-medium text-xs md:text-sm">
+                                        Lanzamiento de la nueva propuesta integral de talleres artísticos, deportivos y espirituales para el desarrollo estudiantil.
+                                    </p>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
 
@@ -68,27 +106,50 @@
         </div>
         <!-- Aniversario Banner -->
         <div class="container mx-auto px-4 md:px-8 pb-16">
-            <div class="bg-gray-50 border border-gray-150 rounded-3xl p-8 flex flex-col md:flex-row gap-10 items-center">
+            <div class="bg-white/10 backdrop-blur-md border border-principal/20 rounded-3xl p-8 flex flex-col md:flex-row gap-10 items-center">
                 <div class="w-full md:w-1/3">
-                    <div class="relative overflow-hidden rounded-2xl shadow-md border border-gray-200 group">
+                    <div class="relative overflow-hidden rounded-2xl shadow-md border border-principal/20 group">
                         <img src="images/aniversario_75_afiche.jpg" alt="75 Aniversario Colegio Mater Admirabilis" class="w-full object-cover group-hover:scale-105 transition-transform duration-500 rounded-2xl">
                     </div>
                 </div>
                 <div class="w-full md:w-2/3">
                     <span class="bg-oro text-principal text-xs font-bold uppercase tracking-wider py-1 px-3 rounded-full mb-3 inline-block">75 Años de Excelencia</span>
                     <h3 class="text-2xl font-bold text-principal mb-4">Bodas de Brillante: 75 Años Formando Líderes</h3>
-                    <p class="text-gray-600 leading-relaxed mb-6">
+                    <p class="text-gray-800 font-medium leading-relaxed mb-6">
                         Nuestra historia está marcada por el compromiso, la fe y la excelencia académica. Conmemoramos setenta y cinco años educando con amor y preparando a generaciones de jóvenes para transformar positivamente el mundo, manteniendo viva nuestra herencia y visión de futuro.
+                    </p>
+            </div>
+        </div>
+
+        <!-- Galería de Hitos Históricos -->
+        <div class="container mx-auto px-4 md:px-8 pb-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white/10 backdrop-blur-md border border-principal/20 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300" data-aos="fade-right">
+                    <div class="relative overflow-hidden rounded-2xl shadow-sm border border-principal/20 group mb-4">
+                        <img src="images/ppt_image_6.webp" alt="Tradición Educativa Mater Admirabilis" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <h4 class="font-bold text-principal text-lg mb-2">Legado y Tradición Escolar</h4>
+                    <p class="text-gray-800 font-medium text-sm leading-relaxed">
+                        Nuestras raíces se sustentan en una larga tradición educativa que une la fe, el esfuerzo académico y la formación del carácter de nuestras estudiantes.
+                    </p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md border border-principal/20 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300" data-aos="fade-left">
+                    <div class="relative overflow-hidden rounded-2xl shadow-sm border border-principal/20 group mb-4">
+                        <img src="images/ppt_image_7.webp" alt="Formación Histórica de Alumnas" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <h4 class="font-bold text-principal text-lg mb-2">Identidad y Valores Sólidos</h4>
+                    <p class="text-gray-800 font-medium text-sm leading-relaxed">
+                        A lo largo de las décadas, la devoción a nuestra patrona y la excelencia en la enseñanza del inglés han sido los pilares del éxito de nuestras egresadas.
                     </p>
                 </div>
             </div>
         </div>
 
         <!-- Separador -->
-        <div class="container mx-auto px-4"><div class="border-t border-gray-200/60 my-8"></div></div>
+        <div class="container mx-auto px-4"><div class="border-t border-principal/20/60 my-8"></div></div>
 
         <!-- Sección Tradición y Archivo (2 Columnas) -->
-        <div class="bg-fondo border-y border-gray-200 py-24 relative overflow-hidden">
+        <div class="bg-fondo border-y border-principal/20 py-24 relative overflow-hidden">
             <div class="container mx-auto px-4 md:px-8 relative z-10">
                 
                 <div class="text-center mb-16" data-aos="fade-up">

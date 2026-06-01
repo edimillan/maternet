@@ -1,28 +1,116 @@
-<div class="bg-white shadow-xl rounded-2xl p-8 md:p-16 border border-gray-100 max-w-5xl mx-auto" data-aos="fade-up">
-    <!-- Encabezado de Nivel con Imagen Split -->
-    <div class="flex flex-col lg:flex-row items-center gap-10 mb-16">
-        <!-- Lado Izquierdo: Textos -->
-        <div class="w-full lg:w-1/2">
-            <span class="bg-oro/20 text-principal text-xs font-bold uppercase tracking-wider py-1.5 px-4 rounded-full mb-4 inline-block">Educación Primaria (1ro a 6to grado)</span>
-            <h2 class="text-4xl font-bold text-principal mb-6">Nivel Primaria</h2>
-            <div class="w-20 h-1 bg-oro mb-6 rounded-full"></div>
-            <p id="primaria-lema" class="text-xl text-principal font-semibold leading-relaxed mb-6 italic">
-                Cargando lema educativo...
-            </p>
+<div class="max-w-6xl mx-auto space-y-12">
+    <!-- Cabecera Premium del Nivel -->
+    <div class="bg-gradient-to-r from-principal/10 to-oro/10 p-8 md:p-12 rounded-[2rem] border border-gray-100 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden" data-aos="fade">
+        <div class="absolute top-0 right-0 -mr-12 -mt-12 w-40 h-40 bg-oro/10 rounded-full blur-2xl"></div>
+        <div class="relative z-10 w-full md:w-2/3">
+            <span class="bg-principal/10 text-principal text-xs font-bold uppercase tracking-wider py-1.5 px-4 rounded-full mb-4 inline-block">Educación Primaria (1ro a 6to grado)</span>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-principal mb-4">Nivel Primaria</h2>
+            <div class="w-16 h-1.5 bg-oro rounded-full mb-6"></div>
+            <!-- Lema del Nivel como un Quote Premium -->
+            <div class="relative pl-6 border-l-4 border-oro">
+                <p id="primaria-lema" class="text-lg md:text-xl text-gray-700 italic font-medium leading-relaxed">
+                    Cargando propuesta formativa del nivel primaria...
+                </p>
+            </div>
         </div>
-        <!-- Lado Derecho: Imagen Ilustrativa -->
-        <div class="w-full lg:w-1/2">
-            <div class="relative overflow-hidden rounded-3xl shadow-lg border-2 border-oro/20 group">
-                <img id="primaria-img" src="" alt="Estudiantes de Primaria Compartiendo" class="w-full h-80 object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-principal/60 to-transparent opacity-60"></div>
+        <div class="w-full md:w-1/3 flex justify-center">
+            <div class="w-24 h-24 bg-white rounded-3xl flex items-center justify-center text-4xl text-principal shadow-lg border border-gray-100 animate-float-soft">
+                <i class="fas fa-book-reader"></i>
             </div>
         </div>
     </div>
 
-    <!-- Secciones del Nivel -->
-    <div id="primaria-secciones-container" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- Se cargará dinámicamente desde data/nivel_primaria.json -->
-        <p class="text-gray-500 italic text-center col-span-2">Cargando enfoques pedagógicos...</p>
+    <!-- Contenedor Principal (Imagen Destacada + Grilla de Enfoques) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Columna Izquierda: Imagen y Ficha Rápida -->
+        <div class="lg:col-span-5 space-y-6" data-aos="fade-right">
+            <div class="relative overflow-hidden rounded-3xl shadow-xl border-4 border-white group">
+                <img id="primaria-img" src="" alt="Educación Primaria" class="w-full h-80 object-cover group-hover:scale-103 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-principal/60 via-transparent to-transparent opacity-80"></div>
+                <div class="absolute bottom-6 left-6 text-white z-10">
+                    <span class="text-xs uppercase font-bold tracking-wider text-oro">Metodología PAI</span>
+                    <h4 class="text-xl font-bold">Investigación Activa</h4>
+                </div>
+            </div>
+
+            <!-- Ficha Técnica Rápida -->
+            <div class="bg-white/80 backdrop-blur-md p-6 rounded-3xl border border-white/40 shadow-lg space-y-4">
+                <h4 class="text-principal font-bold text-base border-b border-gray-100 pb-3">Información Clave</h4>
+                <ul class="space-y-3 text-xs md:text-sm text-gray-600">
+                    <li class="flex items-center gap-2.5">
+                        <i class="fas fa-check-circle text-oro text-sm"></i>
+                        <span>Inglés intensivo por niveles</span>
+                    </li>
+                    <li class="flex items-center gap-2.5">
+                        <i class="fas fa-check-circle text-oro text-sm"></i>
+                        <span>Enfoque indagador transdisciplinario</span>
+                    </li>
+                    <li class="flex items-center gap-2.5">
+                        <i class="fas fa-check-circle text-oro text-sm"></i>
+                        <span>Tutorías personalizadas por aula</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Columna Derecha: Tarjetas de Enfoque Pedagógico -->
+        <div class="lg:col-span-7 space-y-6" data-aos="fade-left">
+            <h3 class="text-2xl font-bold text-principal flex items-center gap-3">
+                <i class="fas fa-clipboard-list text-oro"></i> Enfoques Académicos
+            </h3>
+            
+            <div id="primaria-secciones-container" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <!-- Inyección Dinámica de Secciones -->
+                <p class="text-gray-500 italic">Cargando secciones...</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="horario-seccion" class="hidden mt-12" data-aos="fade-up">
+        <div class="bg-white/70 backdrop-blur-md p-6 md:p-10 rounded-[2rem] border border-white/40 shadow-lg flex flex-col lg:flex-row items-center gap-8">
+            <div class="w-full lg:w-1/2 space-y-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-oro/20 text-oro rounded-xl flex items-center justify-center text-lg">
+                        <i class="far fa-clock"></i>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-bold text-principal">Distribución del Tiempo</h3>
+                </div>
+                <p class="text-gray-600 text-sm md:text-base leading-relaxed">
+                    Nuestra jornada escolar para el nivel Primaria está estructurada para optimizar el ritmo biológico y cognitivo de las estudiantes, alternando asignaturas teóricas con proyectos prácticos, talleres y recreación activa.
+                </p>
+                <div class="bg-white/80 backdrop-blur-md p-4 rounded-2xl border border-white/40 shadow-sm flex items-center justify-between text-xs md:text-sm font-semibold text-principal">
+                    <span>Horario de Clases:</span>
+                    <span class="bg-principal/10 px-3.5 py-1.5 rounded-lg">7:30 a.m. a 2:50 p.m.</span>
+                </div>
+                <a id="horario-link" href="" target="_blank" class="inline-flex items-center justify-center bg-principal hover:bg-green-800 text-white font-bold text-sm py-3 px-6 rounded-xl shadow transition-colors gap-2">
+                    <i class="fas fa-search-plus"></i> Abrir Horario Completo
+                </a>
+            </div>
+            <div class="w-full lg:w-1/2">
+                <div class="relative overflow-hidden rounded-2xl shadow-md border border-gray-250 group cursor-pointer">
+                    <img id="horario-img" src="" alt="Horario Escolar" class="w-full h-auto object-cover group-hover:scale-103 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="text-white font-bold bg-principal/90 px-4 py-2 rounded-xl text-sm"><i class="fas fa-expand mr-2"></i> Ver en Detalle</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA de Admisión 2027 -->
+    <div class="bg-gradient-to-br from-principal to-green-900 rounded-[2rem] p-8 text-center text-white relative overflow-hidden border border-principal/50" data-aos="fade-up">
+        <div class="absolute top-0 right-0 -mr-16 -mt-16 w-48 h-48 rounded-full bg-white opacity-5"></div>
+        <div class="relative z-10 max-w-2xl mx-auto">
+            <h3 class="text-2xl font-bold mb-3">¿Deseas formar parte de nuestra familia escolar?</h3>
+            <p class="text-white/80 mb-6 text-sm md:text-base font-medium">
+                Conoce las vacantes, fechas clave y requisitos de pre-inscripción para el Nivel Primaria.
+            </p>
+            <a href="admision.html" class="spa-link inline-flex items-center justify-center bg-oro hover:bg-yellow-400 text-texto font-bold text-sm py-3 px-8 rounded-xl shadow-md transition-colors gap-2 border border-oro/50">
+                Postular a Admisión 2027 <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
     </div>
 </div>
 
@@ -45,16 +133,16 @@
                 container.innerHTML = "";
                 data.secciones.forEach((sec, idx) => {
                     const card = document.createElement('div');
-                    card.className = `p-8 rounded-2xl border border-gray-100 bg-gray-50 hover:shadow-xl hover:border-oro transition-all duration-300 transform hover:-translate-y-1.5 group`;
+                    card.className = `p-6 rounded-2xl border border-white/40 bg-white/80 backdrop-blur-md hover:shadow-lg hover:border-oro transition-all duration-300 transform hover:-translate-y-1 group`;
                     
                     const iconBgClass = idx % 2 === 0 ? 'bg-principal/10 text-principal' : 'bg-oro/20 text-oro';
                     
                     card.innerHTML = `
-                        <div class="w-14 h-14 ${iconBgClass} rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <div class="w-12 h-12 ${iconBgClass} rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-105 transition-transform duration-300">
                             <i class="${sec.icon || 'fas fa-search'}"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-principal mb-3">${sec.titulo}</h3>
-                        <p class="text-gray-600 leading-relaxed">${sec.descripcion}</p>
+                        <h4 class="font-bold text-principal mb-2 text-base md:text-lg">${sec.titulo}</h4>
+                        <p class="text-gray-500 text-xs md:text-sm leading-relaxed">${sec.descripcion}</p>
                     `;
                     container.appendChild(card);
                 });
@@ -62,20 +150,35 @@
                 // 3. Inyectar Tarjeta Especial de Inglés (si existe)
                 if(data.seccion_ingles) {
                     const engCard = document.createElement('div');
-                    engCard.className = "p-8 rounded-2xl border border-gray-100 bg-gray-50 hover:shadow-xl hover:border-oro transition-all duration-300 transform hover:-translate-y-1.5 group md:col-span-2 flex flex-col md:flex-row gap-6 items-center";
+                    engCard.className = "p-6 rounded-2xl border border-white/40 bg-white/80 backdrop-blur-md hover:shadow-lg hover:border-oro transition-all duration-300 transform hover:-translate-y-1 group md:col-span-2 flex flex-col md:flex-row gap-6 items-center";
                     engCard.innerHTML = `
                         <div class="w-full md:w-1/3">
-                            <img src="${data.seccion_ingles.imagen}" alt="Clase de Ingles Primaria" class="rounded-xl shadow-sm w-full h-40 object-cover border border-gray-200">
+                            <img src="${data.seccion_ingles.imagen}" alt="Clase de Ingles" class="rounded-xl shadow-sm w-full h-36 object-cover border border-gray-100">
                         </div>
                         <div class="w-full md:w-2/3">
-                            <div class="w-12 h-12 bg-principal/10 text-principal rounded-xl flex items-center justify-center text-xl mb-4">
+                            <div class="w-10 h-10 bg-principal/10 text-principal rounded-xl flex items-center justify-center text-lg mb-3">
                                 <i class="fas fa-language"></i>
                             </div>
-                            <h3 class="text-xl font-bold text-principal mb-2">${data.seccion_ingles.titulo}</h3>
-                            <p class="text-gray-600 text-sm leading-relaxed">${data.seccion_ingles.descripcion}</p>
+                            <h4 class="font-bold text-principal mb-2 text-base md:text-lg">${data.seccion_ingles.titulo}</h4>
+                            <p class="text-gray-500 text-xs md:text-sm leading-relaxed">${data.seccion_ingles.descripcion}</p>
                         </div>
                     `;
                     container.appendChild(engCard);
+                }
+
+                // 4. Cargar Horario si existe
+                if(data.horario) {
+                    const horarioSeccion = document.getElementById('horario-seccion');
+                    const horarioImg = document.getElementById('horario-img');
+                    const horarioLink = document.getElementById('horario-link');
+                    if (horarioSeccion && horarioImg) {
+                        horarioImg.src = data.horario;
+                        if (horarioLink) horarioLink.href = data.horario;
+                        horarioImg.parentElement.addEventListener('click', () => {
+                            window.open(data.horario, '_blank');
+                        });
+                        horarioSeccion.classList.remove('hidden');
+                    }
                 }
             }
         } catch(e) {
